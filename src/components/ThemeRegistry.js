@@ -6,12 +6,12 @@ import theme from "@/utils/theme";
 export default function ThemeRegistry({ children }) {
     return (
         <ThemeProvider theme={theme}>
-            <Box style={{
+            <Box sx={{
+                flex: 1,
                 display: 'flex',
                 flexDirection: 'column',
                 bgcolor: 'background.default',
                 minHeight: '100vh',
-                marginBottom: "2%",
             }}>
                 <CssBaseline />
                 {children}

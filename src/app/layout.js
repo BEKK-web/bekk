@@ -1,8 +1,9 @@
 import { Inter } from "next/font/google";
 import Head from "next/head";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import Box from "@mui/material/Box";
 import ThemeRegistry from "@/components/ThemeRegistry";
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -20,21 +21,24 @@ export default function RootLayout({ children }) {
       <Head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
-        <meta name="keywords" content="" />
+        <meta name="keywords" content="Ventilación central, Climatización central, Climatización corporativa, Rooftop, Separado para conductos, Precio aire acondicionado central, Aire acondicionado central presupuesto, Equipos de aire acondicionado central, Comprar aire acondicionado central, Multiposición, Baja silueta, Piso techo, aire acondicionado baja silueta, Calefactor central, Servicios de climatización, Sistemas de climatización, Aire acondicionado central" />
         <meta name="author" content={metadata.title} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta property="og:title" content={metadata.title} />
         <meta property="og:description" content={metadata.description} />
-        <meta property="og:type" content="" />
+        <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.bekk.com.ar/" />
       </Head>
       <body className={`${interSans.variable}`}>
-        <AppRouterCacheProvider>
-          <ThemeRegistry>
-            <NavBar></NavBar>
-            {children}
-          </ThemeRegistry>
-        </AppRouterCacheProvider>
+        <ThemeRegistry>
+          <Box minHeight="100vh" display="flex" flexDirection="column">
+            <NavBar />
+            <Box component="main" flex={1} width="100%" sx={{ paddingTop: { xs: '56px', sm: '64px' } }}>
+              {children}
+            </Box>
+            <Footer />
+          </Box>
+        </ThemeRegistry>
       </body>
     </html>
   );

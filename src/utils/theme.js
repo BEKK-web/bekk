@@ -3,114 +3,61 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
     palette: {
         primary: {
-            main: '#424242', // Azul corporativo profundo
-            contrastText: '#ffffff',
+            main: '#FFFFFF',
+            contrastText: '#000000',
+            button: '#2A649A',
+            labelHint: '#A4A4A4',
         },
         secondary: {
-            main: '#FF6F00', // Naranja cálido para climatización
-            light: '#FFB74D',
-            dark: '#E65100',
-            contrastText: '#ffffff',
+            main: '#000000',
+            contrastText: '#FFFFFF',
         },
         background: {
-            default: '#FAFAFA', // Gris muy claro, casi blanco
-            paper: '#FFFFFF',
-        },
-        text: {
-            primary: '#212121', // Negro suave
-            secondary: '#616161', // Gris medio
-        },
-        error: {
-            main: '#D32F2F',
-            light: '#EF5350',
-            dark: '#C62828',
-        },
-        warning: {
-            main: '#F57C00',
-            light: '#FFB74D',
-            dark: '#E65100',
-        },
-        info: {
-            main: '#1976D2',
-            light: '#42A5F5',
-            dark: '#1565C0',
-        },
-        success: {
-            main: '#388E3C',
-            light: '#66BB6A',
-            dark: '#2E7D32',
-        },
-        divider: '#E0E0E0',
-        // Colores personalizados para BEKK
-        grey: {
-            50: '#FAFAFA',
-            100: '#F5F5F5',
-            200: '#EEEEEE',
-            300: '#E0E0E0',
-            400: '#BDBDBD',
-            500: '#9E9E9E',
-            600: '#757575',
-            700: '#616161',
-            800: '#424242',
-            900: '#212121',
+            default: '#E4E4E4',
+            mint: '#A7FA67',
+            glass: '#5090B0',
+            footer: '#2D3841',
         },
     },
     typography: {
-        fontFamily: [
-            'Roboto',
-            'Arial',
-            'sans-serif',
-        ].join(','),
+        // light: 400, regular: 500, semibold: 600, bold: 700
         h1: {
-            fontWeight: 600,
-            fontSize: '2.5rem',
-            color: '#212121',
+            fontWeight: 400,
+            fontSize: '24px',
+            textTransform: 'uppercase',
         },
         h2: {
+            fontWeight: 500,
+            fontSize: '20px',
+        },
+        bekk: {
+            fontWeight: 700,
+            fontSize: '40px',
+        },
+        a: {
+            fontWeight: 500,
+            fontSize: '27px',
+            textTransform: 'uppercase',
+        },
+        labelHint: {
+            fontSize: '15px',
+            fontWeight: 500,
+        },
+        primaryButton: {
+            fontSize: '15px',
+            fontWeight: 700,
+            textTransform: 'uppercase',
+        },
+        body: {
+            fontSize: '15x',
+            fontWeight: 400,
+        },
+        title: {
+            fontSize: '30px',
             fontWeight: 600,
-            fontSize: '2rem',
-            color: '#212121',
         },
-        h3: {
-            fontWeight: 500,
-            fontSize: '1.5rem',
-            color: '#212121',
-        },
-        h4: {
-            fontWeight: 500,
-            fontSize: '1.25rem',
-            color: '#212121',
-        },
-        h5: {
-            fontWeight: 500,
-            fontSize: '1.125rem',
-            color: '#212121',
-        },
-        h6: {
-            fontWeight: 500,
-            fontSize: '1rem',
-            color: '#212121',
-        },
-        body1: {
-            fontSize: '1rem',
-            color: '#212121',
-            lineHeight: 1.6,
-        },
-        body2: {
-            fontSize: '0.875rem',
-            color: '#616161',
-            lineHeight: 1.5,
-        },
-        button: {
-            fontWeight: 600,
-            textTransform: 'none', // Mantener capitalización original
-        },
-    },
-    shape: {
-        borderRadius: 8, // Bordes ligeramente redondeados
     },
     components: {
-        // Personalización de componentes específicos
         MuiButton: {
             styleOverrides: {
                 root: {
@@ -122,6 +69,42 @@ const theme = createTheme({
                     boxShadow: '0 2px 8px rgba(21, 101, 192, 0.2)',
                     '&:hover': {
                         boxShadow: '0 4px 12px rgba(21, 101, 192, 0.3)',
+                    },
+                },
+            },
+        },
+        MuiOutlinedInput: {
+            styleOverrides: {
+                root: {
+
+                    '&:hover .MuiOutlinedInput-notchedOutline': {
+                        borderColor: '#000000',
+                    },
+                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                        borderColor: '#000000',
+                    },
+                    '&.Mui-focused': {
+                        backgroundColor: '#FFFFFF',
+                    },
+                },
+                notchedOutline: {
+                    borderColor: '#ccc',
+                },
+                input: {
+                    color: '#000',
+                },
+            },
+        },
+        MuiInputLabel: {
+            styleOverrides: {
+                root: {
+                    color: '#00000', // color del label inactivo
+                    fontSize: '15px',
+                    fontWeight: 500,
+                    textTransform: 'none',
+
+                    '&.Mui-focused': {
+                        color: '#000000', // color del label cuando el campo está enfocado
                     },
                 },
             },

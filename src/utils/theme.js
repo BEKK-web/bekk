@@ -84,7 +84,7 @@ const theme = createTheme({
                         borderColor: '#000000',
                     },
                     '&.Mui-focused': {
-                        backgroundColor: '#FFFFFF',
+                        // backgroundColor: '#edebeb',
                     },
                 },
                 notchedOutline: {

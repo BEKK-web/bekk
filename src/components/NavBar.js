@@ -49,6 +49,7 @@ export default function NavBar() {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 backgroundColor: 'primary.main',
+                height: '70px',
                 px: 2,
             }}
         >
@@ -58,7 +59,7 @@ export default function NavBar() {
                 display: { xs: 'none', md: 'flex' },
                 flexDirection: 'row',
                 justifyContent: 'space-evenly',
-                gap: { md: 2, lg: 6 }
+                gap: { md: 2, lg: 6 },
             }}
             >
                 {pages.map((page, index) => (

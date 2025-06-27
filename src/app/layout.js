@@ -1,6 +1,5 @@
 import { Inter } from "next/font/google";
 import Head from "next/head";
-import Box from "@mui/material/Box";
 import ThemeRegistry from "@/components/ThemeRegistry";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
@@ -31,13 +30,9 @@ export default function RootLayout({ children }) {
       </Head>
       <body className={`${interSans.variable}`}>
         <ThemeRegistry>
-          <Box minHeight="100vh" display="flex" flexDirection="column">
-            <NavBar />
-            <Box component="main" flex={1} width="100%" sx={{ paddingTop: { xs: '56px', sm: '64px' } }}>
-              {children}
-            </Box>
-            <Footer />
-          </Box>
+          <NavBar />
+          {children}
+          <Footer />
         </ThemeRegistry>
       </body>
     </html>

@@ -5,7 +5,6 @@ import {
     AppBar,
     Box,
     Typography,
-    Button,
     IconButton,
     Menu,
     MenuItem,
@@ -52,6 +51,7 @@ export default function NavBar() {
                 height: '70px',
                 px: 2,
             }}
+            position='fixed'
         >
             <Typography variant="bekk">BEKK</Typography>
 

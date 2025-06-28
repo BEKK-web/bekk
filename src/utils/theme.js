@@ -47,14 +47,16 @@ const theme = createTheme({
             fontSize: '15px',
             fontWeight: 700,
             textTransform: 'uppercase',
+            color: '#FFFFFF',
         },
         body: {
-            fontSize: '15x',
+            fontSize: '15px',
             fontWeight: 400,
         },
         title: {
             fontSize: '30px',
             fontWeight: 600,
+            textTransform: 'uppercase',
         },
     },
     components: {
@@ -98,7 +100,7 @@ const theme = createTheme({
         MuiInputLabel: {
             styleOverrides: {
                 root: {
-                    color: '#00000', // color del label inactivo
+                    color: '#000000', // color del label inactivo
                     fontSize: '15px',
                     fontWeight: 500,
                     textTransform: 'none',

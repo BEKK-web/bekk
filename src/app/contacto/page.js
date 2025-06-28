@@ -9,8 +9,10 @@ export default function Contacto() {
             alignItems: "center",
             justifyContent: "center",
             background: `radial-gradient(circle at center, #c7e4ea 0%, #E4E4E4 80%)`,
-            height: "100vh",
-            paddingX: "20%",
+            flex: 1,
+            paddingX: '20%',
+            paddingTop: '40px',
+            paddingBottom: "40px"
         }}>
             <Typography variant='title' sx={{ mb: 2 }}>
                 ¿Como podemos ayudarte hoy?

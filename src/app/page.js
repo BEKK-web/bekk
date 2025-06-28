@@ -7,8 +7,9 @@ export default function Products() {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      height: "100vh",
-      paddingX: "10%",
+      flex: 1,
+      paddingTop: '40px',
+      paddingBottom: "40px"
     }}>
       PRODUCTOS
     </Box>

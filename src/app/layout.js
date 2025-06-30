@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next"
 import ThemeRegistry from "@/components/ThemeRegistry";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
@@ -9,8 +10,8 @@ const interSans = Inter({
 });
 
 export const metadata = {
-  title: "BEKK | Lideres en el mercado",
-  description: "Soluciones en climatización y refrigeración",
+  title: "BEKK | Soluciones en climatización",
+  description: "Calidad y eficiencia en sistemas de climatización y refrigeración.",
   keywords: [
     "Ventilación central", "Climatización central", "Climatización corporativa", "Rooftop",
     "Separado para conductos", "Precio aire acondicionado central", "Aire acondicionado central presupuesto",
@@ -20,8 +21,8 @@ export const metadata = {
   ],
   authors: [{ name: "BEKK" }],
   openGraph: {
-    title: "BEKK | Lideres en el mercado",
-    description: "Soluciones en climatización y refrigeración",
+    title: "BEKK | Soluciones en climatización",
+    description: "Compra el equipo que estuviste buscando.",
     type: "website",
     url: "https://www.bekk.com.ar/",
   },
@@ -45,6 +46,7 @@ export default function RootLayout({ children }) {
           </main>
           <Footer />
         </ThemeRegistry>
+        <Analytics />
       </body>
     </html>
   );

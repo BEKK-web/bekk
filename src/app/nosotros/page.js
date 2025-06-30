@@ -1,13 +1,16 @@
 import { Box, Grid, Typography } from "@mui/material";
-
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import AdsClickIcon from '@mui/icons-material/AdsClick';
 
+import Carousel from '@/components/Carousel';
+import Image from "next/image";
+
 export default function Nosotros() {
 
-    const quienesSomos = 'Somos una empresa que brinda soluciones en climatización central, tanto para hogares como para el sector corporativo.Comercializamos productos de calidad para el bienestar de nuestros clientes.';
+    const quienesSomos = 'Somos una empresa que brinda soluciones en climatización central, tanto para hogares como para el sector corporativo. Comercializamos productos de calidad para el bienestar de nuestros clientes.';
 
-    // TODO: Add images carousel
+    const carrouselImages = 12;
+
     return (
         <Box sx={{
             display: "flex",
@@ -49,7 +52,7 @@ export default function Nosotros() {
                     <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                         <ShowChartIcon fontSize="large" />
                         <Typography variant='h1' sx={{ marginLeft: 1 }}>
-                            25+ años de trayectoria
+                            +25 años de trayectoria
                         </Typography>
                     </Box>
                 </Grid>
@@ -64,7 +67,19 @@ export default function Nosotros() {
                             Confian en nosotros
                         </Typography>
                         <Typography variant="title" color="primary.labelHint">
-                            TIRA DE IMAGENES
+                            <Carousel visibleItemsCount={3} withIndicator isInfinite>
+                                {
+                                    Array.from({ length: carrouselImages }, (_, i) => (
+                                        <Image
+                                            key={i}
+                                            src={`/trust/${i + 1}.png`}
+                                            alt={`Imagen ${i + 1}`}
+                                            width={200}
+                                            height={100}
+                                        />
+                                    ))
+                                }
+                            </Carousel>
                         </Typography>
                     </Box>
                 </Grid>

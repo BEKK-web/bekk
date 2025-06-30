@@ -18,6 +18,7 @@ export default function Footer() {
     }
 
     const [animateCopyEmail, setAnimateCopyEmail] = useState(false);
+    const [animateTel, setAnimateTel] = useState(false);
 
     return (
         <Box sx={{ bgcolor: 'background.footer', color: 'secondary.contrastText', padding: 4 }}>
@@ -37,11 +38,16 @@ export default function Footer() {
                             <Typography variant="body">Buenos Aires, Argentina</Typography>
                         </Box>
                     </Grid>
-                    <Grid size={12} onClick={() => window.open('https://wa.me/5491122296226', '_blank')}>
+                    <Grid
+                        size={12}
+                        onClick={() => window.open('https://wa.me/5491122296226', '_blank')}
+                        onMouseEnter={() => setAnimateTel(true)}
+                        onMouseLeave={() => setAnimateTel(false)}
+                    >
                         <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer', gap: 1, mb: 2, justifySelf: { xs: 'center', sm: 'start' } }}>
                             <LocalPhoneOutlinedIcon />
                             <Typography variant="body">+54 9 11 2229-6226</Typography>
-                            <ChatBubbleOutlineIcon sx={{ visibility: { lg: 'visible', xl: animateCopyEmail ? 'visible' : 'hidden' } }} />
+                            <ChatBubbleOutlineIcon sx={{ visibility: { lg: 'visible', xl: animateTel ? 'visible' : 'hidden' } }} />
                         </Box>
                     </Grid>
                     <Grid

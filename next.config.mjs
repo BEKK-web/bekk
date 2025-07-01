@@ -4,9 +4,9 @@ nextConfig.images = {
     remotePatterns: [
         {
             protocol: 'https',
-            hostname: 'picsum.photos',
+            hostname: 'bekk.pythonanywhere.com',
             port: '',
-            pathname: '/**',
+            pathname: '/images/**',
         },
     ],
 };

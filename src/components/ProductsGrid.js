@@ -34,7 +34,9 @@ export default function ProductsGrid({ products }) {
     }, [products]);
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%', paddingTop: '40px', alignItems: 'center', marginTop: 2 }}>
+        <Box sx={{
+            display: 'flex', flexDirection: 'column', width: '100%', height: '100%', paddingTop: '40px', alignItems: 'center', marginTop: 2, paddingX: 2,
+        }}>
             <TextField
                 variant="outlined"
                 placeholder="Buscar producto..."

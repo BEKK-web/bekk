@@ -2,11 +2,12 @@ import { Box, Typography, Button } from "@mui/material";
 import Image from "next/image";
 
 export default function ProductCard({ product }) {
+
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', bgcolor: 'primary.main', width: '335px', height: '400px', justifyContent: 'space-between', padding: '2%', borderRadius: '10px' }}>
 
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', overflow: 'hidden', borderRadius: '10px', }}>
-                <Image width={315} height={200} src='/placeholder.png' alt={product.name} />
+                <Image width={315} height={200} src={`${process.env.NEXT_PUBLIC_API_URL + product.image}`} alt={product.name} />
             </Box>
 
             <Typography variant="h2">

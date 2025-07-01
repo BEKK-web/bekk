@@ -3,15 +3,28 @@ import { Box, Grid } from "@mui/material";
 import ProductsList from "@/components/ProductsList";
 import ProductsGrid from "@/components/ProductsGrid";
 
+import { useState, useEffect } from "react";
+
 export default function Products() {
-  // TODO: Fetch products from an API or database
-  // Expecting:
-  // {
-  //   name: String,
-  //   description: String,
-  //   image: String, // URL to the product image
-  // }
-  const products = Array.from({ length: 120 }, (_, i) => ({ name: `item ${i + 1}`, description: `Description for item ${i + 1}`, price: (i + 1) * 10, image: `https://picsum.photos/315/200?random=${i + 1}` }));
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}products/api/`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log('Fetched products:', response);
+        setProducts(data);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+    fetchProducts();
+
+  }, []);
 
   return (
     <Box sx={{

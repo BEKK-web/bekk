@@ -5,6 +5,7 @@ const theme = createTheme({
         primary: {
             main: '#FFFFFF',
             contrastText: '#000000',
+            disclamerText: '#595959',
             button: '#2A649A',
             labelHint: '#A4A4A4',
         },
@@ -23,38 +24,38 @@ const theme = createTheme({
         // light: 400, regular: 500, semibold: 600, bold: 700
         h1: {
             fontWeight: 400,
-            fontSize: '24px',
+            fontSize: '1.5rem', // 24px
             textTransform: 'uppercase',
         },
         h2: {
             fontWeight: 500,
-            fontSize: '20px',
+            fontSize: '1.25rem', // 20px
         },
         bekk: {
             fontWeight: 700,
-            fontSize: '40px',
+            fontSize: '2.5rem', // 40px
         },
         a: {
             fontWeight: 500,
-            fontSize: '27px',
+            fontSize: '1.6875rem', // 27px
             textTransform: 'uppercase',
         },
         labelHint: {
-            fontSize: '15px',
+            fontSize: '0.9375rem', // 15px
             fontWeight: 500,
         },
         primaryButton: {
-            fontSize: '15px',
+            fontSize: '0.9375rem', // 15px
             fontWeight: 700,
             textTransform: 'uppercase',
             color: '#FFFFFF',
         },
         body: {
-            fontSize: '15px',
+            fontSize: '0.9375rem', // 15px
             fontWeight: 400,
         },
         title: {
-            fontSize: '30px',
+            fontSize: '1.875rem', // 30px
             fontWeight: 600,
             textTransform: 'uppercase',
         },

@@ -1,12 +1,15 @@
 'use client';
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, TextField, InputAdornment } from "@mui/material";
+import { Search } from "@mui/icons-material";
 import ProductsList from "@/components/ProductsList";
 import ProductsGrid from "@/components/ProductsGrid";
+import ProductSkeleton from "@/components/ProductSkeleton";
 
 import { useState, useEffect } from "react";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -18,6 +21,7 @@ export default function Products() {
         const data = await response.json();
         console.log('Fetched products:', response);
         setProducts(data);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching products:', error);
       }
@@ -31,19 +35,65 @@ export default function Products() {
       display: "flex",
       flexDirection: "row",
       flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
     }}>
-
-      <Grid container width={'100%'}>
-        <Grid size={{ xs: 0, sm: 4, md: 2 }} sx={{ display: { xs: "none", sm: "flex" } }}>
-          <ProductsList products={products} />
-        </Grid>
-
-        <Grid size={{ xs: 12, sm: 8, md: 10 }}>
+      {!loading ?
+        <Grid container width={'100%'} size={{ xs: 12, sm: 8, md: 10 }}>
           <ProductsGrid products={products} />
         </Grid>
+        :
+        <Grid container width={'100%'} size={{ xs: 12, sm: 8, md: 10 }}>
+          <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            width: '100%',
+            height: '100%',
+            paddingTop: '40px',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: 2,
+            paddingX: 2,
+          }}>
+            <TextField
+              variant="outlined"
+              placeholder="Buscar producto..."
+              value={'Cargando productos...'}
+              sx={{ mb: 3, width: '50%' }}
+              slotProps={{
+                input: {
+                  startAdornment: <InputAdornment position="start"><Search /></InputAdornment>,
+                },
+              }}
+            />
 
-      </Grid>
+            <Box sx={{
+              display: 'flex',
+              flexGrow: 0,
+              flexShrink: 0,
+              flexBasis: 0,
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 2,
+              flexWrap: 'wrap',
+              marginBottom: 4,
+            }}>
+              <ProductSkeleton />
+              <ProductSkeleton />
+              <ProductSkeleton />
+              <ProductSkeleton />
+              <ProductSkeleton />
+              <ProductSkeleton />
+              <ProductSkeleton />
+              <ProductSkeleton />
+              <ProductSkeleton />
+            </Box>
+
+
+
+          </Box>
+        </Grid>
+      }
     </Box >
   );
 }
-//  

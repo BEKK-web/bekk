@@ -67,7 +67,7 @@ export default function Nosotros() {
                             Confian en nosotros
                         </Typography>
                         <Typography variant="title" color="primary.labelHint">
-                            <Carousel visibleItemsCount={3} withIndicator isInfinite>
+                            <Carousel visibleItemsCount={2} withIndicator isInfinite>
                                 {
                                     Array.from({ length: carrouselImages }, (_, i) => (
                                         <Image

@@ -35,7 +35,15 @@ export default function ProductsGrid({ products }) {
 
     return (
         <Box sx={{
-            display: 'flex', flexDirection: 'column', width: '100%', height: '100%', paddingTop: '40px', alignItems: 'center', marginTop: 2, paddingX: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            width: '100%',
+            height: '100%',
+            paddingTop: '40px',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: 2,
+            paddingX: 2,
         }}>
             <TextField
                 variant="outlined"
@@ -50,7 +58,7 @@ export default function ProductsGrid({ products }) {
                 }}
             />
 
-            <Grid container spacing={4} sx={{ width: '100%', padding: '2%' }}>
+            <Grid container spacing={2} sx={{ width: '100%', maxWidth: '90%', marginBottom: 4 }}>
                 {filteredProducts.map((product, index) => (
                     <Grid size={{ xs: 12, md: 6, lg: 4, xl: 3 }} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
                         <ProductCard product={product} />

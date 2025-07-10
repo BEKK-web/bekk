@@ -34,6 +34,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/bekk.ico" type="image/x-icon" />
+      </head>
       <body
         className={interSans.variable}
         style={{

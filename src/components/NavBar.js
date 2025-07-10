@@ -53,7 +53,13 @@ export default function NavBar() {
             }}
             position='fixed'
         >
-            <Typography variant="bekk">BEKK</Typography>
+            <Typography
+                variant="bekk"
+                sx={{ userSelect: 'none', cursor: 'pointer' }}
+                onClick={() => window.location.href = '/'}
+            >
+                BEKK
+            </Typography>
 
             <Box sx={{
                 display: { xs: 'none', md: 'flex' },

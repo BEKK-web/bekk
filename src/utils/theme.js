@@ -8,6 +8,9 @@ const theme = createTheme({
             disclamerText: '#595959',
             button: '#2A649A',
             labelHint: '#A4A4A4',
+            error: '#D32F2F',
+            success: '#4CAF50',
+            // warning: '#FF9800',
         },
         secondary: {
             main: '#000000',

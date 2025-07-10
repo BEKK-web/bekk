@@ -1,89 +1,143 @@
 'use client'
-import { FormControl, TextField, Button, Typography } from "@mui/material";
-import Grid from "@mui/material/Grid";
+import { FormControl, TextField, Button, Typography, CircularProgress, Box, Grid, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function ContactForm() {
     const formRef = useRef();
 
-    const handleSendMessage = (e) => {
-        // TODO: Implement the logic to send email
+    const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
+    const [status, setStatus] = useState('idle'); // 'idle', 'enviando', 'ok', 'error'
+
+    const handleSendMessage = async (e) => {
         // TODO: Implement snackbar to show success or error message
-        // TODO: Reset form after sending message
         e.preventDefault();
-        const formData = new FormData(formRef.current);
-        const message = {
-            name: formData.get('name') || '',
-            email: formData.get('email') || '',
-            phone: formData.get('phone') || '',
-            message: formData.get('message') || ''
-        };
-        console.log(message);
+
+        setStatus('enviando'); // va a servir para el snackbar
+
+        const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(form)
+        });
+
+        console.log(res);
+
+        if (res.status === 200) {
+            setStatus('ok');
+            setForm({ name: '', email: '', phone: '', message: '' });
+        } else {
+            setStatus('error');
+        }
+
     };
 
     return (
-        <FormControl fullWidth component="form" onSubmit={handleSendMessage} ref={formRef}>
-            <Grid container spacing={2}>
-                <Grid size={{ xs: 12 }}>
-                    <TextField
-                        required
-                        name="name"
-                        label="Nombre y apellido"
-                        variant="outlined"
-                        fullWidth
-                    />
-                </Grid>
+        (status === 'ok' || status === 'idle' || status === 'error') ?
+            <><Typography variant="labelHint" sx={{ mb: 2, color: 'primary.disclamerText', alignSelf: 'start' }}>
+                * Todos los campos son obligatorios
+            </Typography>
+                <FormControl fullWidth component="form" onSubmit={handleSendMessage} ref={formRef} height="40vh" >
+                    <Grid container spacing={2}>
+                        <Grid size={{ xs: 12 }}>
+                            <TextField
+                                required
+                                name="name"
+                                label="Nombre y apellido"
+                                type="text"
+                                placeholder="Hugo Ordoñez"
+                                variant="outlined"
+                                fullWidth
+                                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                                value={form.name || ''}
+                            />
+                        </Grid>
 
-                <Grid size={{ xs: 12, sm: 6 }}>
-                    <TextField
-                        required
-                        name="email"
-                        label="Email"
-                        type="email"
-                        placeholder="example@email.com"
-                        variant="outlined"
-                        fullWidth
-                    />
-                </Grid>
+                        <Grid size={{ xs: 12, sm: 6 }}>
+                            <TextField
+                                required
+                                name="email"
+                                label="Email"
+                                type="email"
+                                placeholder="example@email.com"
+                                variant="outlined"
+                                fullWidth
+                                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                                value={form.email || ''}
+                            />
+                        </Grid>
 
-                <Grid size={{ xs: 12, sm: 6 }}>
-                    <TextField
-                        required
-                        name="phone"
-                        label="Teléfono"
-                        type="tel"
-                        placeholder="+54 xx xxxx-xxxx"
-                        variant="outlined"
-                        fullWidth
-                    />
-                </Grid>
+                        <Grid size={{ xs: 12, sm: 6 }}>
+                            <TextField
+                                required
+                                name="phone"
+                                label="Teléfono"
+                                type="tel"
+                                placeholder="+54 xx xxxx-xxxx"
+                                variant="outlined"
+                                fullWidth
+                                onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                                inputMode="tel"
+                                value={form.phone || ''}
+                            />
+                        </Grid>
 
-                <Grid size={{ xs: 12 }}>
-                    <TextField
-                        name="message"
-                        required
-                        label="Mensaje"
-                        multiline
-                        minRows={4}
-                        variant="outlined"
-                        fullWidth
-                    />
-                </Grid>
-                <Grid size={{ xs: 12 }}>
-                    <Button
-                        type="submit"
-                        variant='contained'
-                        sx={{
-                            backgroundColor: 'primary.button',
-                            color: 'primary.main'
-                        }}
-                        fullWidth
+                        <Grid size={{ xs: 12 }}>
+                            <TextField
+                                required
+                                name="message"
+                                label="Mensaje"
+                                multiline
+                                minRows={4}
+                                variant="outlined"
+                                fullWidth
+                                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                                value={form.message || ''}
+                            />
+                        </Grid>
+                        <Grid size={{ xs: 12 }}>
+                            <Button
+                                type="submit"
+                                variant='contained'
+                                sx={{
+                                    backgroundColor: 'primary.button',
+                                    color: 'primary.main'
+                                }}
+                                fullWidth
+                            >
+                                <Typography variant="primaryButton">Enviar</Typography>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </FormControl >
+
+                <Accordion sx={{ width: '100%', background: 'transparent', boxShadow: 'none', alignSelf: 'start' }}>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="contact-products-content"
+                        id="contact-products-header"
                     >
-                        <Typography variant="primaryButton">Enviar</Typography>
-                    </Button>
-                </Grid>
-            </Grid>
-        </FormControl>
+                        <Typography variant="labelHint" sx={{ color: 'primary.disclamerText' }}>
+                            No dudes en contactarnos si tenes una consulta por nuestros servicios o por los siguientes productos:
+                        </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <Typography variant="labelHint" sx={{ color: 'primary.disclamerText' }}>
+                            Ventilación central, Climatización central, Climatización corporativa, Rooftop,
+                            Separado para conductos, Precio aire acondicionado central, Aire acondicionado central presupuesto,
+                            Equipos de aire acondicionado central, Comprar aire acondicionado central, Multiposición,
+                            Baja silueta, Piso techo, aire acondicionado baja silueta, Calefactor central,
+                            Servicios de climatización, Sistemas de climatización, Aire acondicionado central
+                        </Typography>
+                    </AccordionDetails>
+                </Accordion>
+            </>
+            :
+            <Box fullWidth display="flex" justifyContent="center" alignItems="center" height="45vh">
+                <CircularProgress color="primary.button" />
+            </Box>
     );
 }

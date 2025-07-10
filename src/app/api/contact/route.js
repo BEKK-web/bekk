@@ -17,7 +17,7 @@ export async function POST(request) {
 
         await transporter.sendMail({
             from: process.env.SMTP_USER,
-            to: 'joacoordo@gmail.com', // TODO: Cambiar por el email de ventas 
+            to: process.env.SMTP_USER,
             subject: 'Nuevo contacto del sitio web',
             text: `Nombre: ${name}\nEmail: ${email}\nTelefono: ${phone}\n\nMensaje:\n${message}`,
         });

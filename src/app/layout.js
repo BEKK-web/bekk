@@ -2,6 +2,8 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import ThemeRegistry from "@/components/ThemeRegistry";
+import { SnackbarProvider } from '@/components/SnackbarContext';
+import Snackbar from '@/components/SnackBar';
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 
@@ -41,11 +43,14 @@ export default function RootLayout({ children }) {
         }}
       >
         <ThemeRegistry>
-          <NavBar />
-          <main style={{ flex: 1, display: "flex", flexDirection: "column", paddingTop: "70px" }}>
-            {children}
-          </main>
-          <Footer />
+          <SnackbarProvider>
+            <Snackbar />
+            <NavBar />
+            <main style={{ flex: 1, display: "flex", flexDirection: "column", paddingTop: "70px" }}>
+              {children}
+            </main>
+            <Footer />
+          </SnackbarProvider>
         </ThemeRegistry>
         <Analytics />
         <SpeedInsights />

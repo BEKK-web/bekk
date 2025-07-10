@@ -1,20 +1,19 @@
 'use client'
 import { FormControl, TextField, Button, Typography, CircularProgress, Box, Grid, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
-import { useRef, useState } from "react";
+import { useSnackbar } from "@/components/SnackbarContext";
+import { useState } from "react";
 
 export default function ContactForm() {
-    const formRef = useRef();
+    const { showSnackbar } = useSnackbar();
 
     const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
-    const [status, setStatus] = useState('idle'); // 'idle', 'enviando', 'ok', 'error'
+    const [status, setStatus] = useState('idle'); // 'idle', 'enviando'
 
     const handleSendMessage = async (e) => {
-        // TODO: Implement snackbar to show success or error message
         e.preventDefault();
 
-        setStatus('enviando'); // va a servir para el snackbar
+        setStatus('enviando');
 
         const res = await fetch('/api/contact', {
             method: 'POST',
@@ -24,23 +23,22 @@ export default function ContactForm() {
             body: JSON.stringify(form)
         });
 
-        console.log(res);
-
         if (res.status === 200) {
-            setStatus('ok');
+            showSnackbar('Ya recibimos tu email!', "success");
             setForm({ name: '', email: '', phone: '', message: '' });
         } else {
-            setStatus('error');
+            showSnackbar('Hubo un error al enviar el mail, si persiste, contactarnos por WhatsApp', "error");
         }
+        setStatus('idle');
 
     };
 
     return (
-        (status === 'ok' || status === 'idle' || status === 'error') ?
+        status === 'idle' ?
             <><Typography variant="labelHint" sx={{ mb: 2, color: 'primary.disclamerText', alignSelf: 'start' }}>
                 * Todos los campos son obligatorios
             </Typography>
-                <FormControl fullWidth component="form" onSubmit={handleSendMessage} ref={formRef} height="40vh" >
+                <FormControl fullWidth component="form" onSubmit={handleSendMessage} height="40vh">
                     <Grid container spacing={2}>
                         <Grid size={{ xs: 12 }}>
                             <TextField
@@ -136,7 +134,7 @@ export default function ContactForm() {
                 </Accordion>
             </>
             :
-            <Box fullWidth display="flex" justifyContent="center" alignItems="center" height="45vh">
+            <Box display="flex" justifyContent="center" alignItems="center" height="45vh">
                 <CircularProgress color="primary.button" />
             </Box>
     );

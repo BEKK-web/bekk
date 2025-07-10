@@ -5,16 +5,19 @@ import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import { useSnackbar } from "@/components/SnackbarContext";
 
 import { useState } from 'react';
 
 export default function Footer() {
+    const { showSnackbar } = useSnackbar();
+
 
     const handleCopy = (information) => {
-        // TODO: Implement snackbar notification
         if (navigator && navigator.clipboard) {
             navigator.clipboard.writeText(information);
         }
+        showSnackbar('Información copiada al portapapeles', "success");
     }
 
     const [animateCopyEmail, setAnimateCopyEmail] = useState(false);

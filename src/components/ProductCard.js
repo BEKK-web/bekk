@@ -11,7 +11,8 @@ export default function ProductCard({ product }) {
             width: '335px',
             height: '400px',
             justifyContent: 'space-between',
-            padding: '2%',
+            paddingY: '2%',
+            paddingX: '4%',
             borderRadius: '10px',
             boxShadow: '0px 4px 10px rgba(0 0, 0, 0.1)',
         }}>

@@ -1,15 +1,17 @@
 'use client';
 import { Box, Grid, TextField, InputAdornment } from "@mui/material";
 import { Search } from "@mui/icons-material";
-import ProductsList from "@/components/ProductsList";
 import ProductsGrid from "@/components/ProductsGrid";
 import ProductSkeleton from "@/components/ProductSkeleton";
-
+import Carousel from "@/components/Carousel";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const carrouselImages = ['bgh', 'ciroc', 'daikin', 'goodman', 'gree', 'midea', 'samsung', 'surrey', 'westric', 'york']
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -32,12 +34,25 @@ export default function Products() {
 
   return (
     <Box sx={{
-      display: "flex",
-      flexDirection: "row",
       flex: 1,
       justifyContent: "center",
       alignItems: "center",
+      background: `radial-gradient(circle at top, #c7e4ea 0%, #E4E4E4 30%)`,
     }}>
+
+      <Carousel visibleItemsCount={4} withIndicator isInfinite>
+        {
+          carrouselImages.map((brand, i) => (
+            <Image
+              key={i}
+              src={`/brands/${brand}.png`}
+              alt={`${brand}`}
+              width={200}
+              height={100}
+            />
+          ))
+        }
+      </Carousel>
       {!loading ?
         <Grid container width={'100%'} size={{ xs: 12, sm: 8, md: 10 }}>
           <ProductsGrid products={products} />

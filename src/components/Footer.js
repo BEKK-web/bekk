@@ -24,10 +24,10 @@ export default function Footer() {
     const [animateTel, setAnimateTel] = useState(false);
 
     return (
-        <Box sx={{ bgcolor: 'background.footer', color: 'secondary.contrastText', padding: 4 }}>
+        <Box sx={{ display: 'flex', bgcolor: 'background.footer', color: 'secondary.contrastText', padding: 4, justifyContent: 'center', width: '100%' }}>
             <Grid container>
                 <Grid size={{ xs: 12, sm: 6 }} sx={{ padding: 2 }} alignContent='center'>
-                    <Button variant='contained' href='/contacto' sx={{ backgroundColor: 'primary.button', color: 'primary.main', display: 'flex', justifySelf: { xs: 'center', sm: 'end' } }}>
+                    <Button variant='contained' href='/contacto' sx={{ backgroundColor: 'primary.button', color: 'primary.main', display: 'flex', justifySelf: { xs: 'center', sm: 'end' }, width: '100%' }}>
                         <Typography variant="primaryButton">Ir a contacto</Typography>
                     </Button>
                 </Grid>

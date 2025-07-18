@@ -66,24 +66,26 @@ export default function Nosotros() {
                         <Typography variant='title' sx={{ mb: 2 }}>
                             Confian en nosotros
                         </Typography>
-                        <Typography variant="title" color="primary.labelHint">
-                            <Carousel visibleItemsCount={2} withIndicator isInfinite>
-                                {
-                                    Array.from({ length: carrouselImages }, (_, i) => (
-                                        <Image
-                                            key={i}
-                                            src={`/trust/${i + 1}.png`}
-                                            alt={`Imagen ${i + 1}`}
-                                            width={200}
-                                            height={100}
-                                        />
-                                    ))
-                                }
-                            </Carousel>
-                        </Typography>
+                        <Box sx={{ p: 2, gap: 4, width: '100%' }} >
+                            <Typography variant="title" color="primary.labelHint">
+                                <Carousel visibleItemsCount={2} withIndicator isInfinite>
+                                    {
+                                        Array.from({ length: carrouselImages }, (_, i) => (
+                                            <Image
+                                                key={i}
+                                                src={`/trust/${i + 1}.png`}
+                                                alt={`Imagen ${i + 1}`}
+                                                width={200}
+                                                height={100}
+                                            />
+                                        ))
+                                    }
+                                </Carousel>
+                            </Typography>
+                        </Box>
                     </Box>
-                </Grid>
-            </Grid>
+                </Grid >
+            </Grid >
         </Box >
     );
 }

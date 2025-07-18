@@ -119,7 +119,7 @@ export default function ContactForm() {
                         id="contact-products-header"
                     >
                         <Typography variant="labelHint" sx={{ color: 'primary.disclamerText' }}>
-                            No dudes en contactarnos si tenes una consulta por nuestros servicios o por los siguientes productos:
+                            No dudes en contactarnos
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>

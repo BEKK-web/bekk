@@ -310,8 +310,8 @@ const StyledCarousel = styled.div`
     overflow: hidden;
     width: 100%;
     height: 100%;
-    max-width: 700px;
-    max-height: 600px;
+    // max-width: 700px;
+    // max-height: 600px;
     padding: 2%;
   }
 
@@ -322,6 +322,7 @@ const StyledCarousel = styled.div`
     /* hide scrollbar in IE and Edge */
     scrollbar-width: none;
     /* hide scrollbar in Firefox */
+    max-width: 800px;
   }
 
   /* hide scrollbar in webkit browser */

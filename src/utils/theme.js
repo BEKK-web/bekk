@@ -36,7 +36,7 @@ const theme = createTheme({
         },
         bekk: {
             fontWeight: 700,
-            fontSize: '2.5rem', // 40px
+            fontSize: '3rem', // 40px
         },
         a: {
             fontWeight: 500,

@@ -37,77 +37,80 @@ export default function Products() {
       flex: 1,
       justifyContent: "center",
       alignItems: "center",
-      background: `radial-gradient(circle at top, #c7e4ea 0%, #E4E4E4 30%)`,
+      // background: 'primar.footer',
     }}>
 
-      <Carousel visibleItemsCount={4} withIndicator isInfinite>
-        {
-          carrouselImages.map((brand, i) => (
-            <Image
-              key={i}
-              src={`/brands/${brand}.png`}
-              alt={`${brand}`}
-              width={200}
-              height={100}
-            />
-          ))
-        }
-      </Carousel>
-      {!loading ?
-        <Grid container width={'100%'} size={{ xs: 12, sm: 8, md: 10 }}>
-          <ProductsGrid products={products} />
-        </Grid>
-        :
-        <Grid container width={'100%'} size={{ xs: 12, sm: 8, md: 10 }}>
-          <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: '100%',
-            height: '100%',
-            paddingTop: '40px',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginTop: 2,
-            paddingX: 2,
-          }}>
-            <TextField
-              variant="outlined"
-              placeholder="Buscar producto..."
-              value={'Cargando productos...'}
-              sx={{ mb: 3, width: '50%' }}
-              slotProps={{
-                input: {
-                  startAdornment: <InputAdornment position="start"><Search /></InputAdornment>,
-                },
-              }}
-            />
-
+      <Box sx={{ p: 2, gap: 4, bgcolor: 'background.footer', width: '100%' }} >
+        <Carousel visibleItemsCount={5} withIndicator isInfinite>
+          {
+            carrouselImages.map((brand, i) => (
+              <Image
+                key={i}
+                src={`/brands/${brand}.png`}
+                alt={`${brand}`}
+                width={200}
+                height={100}
+              />
+            ))
+          }
+        </Carousel>
+      </Box>
+      {
+        !loading ?
+          <Grid container width={'100%'} size={{ xs: 12, sm: 8, md: 10 }}>
+            <ProductsGrid products={products} />
+          </Grid>
+          :
+          <Grid container width={'100%'} size={{ xs: 12, sm: 8, md: 10 }}>
             <Box sx={{
               display: 'flex',
-              flexGrow: 0,
-              flexShrink: 0,
-              flexBasis: 0,
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 2,
-              flexWrap: 'wrap',
-              marginBottom: 4,
+              flexDirection: 'column',
+              width: '100%',
+              height: '100%',
+              paddingTop: '40px',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginTop: 2,
+              paddingX: 2,
             }}>
-              <ProductSkeleton />
-              <ProductSkeleton />
-              <ProductSkeleton />
-              <ProductSkeleton />
-              <ProductSkeleton />
-              <ProductSkeleton />
-              <ProductSkeleton />
-              <ProductSkeleton />
-              <ProductSkeleton />
+              <TextField
+                variant="outlined"
+                placeholder="Buscar producto..."
+                value={'Cargando productos...'}
+                sx={{ mb: 3, width: '50%' }}
+                slotProps={{
+                  input: {
+                    startAdornment: <InputAdornment position="start"><Search /></InputAdornment>,
+                  },
+                }}
+              />
+
+              <Box sx={{
+                display: 'flex',
+                flexGrow: 0,
+                flexShrink: 0,
+                flexBasis: 0,
+                justifyContent: "center",
+                alignItems: "center",
+                gap: 2,
+                flexWrap: 'wrap',
+                marginBottom: 4,
+              }}>
+                <ProductSkeleton />
+                <ProductSkeleton />
+                <ProductSkeleton />
+                <ProductSkeleton />
+                <ProductSkeleton />
+                <ProductSkeleton />
+                <ProductSkeleton />
+                <ProductSkeleton />
+                <ProductSkeleton />
+              </Box>
+
+
+
             </Box>
-
-
-
-          </Box>
-        </Grid>
+          </Grid>
       }
     </Box >
   );

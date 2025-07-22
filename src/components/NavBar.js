@@ -50,6 +50,7 @@ export default function NavBar() {
                 backgroundColor: 'primary.main',
                 height: '70px',
                 px: 2,
+                boxShadow: '-10px 10px 50px -10px black'
             }}
             position='fixed'
         >

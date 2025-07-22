@@ -3,9 +3,10 @@ import { Box, Grid, TextField, InputAdornment } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import ProductsGrid from "@/components/ProductsGrid";
 import ProductSkeleton from "@/components/ProductSkeleton";
-import Carousel from "@/components/Carousel";
+
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import MyCarrousel from "@/components/MyCarrousel";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -41,7 +42,7 @@ export default function Products() {
     }}>
 
       <Box sx={{ p: 2, gap: 4, bgcolor: 'background.footer', width: '100%' }} >
-        <Carousel visibleItemsCount={5} withIndicator isInfinite>
+        <MyCarrousel speed={50} size="100%">
           {
             carrouselImages.map((brand, i) => (
               <Image
@@ -53,7 +54,7 @@ export default function Products() {
               />
             ))
           }
-        </Carousel>
+        </MyCarrousel>
       </Box>
       {
         !loading ?

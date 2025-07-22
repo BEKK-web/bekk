@@ -2,7 +2,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import AdsClickIcon from '@mui/icons-material/AdsClick';
 
-import Carousel from '@/components/Carousel';
+import MyCarrousel from "@/components/MyCarrousel";
 import Image from "next/image";
 
 export default function Nosotros() {
@@ -66,26 +66,24 @@ export default function Nosotros() {
                         <Typography variant='title' sx={{ mb: 2 }}>
                             Confian en nosotros
                         </Typography>
-                        <Box sx={{ p: 2, gap: 4, width: '100%' }} >
-                            <Typography variant="title" color="primary.labelHint">
-                                <Carousel visibleItemsCount={2} withIndicator isInfinite>
-                                    {
-                                        Array.from({ length: carrouselImages }, (_, i) => (
-                                            <Image
-                                                key={i}
-                                                src={`/trust/${i + 1}.png`}
-                                                alt={`Imagen ${i + 1}`}
-                                                width={200}
-                                                height={100}
-                                            />
-                                        ))
-                                    }
-                                </Carousel>
-                            </Typography>
-                        </Box>
                     </Box>
                 </Grid >
             </Grid >
+            <Box sx={{ p: 2, gap: 4, width: '100%', display: 'flex', justifyContent: 'center' }} >
+                <MyCarrousel speed={45} size='70%'>
+                    {
+                        Array.from({ length: carrouselImages }, (_, i) => (
+                            <Image
+                                key={i}
+                                src={`/trust/${i + 1}.png`}
+                                alt={`Imagen ${i + 1}`}
+                                width={200}
+                                height={100}
+                            />
+                        ))
+                    }
+                </MyCarrousel>
+            </Box>
         </Box >
     );
 }

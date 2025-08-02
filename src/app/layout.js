@@ -37,6 +37,15 @@ export const metadata = {
       }
     ]
   },
+  alternates: {
+    canonical: "/",
+    languages: {
+      es: "/",
+    },
+  },
+  verification: {
+    google: "gBvLK0LNW85WmzGP_PvHsJdx6-ULXV8TcB-QXE5QGS0",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -44,7 +53,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="icon" href="/bekk.ico" type="image/x-icon" />
-        <meta name="google-site-verification" content="gBvLK0LNW85WmzGP_PvHsJdx6-ULXV8TcB-QXE5QGS0" />
       </head>
       <body
         className={interSans.variable}

@@ -28,6 +28,14 @@ export const metadata = {
     description: "Compra el equipo que estuviste buscando.",
     type: "website",
     url: "https://www.bekk.com.ar/",
+    images: [
+      {
+        url: "https://www.bekk.com.ar/bekk.png",
+        width: 455,
+        height: 455,
+        alt: "BEKK | Soluciones en climatización"
+      }
+    ]
   },
 };
 

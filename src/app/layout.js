@@ -6,7 +6,7 @@ import { SnackbarProvider } from '@/components/SnackbarContext';
 import Snackbar from '@/components/SnackBar';
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import GAnalitics from "@/components/GAnalitics";
+import Script from "next/script";
 import Head from "next/head";
 
 const interSans = Inter({
@@ -54,9 +54,21 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>
-        <GAnalitics />
         <link rel="icon" href="/bekk.ico" type="image/x-icon" />
       </Head>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-WM19X1LPMY"
+        strategy="afterInteractive"
+      />
+      <Script id="ga-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-WM19X1LPMY');
+        `}
+      </Script>
+
       <body>
         <ThemeRegistry>
           <SnackbarProvider>

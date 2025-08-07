@@ -31,7 +31,7 @@ export default function ProductsGrid({ products }) {
                 )
             );
         }
-    }, [products]);
+    }, [products, search]);
 
     return (
         <Box sx={{

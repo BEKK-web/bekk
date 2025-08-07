@@ -22,7 +22,6 @@ export default function Products() {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log('Fetched products:', response);
         setProducts(data);
         setLoading(false);
       } catch (error) {

@@ -29,7 +29,7 @@ export default function ProductCard({ product }) {
                 {product.description}
             </Typography>
 
-            <Button variant='contained' sx={{ bgcolor: 'primary.button' }} onClick={() => window.open(`https://wa.me/5491122296226?text=Hola%21%20Quiero%20consultar%20por%20un%20${product.name}`, '_blank')}>
+            <Button id={product.name} variant='contained' sx={{ bgcolor: 'primary.button' }} onClick={() => window.open(`https://wa.me/5491122296226?text=Hola%21%20Quiero%20consultar%20por%20un%20${product.name}`, '_blank')}>
                 <Typography variant="primaryButton" sx={{ color: 'secondary.contrastText' }}>
                     Consultar por el producto
                 </Typography>

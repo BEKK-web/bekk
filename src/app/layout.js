@@ -6,6 +6,8 @@ import { SnackbarProvider } from '@/components/SnackbarContext';
 import Snackbar from '@/components/SnackBar';
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import GAnalitics from "@/components/GAnalitics";
+import Head from "next/head";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -51,17 +53,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
+      <Head>
+        <GAnalitics />
         <link rel="icon" href="/bekk.ico" type="image/x-icon" />
-      </head>
-      <body
-        className={interSans.variable}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "100vh",
-        }}
-      >
+      </Head>
+      <body>
         <ThemeRegistry>
           <SnackbarProvider>
             <Snackbar />
@@ -75,6 +71,6 @@ export default function RootLayout({ children }) {
         <Analytics />
         <SpeedInsights />
       </body>
-    </html>
+    </html >
   );
 }

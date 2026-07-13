@@ -6,6 +6,7 @@ import { SnackbarProvider } from '@/components/SnackbarContext';
 import Snackbar from '@/components/SnackBar';
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import WhatsAppFab from "@/components/WhatsAppFab";
 import Script from "next/script";
 import Head from "next/head";
 
@@ -98,6 +99,7 @@ export default function RootLayout({ children }) {
               {children}
             </main>
             <Footer />
+            <WhatsAppFab />
           </SnackbarProvider>
         </ThemeRegistry>
         <Analytics />

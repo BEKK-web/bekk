@@ -53,7 +53,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es">
+    <html lang="es" className={interSans.variable}>
       <Head>
         <link rel="icon" href="/bekk.ico" type="image/x-icon" />
       </Head>
@@ -95,7 +95,7 @@ export default function RootLayout({ children }) {
           <SnackbarProvider>
             <Snackbar />
             <NavBar />
-            <main style={{ flex: 1, display: "flex", flexDirection: "column", paddingTop: "70px" }}>
+            <main style={{ flex: 1, display: "flex", flexDirection: "column" }}>
               {children}
             </main>
             <Footer />

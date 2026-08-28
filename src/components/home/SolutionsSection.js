@@ -1,5 +1,6 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import SolutionCard from "./SolutionCard";
+import { veinedSurface } from "@/utils/surfaces";
 
 const iconProps = {
     width: 26,
@@ -26,7 +27,7 @@ const solutions = [
         ),
     },
     {
-        title: 'Corporativa & Rooftop',
+        title: 'Corporativa',
         description: 'Soluciones de gran escala para oficinas, locales e industrias, con equipos de alto rendimiento.',
         whatsappMessage: 'Hola! Quiero consultar por climatización corporativa',
         icon: (
@@ -38,9 +39,9 @@ const solutions = [
         ),
     },
     {
-        title: 'Ventilación central',
-        description: 'Renovación de aire eficiente para espacios más saludables, integrada al diseño de tu edificio.',
-        whatsappMessage: 'Hola! Quiero consultar por ventilación central',
+        title: 'Sistemas VRV',
+        description: 'Aire acondicionado central avanzado (VRF) que climatiza múltiples espacios de forma independiente desde una única unidad exterior.',
+        whatsappMessage: 'Hola! Quiero consultar por sistemas VRV',
         icon: (
             <svg {...iconProps}>
                 <path d="M4 8h9a3 3 0 1 0-3-3" />
@@ -53,26 +54,21 @@ const solutions = [
 
 export default function SolutionsSection() {
     return (
-        <Box component="section" id="soluciones" sx={{ py: { xs: 8, md: 12 }, bgcolor: 'background.alt', scrollMarginTop: { xs: 64, md: 72 } }}>
+        <Box
+            component="section"
+            id="soluciones"
+            sx={{
+                ...veinedSurface,
+                py: { xs: 8, md: 12 },
+                scrollMarginTop: { xs: 64, md: 72 },
+            }}
+        >
             <Box sx={{ maxWidth: 1180, mx: 'auto', px: { xs: 3, md: 5 } }}>
-                <Box
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'flex-end',
-                        justifyContent: 'space-between',
-                        gap: 3,
-                        flexWrap: 'wrap',
-                    }}
-                >
-                    <Box>
-                        <Typography variant="eyebrow" component="p" color="primary.main">
-                            Soluciones
-                        </Typography>
-                        <Typography variant="h2" component="h2" sx={{ mt: 1.5 }}>
-                            Del living de tu casa a la torre de tu empresa
-                        </Typography>
-                    </Box>
-                    <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 480 }}>
+                <Box>
+                    <Typography variant="h2" component="h2">
+                        Soluciones
+                    </Typography>
+                    <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 480 }}>
                         Te ayudamos a elegir el sistema que corresponde a tu espacio.
                     </Typography>
                 </Box>
@@ -88,6 +84,21 @@ export default function SolutionsSection() {
                     {solutions.map((solution) => (
                         <SolutionCard key={solution.title} {...solution} />
                     ))}
+                </Box>
+
+                <Box sx={{ mt: 5, display: 'flex', justifyContent: 'center' }}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        href="/productos"
+                        sx={{
+                            width: { xs: '100%', sm: 340 },
+                            py: 1.9,
+                            fontSize: 16,
+                        }}
+                    >
+                        Ver productos
+                    </Button>
                 </Box>
             </Box>
         </Box>

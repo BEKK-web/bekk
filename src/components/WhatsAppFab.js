@@ -1,5 +1,8 @@
+'use client';
+
 import { Fab } from "@mui/material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 export default function WhatsAppFab() {
     return (
@@ -9,6 +12,7 @@ export default function WhatsAppFab() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Contactar por WhatsApp"
+            onClick={() => sendGTMEvent({ event: 'whatsapp_click', cta_location: 'fab' })}
             sx={{
                 position: "fixed",
                 bottom: 24,

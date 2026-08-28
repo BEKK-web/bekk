@@ -1,5 +1,8 @@
+'use client';
+
 import { Box, Typography, Button } from "@mui/material";
 import Image from "next/image";
+import { sendGTMEvent } from "@next/third-parties/google";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { waLink } from "@/utils/whatsapp";
 
@@ -49,6 +52,7 @@ export default function AboutSection() {
                                 target="_blank"
                                 rel="noopener"
                                 startIcon={<WhatsAppIcon />}
+                                onClick={() => sendGTMEvent({ event: 'whatsapp_click', cta_location: 'nosotros' })}
                             >
                                 Escribinos por WhatsApp
                             </Button>
@@ -87,6 +91,7 @@ export default function AboutSection() {
                                         alt="Cliente BEKK"
                                         width={300}
                                         height={200}
+                                        sizes="160px"
                                         style={{ maxHeight: '100%', width: 'auto', maxWidth: '100%', objectFit: 'contain' }}
                                     />
                                 </Box>

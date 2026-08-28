@@ -1,8 +1,8 @@
 'use client';
 import { Box, Typography } from "@mui/material";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import { sendGTMEvent } from "@next/third-parties/google";
 import { useSnackbar } from "@/components/SnackbarContext";
-import { waLink } from "@/utils/whatsapp";
 
 const navLinks = [
     { label: 'Soluciones', href: '/#soluciones' },
@@ -19,6 +19,7 @@ export default function Footer() {
             navigator.clipboard.writeText('ventas@bekk.com.ar');
         }
         showSnackbar('Email copiado al portapapeles', "success");
+        sendGTMEvent({ event: 'email_click', cta_location: 'footer' });
     };
 
     return (
@@ -41,7 +42,7 @@ export default function Footer() {
                             BEKK
                         </Typography>
                         <Typography variant="body2" sx={{ color: '#8B857C' }}>
-                            Soluciones en climatización y ventilación central para hogares y empresas, con más de 25 años de trayectoria en Buenos Aires.
+                            Soluciones en climatización central para hogares y empresas, con más de 25 años de trayectoria en Buenos Aires.
                         </Typography>
                     </Box>
 
@@ -78,9 +79,8 @@ export default function Footer() {
                             </Typography>
                             <Box
                                 component="a"
-                                href={waLink()}
-                                target="_blank"
-                                rel="noopener"
+                                href="tel:+5491122296226"
+                                onClick={() => sendGTMEvent({ event: 'phone_click', cta_location: 'footer' })}
                                 sx={{
                                     display: 'block',
                                     fontSize: 14,
@@ -113,7 +113,7 @@ export default function Footer() {
                 </Box>
 
                 <Box sx={{ mt: 6, pt: 3, borderTop: '1px solid #34312C' }}>
-                    <Typography variant="body2" sx={{ fontSize: 13, color: '#706A62' }}>
+                    <Typography variant="body2" sx={{ fontSize: 13, color: '#948C82' }}>
                         © {new Date().getFullYear()} BEKK. Climatización central en Buenos Aires.
                     </Typography>
                 </Box>

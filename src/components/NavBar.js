@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Image from 'next/image';
+import { sendGTMEvent } from '@next/third-parties/google';
 import WhatsAppIcon from '@/components/icons/WhatsAppIcon';
 import { waLink } from '@/utils/whatsapp';
 
@@ -60,38 +61,39 @@ export default function NavBar() {
                     component="a"
                     href="/#inicio"
                     aria-label="BEKK - inicio"
-                    sx={{ display: 'flex', alignItems: 'center', height: { xs: 46, md: 62 } }}
+                    sx={{ display: 'flex', alignItems: 'center', height: { xs: 30, md: 40 } }}
                 >
                     <Image
                         src="/bekk.png"
                         alt="BEKK"
-                        width={445}
-                        height={445}
+                        width={358}
+                        height={100}
                         priority
+                        sizes="230px"
                         style={{ height: '100%', width: 'auto' }}
                     />
                 </Box>
 
-                <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 4.5 }}>
-                    {links.map((link) => (
-                        <Box
-                            key={link.href}
-                            component="a"
-                            href={link.href}
-                            sx={{
-                                color: 'text.primary',
-                                fontWeight: 500,
-                                fontSize: 15,
-                                textDecoration: 'none',
-                                '&:hover': { color: 'primary.main' },
-                            }}
-                        >
-                            {link.label}
-                        </Box>
-                    ))}
-                </Box>
+                <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 6 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 4.5 }}>
+                        {links.map((link) => (
+                            <Box
+                                key={link.href}
+                                component="a"
+                                href={link.href}
+                                sx={{
+                                    color: 'text.primary',
+                                    fontWeight: 500,
+                                    fontSize: 15,
+                                    textDecoration: 'none',
+                                    '&:hover': { color: 'primary.main' },
+                                }}
+                            >
+                                {link.label}
+                            </Box>
+                        ))}
+                    </Box>
 
-                <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                     <Button
                         variant="contained"
                         color="primary"
@@ -99,6 +101,7 @@ export default function NavBar() {
                         target="_blank"
                         rel="noopener"
                         startIcon={<WhatsAppIcon size={16} />}
+                        onClick={() => sendGTMEvent({ event: 'whatsapp_click', cta_location: 'header' })}
                     >
                         Hablar con un asesor
                     </Button>
@@ -133,7 +136,10 @@ export default function NavBar() {
                             href={waLink()}
                             target="_blank"
                             rel="noopener"
-                            onClick={handleCloseNavMenu}
+                            onClick={() => {
+                                sendGTMEvent({ event: 'whatsapp_click', cta_location: 'header_mobile' });
+                                handleCloseNavMenu();
+                            }}
                             sx={{ color: 'primary.main', fontWeight: 600 }}
                         >
                             Hablar con un asesor

@@ -1,7 +1,11 @@
+'use client';
+
 import { Box, Typography, Button } from "@mui/material";
+import { sendGTMEvent } from "@next/third-parties/google";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import ContactForm from "@/components/ContactForm";
 import { waLink } from "@/utils/whatsapp";
+import { veinedSurface } from "@/utils/surfaces";
 
 const infoItems = [
     {
@@ -17,6 +21,8 @@ const infoItems = [
     {
         label: 'Teléfono',
         value: '+54 9 11 2229-6226',
+        href: 'tel:+5491122296226',
+        gtmEvent: 'phone_click',
         icon: (
             <svg viewBox="0 0 24 24" width={19} height={19} fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
                 <path d="M6.6 10.8c1.3 2.6 3.4 4.7 6 6l2-2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V19c0 .6-.4 1-1 1C10.6 20 4 13.4 4 5c0-.6.4-1 1-1h2.8c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.3 0 .7-.2 1z" />
@@ -26,6 +32,8 @@ const infoItems = [
     {
         label: 'Email',
         value: 'ventas@bekk.com.ar',
+        href: 'mailto:ventas@bekk.com.ar',
+        gtmEvent: 'email_click',
         icon: (
             <svg viewBox="0 0 24 24" width={19} height={19} fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
                 <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -37,7 +45,7 @@ const infoItems = [
 
 export default function ContactSection() {
     return (
-        <Box component="section" id="contacto" sx={{ py: { xs: 8, md: 12 }, bgcolor: 'background.alt', scrollMarginTop: { xs: 64, md: 72 } }}>
+        <Box component="section" id="contacto" sx={{ ...veinedSurface, py: { xs: 8, md: 12 }, scrollMarginTop: { xs: 64, md: 72 } }}>
             <Box sx={{ maxWidth: 1180, mx: 'auto', px: { xs: 3, md: 5 } }}>
                 <Box sx={{ textAlign: 'center', maxWidth: 560, mx: 'auto' }}>
                     <Typography variant="eyebrow" component="p" color="primary.main">
@@ -47,7 +55,7 @@ export default function ContactSection() {
                         ¿Cómo podemos ayudarte hoy?
                     </Typography>
                     <Typography variant="body1" color="text.secondary" sx={{ mt: 1.75 }}>
-                        Contanos qué necesitás y te asesoramos sin cargo, sin compromiso.
+                        Contanos qué necesitás y te asesoramos sin cargo.
                     </Typography>
                 </Box>
 
@@ -90,12 +98,31 @@ export default function ContactSection() {
                                     {item.icon}
                                 </Box>
                                 <Box>
-                                    <Typography variant="body2" sx={{ fontSize: 13, color: '#9A9187' }}>
+                                    <Typography variant="body2" sx={{ fontSize: 13, color: 'text.secondary' }}>
                                         {item.label}
                                     </Typography>
-                                    <Typography variant="body1" sx={{ fontSize: 16, fontWeight: 500, mt: 0.25 }}>
-                                        {item.value}
-                                    </Typography>
+                                    {item.href ? (
+                                        <Box
+                                            component="a"
+                                            href={item.href}
+                                            onClick={() => sendGTMEvent({ event: item.gtmEvent, cta_location: 'contacto' })}
+                                            sx={{
+                                                display: 'block',
+                                                fontSize: 16,
+                                                fontWeight: 500,
+                                                mt: 0.25,
+                                                color: 'text.primary',
+                                                textDecoration: 'none',
+                                                '&:hover': { color: 'primary.main' },
+                                            }}
+                                        >
+                                            {item.value}
+                                        </Box>
+                                    ) : (
+                                        <Typography variant="body1" sx={{ fontSize: 16, fontWeight: 500, mt: 0.25 }}>
+                                            {item.value}
+                                        </Typography>
+                                    )}
                                 </Box>
                             </Box>
                         ))}
@@ -120,6 +147,7 @@ export default function ContactSection() {
                                 target="_blank"
                                 rel="noopener"
                                 startIcon={<WhatsAppIcon />}
+                                onClick={() => sendGTMEvent({ event: 'whatsapp_click', cta_location: 'contacto' })}
                                 fullWidth
                             >
                                 Hablar por WhatsApp ahora

@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import { veinedSurface } from "@/utils/surfaces";
 
 const stats = [
     { num: '+25', label: 'años de trayectoria en climatización' },
@@ -10,7 +11,7 @@ export default function TrajectoryStats() {
     return (
         <Box
             sx={{
-                bgcolor: 'background.alt',
+                ...veinedSurface,
                 borderTop: '1px solid',
                 borderBottom: '1px solid',
                 borderColor: 'divider',

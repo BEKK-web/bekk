@@ -1,10 +1,14 @@
+'use client';
+
 import { Box, Typography } from "@mui/material";
+import { sendGTMEvent } from "@next/third-parties/google";
 import { waLink } from "@/utils/whatsapp";
 
 export default function SolutionCard({ icon, title, description, whatsappMessage }) {
     return (
         <Box
             sx={{
+                position: 'relative',
                 bgcolor: 'background.paper',
                 border: '1px solid',
                 borderColor: 'divider',
@@ -48,6 +52,7 @@ export default function SolutionCard({ icon, title, description, whatsappMessage
                 href={waLink(whatsappMessage)}
                 target="_blank"
                 rel="noopener"
+                onClick={() => sendGTMEvent({ event: 'whatsapp_click', cta_location: 'solucion', solucion: title })}
                 sx={{
                     display: 'inline-flex',
                     alignItems: 'center',

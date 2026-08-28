@@ -1,41 +1,43 @@
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
 import ThemeRegistry from "@/components/ThemeRegistry";
 import { SnackbarProvider } from '@/components/SnackbarContext';
 import Snackbar from '@/components/SnackBar';
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import WhatsAppFab from "@/components/WhatsAppFab";
-import Script from "next/script";
-import Head from "next/head";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://www.bekk.com.ar";
+
 export const metadata = {
-  title: "BEKK | Soluciones en climatización",
-  description: "Calidad y eficiencia en sistemas de climatización y refrigeración.",
-  keywords: [
-    "Ventilación central", "Climatización central", "Climatización corporativa", "Rooftop",
-    "Separado para conductos", "Precio aire acondicionado central", "Aire acondicionado central presupuesto",
-    "Equipos de aire acondicionado central", "Comprar aire acondicionado central", "Multiposición",
-    "Baja silueta", "Piso techo", "aire acondicionado baja silueta", "Calefactor central",
-    "Servicios de climatización", "Sistemas de climatización", "Aire acondicionado central"
-  ],
+  metadataBase: new URL(SITE_URL),
+  title: "BEKK | Aire acondicionado central en Buenos Aires",
+  description:
+    "Aire acondicionado y climatización central para hogares y empresas en Buenos Aires. Más de 25 años de trayectoria y las marcas líderes del mercado. Asesoramiento sin cargo.",
   authors: [{ name: "BEKK" }],
+  icons: {
+    icon: "/bekk.ico",
+  },
   openGraph: {
-    title: "BEKK | Soluciones en climatización",
-    description: "Compra el equipo que estuviste buscando.",
+    title: "BEKK | Aire acondicionado central en Buenos Aires",
+    description:
+      "Climatización central para hogares y empresas, con más de 25 años de trayectoria y las marcas líderes del mercado.",
     type: "website",
-    url: "https://www.bekk.com.ar/",
+    locale: "es_AR",
+    siteName: "BEKK",
+    url: SITE_URL,
     images: [
       {
-        url: "https://www.bekk.com.ar/bekk.png",
-        width: 455,
-        height: 455,
+        url: "/bekk.png",
+        width: 358,
+        height: 100,
         alt: "BEKK | Soluciones en climatización"
       }
     ]
@@ -51,38 +53,99 @@ export const metadata = {
   },
 };
 
+// Datos estructurados del negocio, alineados con el perfil de Google Business
+// ("Bekk Climatización", categoría "Tienda aire acondicionado"). La consistencia
+// nombre/teléfono/horarios entre el sitio y el perfil es lo que permite a Google
+// tratarlos como la misma entidad. El perfil no publica dirección de calle: está
+// configurado por área de servicio, así que acá tampoco se declara `address`.
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HVACBusiness",
+  "@id": `${SITE_URL}/#business`,
+  "name": "Bekk Climatización",
+  "alternateName": "BEKK",
+  "description":
+    "Empresa de climatización central para hogares y empresas en Buenos Aires, con más de 25 años de trayectoria.",
+  "url": SITE_URL,
+  "image": `${SITE_URL}/bekk.png`,
+  "logo": `${SITE_URL}/bekk.png`,
+  "telephone": "+5491122296226",
+  "email": "ventas@bekk.com.ar",
+  // Sin `sameAs`: los perfiles de redes existentes están desactualizados y enlazarlos
+  // propagaría datos viejos. Sumarlos cuando vuelvan a estar al día.
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Buenos Aires, Argentina",
+  },
+  // Lunes a sábado de 9 a 21; domingos cerrado.
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday", "Tuesday", "Wednesday",
+        "Thursday", "Friday", "Saturday",
+      ],
+      opens: "09:00",
+      closes: "21:00",
+    },
+  ],
+  "knowsAbout": [
+    "Aire acondicionado central",
+    "Climatización central",
+    "Sistemas VRV/VRF",
+    "Climatización corporativa",
+  ],
+  "brand": [
+    "Daikin", "Samsung", "BGH", "Gree", "Midea",
+    "York", "Surrey", "Westric", "Ciroc", "Goodman", "Carrier",
+  ].map((name) => ({ "@type": "Brand", name })),
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "ventas",
+    "telephone": "+5491122296226",
+    "email": "ventas@bekk.com.ar",
+    "availableLanguage": "Spanish",
+    "areaServed": "AR",
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Soluciones de climatización",
+    "itemListElement": [
+      {
+        name: "Climatización residencial",
+        description:
+          "Sistemas centrales y multisplit pensados para el confort del hogar durante todo el año.",
+      },
+      {
+        name: "Climatización corporativa",
+        description:
+          "Soluciones de gran escala para oficinas, locales e industrias, con equipos de alto rendimiento.",
+      },
+      {
+        name: "Sistemas VRV",
+        description:
+          "Aire acondicionado central avanzado (VRF) que climatiza múltiples espacios de forma independiente desde una única unidad exterior.",
+      },
+    ].map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: service.name,
+        description: service.description,
+        serviceType: "Climatización central",
+      },
+    })),
+  },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="es" className={interSans.variable}>
-      <Head>
-        <link rel="icon" href="/bekk.ico" type="image/x-icon" />
-      </Head>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-WM19X1LPMY"
-        strategy="afterInteractive"
-      />
-      <Script id="ga-init" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-WM19X1LPMY');
-        `}
-      </Script>
-
-
-      {/* Google Tag Manager */}
-      <Script id="gtm-init" strategy="afterInteractive">
-        {`
-          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-PQJ6TZZ8');
-        `}
-      </Script>
-
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
         <noscript
           dangerouslySetInnerHTML={{
             __html: `
@@ -104,7 +167,9 @@ export default function RootLayout({ children }) {
         </ThemeRegistry>
         <Analytics />
         <SpeedInsights />
+        <GoogleTagManager gtmId="GTM-PQJ6TZZ8" />
+        <GoogleAnalytics gaId="G-WM19X1LPMY" />
       </body>
-    </html >
+    </html>
   );
 }

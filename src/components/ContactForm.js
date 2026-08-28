@@ -1,6 +1,6 @@
 'use client'
-import { FormControl, TextField, Button, Typography, CircularProgress, Box, Grid, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { FormControl, TextField, Button, Typography, CircularProgress, Box, Grid } from "@mui/material";
+import { sendGTMEvent } from "@next/third-parties/google";
 import { useSnackbar } from "@/components/SnackbarContext";
 import { useState } from "react";
 
@@ -15,22 +15,29 @@ export default function ContactForm() {
 
         setStatus('enviando');
 
-        const res = await fetch('/api/contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(form)
-        });
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(form)
+            });
 
-        if (res.status === 200) {
-            showSnackbar('Ya recibimos tu email!', "success");
-            setForm({ name: '', email: '', phone: '', message: '' });
-        } else {
+            if (res.ok) {
+                showSnackbar('Ya recibimos tu email!', "success");
+                setForm({ name: '', email: '', phone: '', message: '' });
+                sendGTMEvent({ event: 'contact_form_submit' });
+            } else {
+                showSnackbar('Hubo un error al enviar el mail, si persiste, contactarnos por WhatsApp', "error");
+            }
+        } catch (error) {
+            // Sin este catch, un fallo de red dejaba el formulario trabado en el spinner.
+            console.error('Error al enviar el formulario de contacto:', error);
             showSnackbar('Hubo un error al enviar el mail, si persiste, contactarnos por WhatsApp', "error");
+        } finally {
+            setStatus('idle');
         }
-        setStatus('idle');
-
     };
 
     return (
@@ -45,7 +52,7 @@ export default function ContactForm() {
         >
             {status === 'idle' ? (
                 <>
-                    <Typography variant="body2" sx={{ mb: 2.5, fontSize: 13, color: '#9A9187' }}>
+                    <Typography variant="body2" sx={{ mb: 2.5, fontSize: 13, color: 'text.secondary' }}>
                         * Todos los campos son obligatorios
                     </Typography>
                     <FormControl fullWidth component="form" onSubmit={handleSendMessage}>
@@ -118,28 +125,6 @@ export default function ContactForm() {
                             </Grid>
                         </Grid>
                     </FormControl>
-
-                    <Accordion sx={{ width: '100%', background: 'transparent', boxShadow: 'none', mt: 1 }}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="contact-products-content"
-                            id="contact-products-header"
-                            sx={{ px: 0 }}
-                        >
-                            <Typography variant="body2" sx={{ fontSize: 13, color: '#9A9187' }}>
-                                No dudes en contactarnos
-                            </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails sx={{ px: 0 }}>
-                            <Typography variant="body2" sx={{ fontSize: 13, color: '#9A9187' }}>
-                                Ventilación central, Climatización central, Climatización corporativa, Rooftop,
-                                Separado para conductos, Precio aire acondicionado central, Aire acondicionado central presupuesto,
-                                Equipos de aire acondicionado central, Comprar aire acondicionado central, Multiposición,
-                                Baja silueta, Piso techo, aire acondicionado baja silueta, Calefactor central,
-                                Servicios de climatización, Sistemas de climatización, Aire acondicionado central
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
                 </>
             ) : (
                 <Box display="flex" justifyContent="center" alignItems="center" height="45vh">

@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import SolutionCard from "./SolutionCard";
 import { veinedSurface } from "@/utils/surfaces";
+import { servicios } from "@/data/servicios";
 
 const iconProps = {
     width: 26,
@@ -13,44 +14,39 @@ const iconProps = {
     strokeLinejoin: 'round',
 };
 
-const solutions = [
-    {
-        title: 'Climatización residencial',
-        description: 'Sistemas centrales y multisplit pensados para el confort de tu hogar durante todo el año.',
-        whatsappMessage: 'Hola! Quiero consultar por climatización residencial',
-        icon: (
-            <svg {...iconProps}>
-                <path d="M4 11.5 12 5l8 6.5" />
-                <path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9" />
-                <path d="M10 20v-5h4v5" />
-            </svg>
-        ),
-    },
-    {
-        title: 'Corporativa',
-        description: 'Soluciones de gran escala para oficinas, locales e industrias, con equipos de alto rendimiento.',
-        whatsappMessage: 'Hola! Quiero consultar por climatización corporativa',
-        icon: (
-            <svg {...iconProps}>
-                <rect x="5" y="3" width="10" height="18" rx="1" />
-                <path d="M9 7h2M9 11h2M9 15h2" />
-                <path d="M15 10h4v11h-4" />
-            </svg>
-        ),
-    },
-    {
-        title: 'Sistemas VRV',
-        description: 'Aire acondicionado central avanzado (VRF) que climatiza múltiples espacios de forma independiente desde una única unidad exterior.',
-        whatsappMessage: 'Hola! Quiero consultar por sistemas VRV',
-        icon: (
-            <svg {...iconProps}>
-                <path d="M4 8h9a3 3 0 1 0-3-3" />
-                <path d="M4 16h11a3 3 0 1 1-3 3" />
-                <path d="M4 12h15a3 3 0 1 0-3-3" />
-            </svg>
-        ),
-    },
-];
+// Los íconos viven acá (son presentación) y el texto en src/data/servicios.js,
+// que es la única fuente para las tarjetas y para las páginas de servicio.
+const icons = {
+    'climatizacion-residencial': (
+        <svg {...iconProps}>
+            <path d="M4 11.5 12 5l8 6.5" />
+            <path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9" />
+            <path d="M10 20v-5h4v5" />
+        </svg>
+    ),
+    'climatizacion-corporativa': (
+        <svg {...iconProps}>
+            <rect x="5" y="3" width="10" height="18" rx="1" />
+            <path d="M9 7h2M9 11h2M9 15h2" />
+            <path d="M15 10h4v11h-4" />
+        </svg>
+    ),
+    'sistemas-vrv': (
+        <svg {...iconProps}>
+            <path d="M4 8h9a3 3 0 1 0-3-3" />
+            <path d="M4 16h11a3 3 0 1 1-3 3" />
+            <path d="M4 12h15a3 3 0 1 0-3-3" />
+        </svg>
+    ),
+};
+
+const solutions = servicios.map((servicio) => ({
+    title: servicio.shortTitle,
+    description: servicio.cardDescription,
+    whatsappMessage: servicio.whatsappMessage,
+    href: `/soluciones/${servicio.slug}`,
+    icon: icons[servicio.slug],
+}));
 
 export default function SolutionsSection() {
     return (

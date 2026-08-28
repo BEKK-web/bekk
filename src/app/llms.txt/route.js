@@ -1,3 +1,4 @@
+import { servicios } from "@/data/servicios";
 import { getProducts } from "@/utils/api";
 
 // Convención llmstxt.org: resumen estructurado del sitio para asistentes de IA.
@@ -12,10 +13,13 @@ const BRANDS = [
     "Surrey", "Westric", "Ciroc", "Goodman", "Carrier",
 ];
 
-const SOLUTIONS = [
-    ["Climatización residencial", "sistemas centrales y multisplit para el confort del hogar durante todo el año."],
-    ["Climatización corporativa", "soluciones de gran escala para oficinas, locales e industrias, con equipos de alto rendimiento."],
-    ["Sistemas VRV", "aire acondicionado central avanzado (VRF) que climatiza múltiples espacios de forma independiente desde una única unidad exterior."],
+// Respuestas provistas por el cliente; mismo texto que la sección de la home.
+const FAQS = [
+    ["¿Ustedes instalan los equipos?", "Sí. La instalación la realizamos a través de instaladores tercerizados de amplia experiencia."],
+    ["¿Hacen instalaciones en el interior del país?", "No. El servicio de instalación está disponible únicamente en CABA y Gran Buenos Aires."],
+    ["¿Envían equipos a todo el país?", "Sí, se realizan envíos a todo el país. La instalación solo se cubre en CABA y Gran Buenos Aires."],
+    ["¿En cuánto tiempo entregan el equipo?", "Dentro de las 48 horas hábiles de recibido el pago."],
+    ["¿Quién otorga la garantía?", "La garantía la otorga el fabricante del equipo."],
 ];
 
 export async function GET() {
@@ -37,28 +41,37 @@ export async function GET() {
 
 BEKK comercializa equipos de aire acondicionado central de las marcas líderes
 del mercado, para el sector residencial y el corporativo, y asesora sin cargo
-sobre qué sistema corresponde a cada espacio.
+sobre qué sistema corresponde a cada espacio. La instalación se realiza a
+través de instaladores tercerizados de amplia experiencia.
 
 ## Datos de contacto
 
 - Teléfono / WhatsApp: +54 9 11 2229-6226
 - Email: ventas@bekk.com.ar
-- Zona de cobertura: Buenos Aires, Argentina
+- Envíos: a todo el país
+- Instalación: únicamente en CABA y Gran Buenos Aires
+- Entrega: dentro de las 48 horas hábiles de recibido el pago
+- Garantía: la otorga el fabricante del equipo
 - Horario de atención: lunes a sábado de 9:00 a 21:00; domingos cerrado
 - Asesoramiento sin cargo
 
 ## Soluciones
 
-${SOLUTIONS.map(([name, desc]) => `- ${name}: ${desc}`).join("\n")}
+${servicios.map((s) => `- ${s.title}: ${s.cardDescription}`).join("\n")}
 
 ## Marcas que comercializa
 
 ${BRANDS.join(", ")}.
 ${equipmentLine}
+## Preguntas frecuentes
+
+${FAQS.map(([q, a]) => `**${q}**\n${a}`).join("\n\n")}
+
 ## Páginas
 
-- [Inicio](${SITE_URL}/): soluciones, marcas y contacto.
+- [Inicio](${SITE_URL}/): soluciones, marcas, preguntas frecuentes y contacto.
 - [Productos](${SITE_URL}/productos): catálogo de equipos.
+${servicios.map((s) => `- [${s.title}](${SITE_URL}/soluciones/${s.slug}): ${s.metaDescription}`).join("\n")}
 `;
 
     return new Response(body, {

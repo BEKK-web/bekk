@@ -75,9 +75,11 @@ const localBusinessJsonLd = {
   // desactualizados que no se enlaza a propósito: `sameAs` le dice a Google cuál es
   // la cuenta oficial de la entidad. Facebook se suma cuando esté actualizado.
   "sameAs": ["https://www.instagram.com/bekk_climatizacion/"],
-  "areaServed": {
+  // Venden y envían a todo el país, pero la instalación solo cubre CABA y GBA.
+  "areaServed": { "@type": "Country", "name": "Argentina" },
+  "serviceArea": {
     "@type": "AdministrativeArea",
-    "name": "Buenos Aires, Argentina",
+    "name": "Ciudad Autónoma de Buenos Aires y Gran Buenos Aires",
   },
   // Lunes a sábado de 9 a 21; domingos cerrado.
   "openingHoursSpecification": [
@@ -116,12 +118,12 @@ const localBusinessJsonLd = {
       {
         name: "Climatización residencial",
         description:
-          "Sistemas centrales y multisplit pensados para el confort del hogar durante todo el año.",
+          "Equipos para el hogar que pueden quedar a la vista (cassettes, piso techo) u ocultos (baja silueta, calefactores, separados para conductos), para lograr una climatización homogénea en toda la casa.",
       },
       {
         name: "Climatización corporativa",
         description:
-          "Soluciones de gran escala para oficinas, locales e industrias, con equipos de alto rendimiento.",
+          "Equipos de mayor capacidad para locales comerciales, oficinas, líneas de trabajo, salas de reuniones y servers: rooftop, separados para conductos, chillers, calefactores y conjuntos de frío.",
       },
       {
         name: "Sistemas VRV",

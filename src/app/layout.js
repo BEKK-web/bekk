@@ -71,8 +71,10 @@ const localBusinessJsonLd = {
   "logo": `${SITE_URL}/bekk.png`,
   "telephone": "+5491122296226",
   "email": "ventas@bekk.com.ar",
-  // Sin `sameAs`: los perfiles de redes existentes están desactualizados y enlazarlos
-  // propagaría datos viejos. Sumarlos cuando vuelvan a estar al día.
+  // Cuenta de Instagram vigente. Existe otra vieja (@bekk.climatizacion) con datos
+  // desactualizados que no se enlaza a propósito: `sameAs` le dice a Google cuál es
+  // la cuenta oficial de la entidad. Facebook se suma cuando esté actualizado.
+  "sameAs": ["https://www.instagram.com/bekk_climatizacion/"],
   "areaServed": {
     "@type": "AdministrativeArea",
     "name": "Buenos Aires, Argentina",

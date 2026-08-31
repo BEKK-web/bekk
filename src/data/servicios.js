@@ -27,7 +27,7 @@ export const servicios = [
         shortTitle: 'Residencial',
         metaTitle: 'Aire acondicionado central para casas y departamentos | BEKK',
         metaDescription:
-            'Equipos de climatización central para el hogar: cassettes, piso techo, baja silueta y separados para conductos. Asesoramiento sin cargo y entrega en 48 horas hábiles.',
+            'Climatización central para el hogar: cassettes, piso techo, baja silueta y separados para conductos. Asesoramiento sin cargo y entrega en 48 horas.',
         intro: 'Variedad de equipos que te permiten elegir la mejor alternativa para tu hogar. Hay equipos que quedan a la vista, como los cassettes y los piso techo, y otros que quedan ocultos, como la baja silueta, los calefactores y los separados para conductos. Según esa elección vas a obtener una climatización homogénea en tu casa, logrando una agradable sensación de bienestar.',
         sections: [
             {
@@ -68,9 +68,9 @@ export const servicios = [
         cardDescription: 'Equipos de mayor capacidad para locales, oficinas, salas de reuniones y servers: rooftop, chillers, separados para conductos y conjuntos de frío.',
         title: 'Climatización corporativa',
         shortTitle: 'Corporativa',
-        metaTitle: 'Climatización central para oficinas, locales e industria | BEKK',
+        metaTitle: 'Climatización central para oficinas y locales | BEKK',
         metaDescription:
-            'Equipos de gran capacidad para locales, oficinas, salas de reuniones y servers: rooftop, chillers, separados para conductos y conjuntos de frío. Asesoramiento sin cargo.',
+            'Equipos de gran capacidad para locales, oficinas y servers: rooftop, chillers, separados para conductos y conjuntos de frío. Asesoramiento sin cargo.',
         intro: 'Equipos de mayor capacidad para grandes dimensiones: locales comerciales, oficinas, líneas de trabajo, salas de reuniones, salas de proyección y servers. En este segmento se entrecruzan factores de bienestar y de necesidad, ligados a los procesos productivos. Para una correcta elección de equipo se debe definir cuál es la necesidad que se busca cubrir.',
         sections: [
             {

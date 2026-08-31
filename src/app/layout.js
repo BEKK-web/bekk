@@ -20,7 +20,7 @@ export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: "BEKK | Aire acondicionado central en Buenos Aires",
   description:
-    "Aire acondicionado y climatización central para hogares y empresas en Buenos Aires. Más de 25 años de trayectoria y las marcas líderes del mercado. Asesoramiento sin cargo.",
+    "Climatización central para hogares y empresas en Buenos Aires. Más de 25 años de trayectoria y las marcas líderes del mercado. Asesoramiento sin cargo.",
   authors: [{ name: "BEKK" }],
   icons: {
     icon: "/bekk.ico",

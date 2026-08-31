@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import Link from "next/link";
 import ProductsBrowser from "@/components/products/ProductsBrowser";
-import { getProducts, productImageUrl } from "@/utils/api";
+import { productos } from "@/data/productos";
 
 const SITE_URL = "https://www.bekk.com.ar";
 
@@ -14,15 +14,8 @@ export const metadata = {
     },
 };
 
-export default async function ProductosPage() {
-    let products = [];
-    let loadError = false;
-
-    try {
-        products = await getProducts();
-    } catch (error) {
-        loadError = true;
-    }
+export default function ProductosPage() {
+    const products = productos;
 
     // Lista de productos para buscadores y asistentes de IA: sin esto el catálogo
     // solo existe como texto suelto y no se puede extraer como conjunto de ítems.
@@ -38,7 +31,7 @@ export default async function ProductosPage() {
                 "@type": "Product",
                 name: product.name,
                 description: product.description || undefined,
-                image: productImageUrl(product.image),
+                image: `${SITE_URL}${product.image}`,
                 category: "Aire acondicionado central",
                 brand: { "@type": "Brand", name: "BEKK" },
                 url: `${SITE_URL}/productos`,
@@ -113,13 +106,7 @@ export default async function ProductosPage() {
                 </Box>
 
                 <Box sx={{ mt: 6 }}>
-                    {loadError ? (
-                        <Typography variant="body1" color="text.secondary">
-                            No pudimos cargar el catálogo en este momento. Contactanos por WhatsApp y te pasamos la información al instante.
-                        </Typography>
-                    ) : (
-                        <ProductsBrowser products={products} />
-                    )}
+                    <ProductsBrowser products={products} />
                 </Box>
             </Box>
         </Box>

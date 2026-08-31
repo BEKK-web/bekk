@@ -3,7 +3,6 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { sendGTMEvent } from "@next/third-parties/google";
-import { productImageUrl } from "@/utils/api";
 import { waLink } from "@/utils/whatsapp";
 
 export default function ProductCard({ product }) {
@@ -40,14 +39,11 @@ export default function ProductCard({ product }) {
             >
                 <Box sx={{ position: 'relative', width: '100%', height: '100%' }}>
                     <Image
-                        src={productImageUrl(product.image)}
+                        src={product.image}
                         alt={product.name}
                         fill
                         sizes="(max-width: 900px) 45vw, 320px"
-                        // Las fotos del backend vienen con fondo blanco sólido. `multiply`
-                        // lo funde con el fondo de la tarjeta sin tener que reprocesarlas,
-                        // y el catálogo sigue saliendo en vivo de la API.
-                        style={{ objectFit: 'contain', mixBlendMode: 'multiply' }}
+                        style={{ objectFit: 'contain' }}
                     />
                 </Box>
             </Box>

@@ -1,10 +1,11 @@
 import { servicios } from "@/data/servicios";
-import { getProducts } from "@/utils/api";
+import { productos } from "@/data/productos";
 
 // Convención llmstxt.org: resumen estructurado del sitio para asistentes de IA.
 // Se genera como route handler (igual que robots.js y sitemap.js) para que la
-// lista de equipos salga del backend y no quede desactualizada.
-export const revalidate = 3600;
+// lista de equipos y de servicios salga de src/data/ y no se desincronice.
+// Los datos ya no vienen de un fetch, así que se prerenderiza.
+export const dynamic = 'force-static';
 
 const SITE_URL = "https://www.bekk.com.ar";
 
@@ -22,16 +23,12 @@ const FAQS = [
     ["¿Quién otorga la garantía?", "La garantía la otorga el fabricante del equipo."],
 ];
 
-export async function GET() {
-    let equipmentLine = "";
-    try {
-        const products = await getProducts();
-        if (products.length > 0) {
-            equipmentLine = `\n## Tipos de equipo\n\n${products.map((p) => p.name).join(", ")}.\n`;
-        }
-    } catch {
-        // Si el catálogo no responde, el resto del archivo se sirve igual.
-    }
+export function GET() {
+    const equipmentLine = `
+## Tipos de equipo
+
+${productos.map((p) => p.name).join(", ")}.
+`;
 
     const body = `# Bekk Climatización
 

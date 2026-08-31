@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import ThemeRegistry from "@/components/ThemeRegistry";
 import { SnackbarProvider } from '@/components/SnackbarContext';
 import Snackbar from '@/components/SnackBar';
@@ -18,6 +18,13 @@ const SITE_URL = "https://www.bekk.com.ar";
 
 // Contenedor de Google Tag Manager. El <script> del <head> lo inyecta
 // <GoogleTagManager>; acá solo queda el <noscript>, que la librería no cubre.
+//
+// GA4 se carga desde adentro de GTM, no como script aparte. Cargar los dos
+// traía gtag/js dos veces (170 KB cada una) y arriesgaba contar las visitas
+// doble. Hasta que el contenedor tenga publicada su etiqueta de configuración
+// de GA4, el sitio no mide nada: es deliberado.
+//
+// ID de medición de GA4, para cargar en esa etiqueta: G-WM19X1LPMY
 const GTM_ID = "GTM-MTVR7FLQ";
 
 export const metadata = {
@@ -173,7 +180,6 @@ export default function RootLayout({ children }) {
         <Analytics />
         <SpeedInsights />
         <GoogleTagManager gtmId={GTM_ID} />
-        <GoogleAnalytics gaId="G-WM19X1LPMY" />
       </body>
     </html>
   );

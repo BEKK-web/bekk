@@ -1,15 +1,13 @@
 // Contenido de las páginas de servicio.
 //
-// ORIGEN DEL TEXTO — importante para la revisión del cliente:
+// ORIGEN DEL TEXTO:
 //   · `intro` de residencial y corporativa: texto provisto por el cliente.
 //   · El resto: redactado en base a conocimiento técnico general del rubro y a
 //     los datos operativos que sí confirmó (entrega, instalación, garantía,
 //     cobertura, marcas y catálogo real de equipos).
 //   · No se incluyen casos reales, precios, plazos de obra ni diferenciales
-//     competitivos: son datos que solo puede aportar BEKK.
-//
-// TODO (pendiente del cliente): casos reales por servicio, qué los diferencia
-// de la competencia, y validación técnica de las recomendaciones de equipo.
+//     competitivos: se le pidieron al cliente y no los aportó. Cierre
+//     definitivo, no queda pendiente de una vuelta futura.
 
 const COMO_TRABAJAMOS = {
     heading: 'Cómo trabajamos',

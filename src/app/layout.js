@@ -81,7 +81,7 @@ const localBusinessJsonLd = {
   "email": "ventas@bekk.com.ar",
   // Cuenta de Instagram vigente. Existe otra vieja (@bekk.climatizacion) con datos
   // desactualizados que no se enlaza a propósito: `sameAs` le dice a Google cuál es
-  // la cuenta oficial de la entidad. Facebook se suma cuando esté actualizado.
+  // la cuenta oficial de la entidad. No hay cuenta de Facebook.
   "sameAs": ["https://www.instagram.com/bekk_climatizacion/"],
   // Venden y envían a todo el país, pero la instalación solo cubre CABA y GBA.
   "areaServed": { "@type": "Country", "name": "Argentina" },

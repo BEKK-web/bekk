@@ -15,9 +15,13 @@ export const veinedSurface = {
 };
 
 // Vistas largas, como la grilla de productos, que pasa de los 2000px de alto.
-// Es una textura propia de 2800x3000, no la de la landing ampliada: el veteado
-// fino de aquella, visto sobre un área tan grande, se lee como ruido. Esta usa
-// manchas amplias y transiciones graduales, con casi la mitad de amplitud.
+//
+// Es la misma veta de la landing ampliada 3x y recortada a 2800x3000: el patrón
+// queda más gradual, que es lo que pide un área tan grande, sin perder amplitud.
+// Se probaron texturas generadas aparte con manchas amplias, pero en productos
+// el fondo solo asoma por los márgenes, y una textura de baja frecuencia casi no
+// varía dentro de una franja de 120px: quedaba invisible, y cuánto se notaba
+// dependía de dónde cayera una mancha más que de los parámetros.
 export const veinedSurfaceTall = {
     ...veinedSurface,
     backgroundImage: 'url(/textures/veta-gris-alta.webp)',

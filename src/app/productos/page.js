@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import Link from "next/link";
 import ProductsBrowser from "@/components/products/ProductsBrowser";
 import { productos } from "@/data/productos";
-import { veinedSurface } from "@/utils/surfaces";
+import { veinedSurfaceTall } from "@/utils/surfaces";
 
 const SITE_URL = "https://www.bekk.com.ar";
 
@@ -44,7 +44,7 @@ export default function ProductosPage() {
         <Box
             component="section"
             sx={{
-                ...veinedSurface,
+                ...veinedSurfaceTall,
                 py: { xs: 8, md: 12 },
                 minHeight: '60vh',
             }}

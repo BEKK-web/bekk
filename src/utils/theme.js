@@ -17,6 +17,9 @@ const baseTheme = createTheme({
             default: '#FAF8F5',
             paper: '#FFFFFF',
             alt: '#F1ECE4',
+            // Gris frío para el área de foto de producto: el crema de `alt` es
+            // cálido y desentona con el fondo veteado, que tira a gris.
+            productImage: '#F4F5F6',
             field: '#FEFDFB',
             footer: '#201E1B',
         },

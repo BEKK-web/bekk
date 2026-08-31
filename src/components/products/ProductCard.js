@@ -16,6 +16,9 @@ export default function ProductCard({ product }) {
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
+                // Sombra en reposo: sobre el fondo veteado, el borde de 1px no
+                // alcanzaba para despegar la tarjeta.
+                boxShadow: '0 2px 4px -2px rgba(32, 30, 27, 0.10), 0 8px 20px -12px rgba(32, 30, 27, 0.18)',
                 transition: 'box-shadow .2s ease, transform .2s ease',
                 '&:hover': {
                     boxShadow: '0 20px 40px -24px rgba(32, 30, 27, 0.22)',
@@ -29,7 +32,7 @@ export default function ProductCard({ product }) {
             <Box
                 sx={{
                     height: 220,
-                    bgcolor: 'background.alt',
+                    bgcolor: 'background.productImage',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',

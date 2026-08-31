@@ -68,4 +68,10 @@ export const productos = [
         description: 'Para ser instalados en forma horizontal o vertical, en conductos de aire acondicionado o ventilación que\nrequiera ser calentado',
         image: '/productos/calefactor-de-conducto.webp',
     },
+    {
+        slug: 'sistema-vrv',
+        name: 'Sistema VRV',
+        description: 'Una unidad exterior alimenta varias interiores.\nClimatización independiente por ambiente.\nCaudal de refrigerante variable.',
+        image: '/productos/sistema-vrv.webp',
+    },
 ];

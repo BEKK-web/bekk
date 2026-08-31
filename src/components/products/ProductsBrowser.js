@@ -51,7 +51,7 @@ export default function ProductsBrowser({ products }) {
                     }}
                 >
                     {filteredProducts.map((product) => (
-                        <ProductCard key={product.id} product={product} />
+                        <ProductCard key={product.slug} product={product} />
                     ))}
                 </Box>
             )}

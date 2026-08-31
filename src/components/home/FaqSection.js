@@ -1,3 +1,4 @@
+import { veinedSurface } from "@/utils/surfaces";
 import { Box, Typography } from "@mui/material";
 
 // Respuestas provistas por el cliente. Se exportan para poder generar el
@@ -31,7 +32,7 @@ export default function FaqSection() {
         <Box
             component="section"
             id="preguntas-frecuentes"
-            sx={{ py: { xs: 8, md: 12 }, scrollMarginTop: { xs: 64, md: 72 } }}
+            sx={{ ...veinedSurface, py: { xs: 8, md: 12 }, scrollMarginTop: { xs: 64, md: 72 } }}
         >
             <Box sx={{ maxWidth: 1180, mx: 'auto', px: { xs: 3, md: 5 } }}>
                 <Box sx={{ maxWidth: 620 }}>

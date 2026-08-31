@@ -5,7 +5,6 @@ import { sendGTMEvent } from "@next/third-parties/google";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import ContactForm from "@/components/ContactForm";
 import { waLink } from "@/utils/whatsapp";
-import { veinedSurface } from "@/utils/surfaces";
 
 const infoItems = [
     {
@@ -45,7 +44,7 @@ const infoItems = [
 
 export default function ContactSection() {
     return (
-        <Box component="section" id="contacto" sx={{ ...veinedSurface, py: { xs: 8, md: 12 }, scrollMarginTop: { xs: 64, md: 72 } }}>
+        <Box component="section" id="contacto" sx={{ py: { xs: 8, md: 12 }, scrollMarginTop: { xs: 64, md: 72 } }}>
             <Box sx={{ maxWidth: 1180, mx: 'auto', px: { xs: 3, md: 5 } }}>
                 <Box sx={{ textAlign: 'center', maxWidth: 560, mx: 'auto' }}>
                     <Typography variant="eyebrow" component="p" color="primary.main">

@@ -22,22 +22,50 @@ const logoSrc = `data:image/png;base64,${logoB64}`;
 // Frío y calor, partidos en diagonal por el mismo eje que separa el fondo
 // navy del claro: copo de nieve arriba-izquierda, sol abajo-derecha, ambos
 // centrados en el mismo punto — un solo ícono híbrido, no dos íconos sueltos.
-// A esta escala (se ve tan chico como 300px en una vista previa de link) el
-// detalle fino no sobrevive: una primera versión con puntas de copo y rayos
-// finos se leía como un asterisco borroso. Formas gruesas y sin adorno.
+// Dos versiones antes de esta:
+//   1) Puntas de copo y rayos finos de detalle real. A 300px (el ancho real
+//      de una vista previa de link) el detalle desaparecía, se leía como un
+//      asterisco borroso.
+//   2) Un solo ícono híbrido, copo y sol naciendo del mismo punto central,
+//      simplificado a líneas gruesas sin adorno. Sobrevivía a 300px pero las
+//      dos mitades se veían casi iguales entre sí: nada las distinguía como
+//      "frío" y "calor" específicamente.
+// Acá cada uno es un ícono completo y reconocible (copo de 6 puntas con sus
+// ramitas, sol con círculo sólido y 8 rayos) con su propio centro, uno en
+// cada mitad de la diagonal — no comparten un punto ni están recortados.
 const iconSvg = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
-  <line x1="8.99" y1="91.01" x2="91.01" y2="8.99" stroke-width="2.2" opacity="0.35" />
-  <g stroke-width="7.5">
-    <line x1="41" y1="50" x2="8" y2="50" />
-    <line x1="45.5" y1="42.21" x2="29" y2="13.63" />
-    <line x1="54.5" y1="42.21" x2="71" y2="13.63" />
+  <line x1="8.99" y1="91.01" x2="91.01" y2="8.99" stroke-width="2" opacity="0.32" />
+  <g stroke-width="4.4">
+    <line x1="33" y1="28" x2="49" y2="28" />
+    <line x1="42" y1="28" x2="47.51" y2="24.56" />
+    <line x1="42" y1="28" x2="47.51" y2="31.44" />
+    <line x1="30.5" y1="32.33" x2="38.5" y2="46.19" />
+    <line x1="35" y1="40.12" x2="40.74" y2="43.17" />
+    <line x1="35" y1="40.12" x2="34.77" y2="46.62" />
+    <line x1="25.5" y1="32.33" x2="17.5" y2="46.19" />
+    <line x1="21" y1="40.12" x2="21.23" y2="46.62" />
+    <line x1="21" y1="40.12" x2="15.26" y2="43.17" />
+    <line x1="23" y1="28" x2="7" y2="28" />
+    <line x1="14" y1="28" x2="8.49" y2="31.44" />
+    <line x1="14" y1="28" x2="8.49" y2="24.56" />
+    <line x1="25.5" y1="23.67" x2="17.5" y2="9.81" />
+    <line x1="21" y1="15.88" x2="15.26" y2="12.83" />
+    <line x1="21" y1="15.88" x2="21.23" y2="9.38" />
+    <line x1="30.5" y1="23.67" x2="38.5" y2="9.81" />
+    <line x1="35" y1="15.88" x2="34.77" y2="9.38" />
+    <line x1="35" y1="15.88" x2="40.74" y2="12.83" />
   </g>
-  <g stroke-width="7.5">
-    <circle cx="50" cy="50" r="9" fill="#FFFFFF" stroke="none" />
-    <line x1="70" y1="50" x2="92" y2="50" />
-    <line x1="64.14" y1="64.14" x2="79.7" y2="79.7" />
-    <line x1="50" y1="70" x2="50" y2="92" />
+  <g stroke-width="4.4">
+    <circle cx="72" cy="72" r="12" fill="#FFFFFF" stroke="none" />
+    <line x1="90" y1="72" x2="99" y2="72" />
+    <line x1="84.73" y1="84.73" x2="91.09" y2="91.09" />
+    <line x1="72" y1="90" x2="72" y2="99" />
+    <line x1="59.27" y1="84.73" x2="52.91" y2="91.09" />
+    <line x1="54" y1="72" x2="45" y2="72" />
+    <line x1="59.27" y1="59.27" x2="52.91" y2="52.91" />
+    <line x1="72" y1="54" x2="72" y2="45" />
+    <line x1="84.73" y1="59.27" x2="91.09" y2="52.91" />
   </g>
 </svg>`.trim();
 const iconSrc = `data:image/svg+xml;base64,${Buffer.from(iconSvg).toString('base64')}`;

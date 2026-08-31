@@ -31,10 +31,10 @@ export async function generateMetadata({ params }) {
             siteName: "BEKK",
             images: [
                 {
-                    url: "/bekk.png",
-                    width: 100,
-                    height: 100,
-                    alt: "BEKK | Soluciones en climatización",
+                    url: "/og-image.png",
+                    width: 1200,
+                    height: 630,
+                    alt: "BEKK — Climatización de confianza",
                 },
             ],
         },

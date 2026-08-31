@@ -46,12 +46,18 @@ export const metadata = {
     url: SITE_URL,
     images: [
       {
-        url: "/bekk.png",
-        width: 358,
-        height: 100,
-        alt: "BEKK | Soluciones en climatización"
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "BEKK — Climatización de confianza"
       }
     ]
+  },
+  // Sin esto, X/Twitter puede mostrar una tarjeta chica en vez de la imagen
+  // grande. Reutiliza el título, descripción e imagen de openGraph si no se
+  // redefinen acá.
+  twitter: {
+    card: "summary_large_image",
   },
   alternates: {
     canonical: "/",

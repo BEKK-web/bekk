@@ -1,11 +1,7 @@
-'use client';
-
 import { Box, Typography } from "@mui/material";
 import Link from "next/link";
-import { sendGTMEvent } from "@next/third-parties/google";
-import { waLink } from "@/utils/whatsapp";
 
-export default function SolutionCard({ icon, title, description, whatsappMessage, href }) {
+export default function SolutionCard({ icon, title, description, href }) {
     return (
         <Box
             sx={{
@@ -48,59 +44,38 @@ export default function SolutionCard({ icon, title, description, whatsappMessage
             <Typography variant="body2" color="text.secondary" sx={{ flexGrow: 1 }}>
                 {description}
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+            <Box
+                component={Link}
+                href={href}
+                sx={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 1,
+                    fontWeight: 600,
+                    fontSize: 14.5,
+                    color: 'primary.main',
+                    textDecoration: 'none',
+                    '&:hover': { color: 'primary.dark' },
+                }}
+            >
+                Ver más
                 <Box
-                    component={Link}
-                    href={href}
-                    sx={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 1,
-                        fontWeight: 600,
-                        fontSize: 14.5,
-                        color: 'primary.main',
-                        textDecoration: 'none',
-                        '&:hover': { color: 'primary.dark' },
-                    }}
+                    component="svg"
+                    className="solution-link-arrow"
+                    viewBox="0 0 24 24"
+                    width={15}
+                    height={15}
+                    aria-hidden="true"
+                    sx={{ transition: 'transform .15s ease' }}
                 >
-                    Ver más
-                    <Box
-                        component="svg"
-                        className="solution-link-arrow"
-                        viewBox="0 0 24 24"
-                        width={15}
-                        height={15}
-                        sx={{ transition: 'transform .15s ease' }}
-                    >
-                        <path
-                            d="M5 12h14M13 6l6 6-6 6"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
-                    </Box>
-                </Box>
-
-                <Box
-                    component="a"
-                    href={waLink(whatsappMessage)}
-                    target="_blank"
-                    rel="noopener"
-                    onClick={() => sendGTMEvent({ event: 'whatsapp_click', cta_location: 'solucion', solucion: title })}
-                    sx={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 1,
-                        fontWeight: 600,
-                        fontSize: 14.5,
-                        color: 'text.secondary',
-                        textDecoration: 'none',
-                        '&:hover': { color: 'secondary.main' },
-                    }}
-                >
-                    Consultar por WhatsApp
+                    <path
+                        d="M5 12h14M13 6l6 6-6 6"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    />
                 </Box>
             </Box>
         </Box>

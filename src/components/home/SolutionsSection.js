@@ -43,7 +43,6 @@ const icons = {
 const solutions = servicios.map((servicio) => ({
     title: servicio.shortTitle,
     description: servicio.cardDescription,
-    whatsappMessage: servicio.whatsappMessage,
     href: `/soluciones/${servicio.slug}`,
     icon: icons[servicio.slug],
 }));

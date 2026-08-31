@@ -56,7 +56,7 @@ export default function BrandsStrip() {
                             }}
                         >
                             <Image
-                                src={`/brands/trimmed/${brand.file}.png`}
+                                src={`/brands/${brand.file}.png`}
                                 alt={brand.name}
                                 width={brand.w}
                                 height={brand.h}

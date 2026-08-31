@@ -29,12 +29,13 @@ export default function ProductCard({ product }) {
         >
             <Box
                 sx={{
-                    height: 180,
+                    height: 220,
                     bgcolor: 'background.alt',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    p: 3,
+                    px: 1.5,
+                    py: 1.5,
                 }}
             >
                 <Box sx={{ position: 'relative', width: '100%', height: '100%' }}>
@@ -42,8 +43,11 @@ export default function ProductCard({ product }) {
                         src={productImageUrl(product.image)}
                         alt={product.name}
                         fill
-                        sizes="(max-width: 900px) 45vw, 280px"
-                        style={{ objectFit: 'contain' }}
+                        sizes="(max-width: 900px) 45vw, 320px"
+                        // Las fotos del backend vienen con fondo blanco sólido. `multiply`
+                        // lo funde con el fondo de la tarjeta sin tener que reprocesarlas,
+                        // y el catálogo sigue saliendo en vivo de la API.
+                        style={{ objectFit: 'contain', mixBlendMode: 'multiply' }}
                     />
                 </Box>
             </Box>

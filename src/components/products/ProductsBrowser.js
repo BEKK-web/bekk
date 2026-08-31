@@ -50,8 +50,10 @@ export default function ProductsBrowser({ products }) {
                         gap: 3,
                     }}
                 >
-                    {filteredProducts.map((product) => (
-                        <ProductCard key={product.slug} product={product} />
+                    {filteredProducts.map((product, index) => (
+                        // La primera fila entra en pantalla sin scrollear: si carga lazy,
+                        // el navegador la pide tarde y se vuelve el LCP de la página.
+                        <ProductCard key={product.slug} product={product} priority={index < 3} />
                     ))}
                 </Box>
             )}

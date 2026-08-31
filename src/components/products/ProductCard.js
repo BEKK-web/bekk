@@ -5,7 +5,7 @@ import Image from "next/image";
 import { sendGTMEvent } from "@next/third-parties/google";
 import { waLink } from "@/utils/whatsapp";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, priority = false }) {
     return (
         <Box
             sx={{
@@ -46,6 +46,7 @@ export default function ProductCard({ product }) {
                         alt={product.name}
                         fill
                         sizes="(max-width: 900px) 45vw, 320px"
+                        priority={priority}
                         style={{ objectFit: 'contain' }}
                     />
                 </Box>

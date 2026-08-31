@@ -48,9 +48,6 @@ export const metadata = {
   },
   alternates: {
     canonical: "/",
-    languages: {
-      es: "/",
-    },
   },
   verification: {
     google: "gBvLK0LNW85WmzGP_PvHsJdx6-ULXV8TcB-QXE5QGS0",

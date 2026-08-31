@@ -19,10 +19,24 @@ export async function generateMetadata({ params }) {
         title: servicio.metaTitle,
         description: servicio.metaDescription,
         alternates: { canonical: `/soluciones/${servicio.slug}` },
+        // openGraph no se hereda del layout: definirlo acá lo reemplaza entero,
+        // así que hay que repetir imagen, tipo y locale o la página se comparte
+        // sin miniatura.
         openGraph: {
             title: servicio.metaTitle,
             description: servicio.metaDescription,
             url: `${SITE_URL}/soluciones/${servicio.slug}`,
+            type: "website",
+            locale: "es_AR",
+            siteName: "BEKK",
+            images: [
+                {
+                    url: "/bekk.png",
+                    width: 100,
+                    height: 100,
+                    alt: "BEKK | Soluciones en climatización",
+                },
+            ],
         },
     };
 }

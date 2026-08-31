@@ -1,72 +1,123 @@
 'use client';
-import { Box, Button, Typography, Grid } from "@mui/material";
-import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
-import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
+import { Box, Typography } from "@mui/material";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import { sendGTMEvent } from "@next/third-parties/google";
 import { useSnackbar } from "@/components/SnackbarContext";
 
-import { useState } from 'react';
+const navLinks = [
+    { label: 'Soluciones', href: '/#soluciones' },
+    { label: 'Marcas', href: '/#marcas' },
+    { label: 'Nosotros', href: '/#nosotros' },
+    { label: 'Contacto', href: '/#contacto' },
+];
 
 export default function Footer() {
     const { showSnackbar } = useSnackbar();
 
-
-    const handleCopy = (information) => {
+    const handleCopyEmail = () => {
         if (navigator && navigator.clipboard) {
-            navigator.clipboard.writeText(information);
+            navigator.clipboard.writeText('ventas@bekk.com.ar');
         }
-        showSnackbar('Información copiada al portapapeles', "success");
-    }
-
-    const [animateCopyEmail, setAnimateCopyEmail] = useState(false);
-    const [animateTel, setAnimateTel] = useState(false);
+        showSnackbar('Email copiado al portapapeles', "success");
+        sendGTMEvent({ event: 'email_click', cta_location: 'footer' });
+    };
 
     return (
-        <Box sx={{ display: 'flex', bgcolor: 'background.footer', color: 'secondary.contrastText', padding: 4, justifyContent: 'center', width: '100%' }}>
-            <Grid container>
-                <Grid size={{ xs: 12, sm: 6 }} sx={{ padding: 2 }} alignContent='center'>
-                    <Button variant='contained' href='/contacto' sx={{ backgroundColor: 'primary.button', color: 'primary.main', display: 'flex', justifySelf: { xs: 'center', sm: 'end' }, width: '100%' }}>
-                        <Typography variant="primaryButton">Ir a contacto</Typography>
-                    </Button>
-                </Grid>
+        <Box component="footer" sx={{ bgcolor: 'background.footer', color: '#C9C3BA', py: { xs: 6, md: 8 } }}>
+            <Box sx={{ maxWidth: 1180, mx: 'auto', px: { xs: 3, md: 5 } }}>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        gap: 6,
+                        flexWrap: 'wrap',
+                    }}
+                >
+                    <Box sx={{ maxWidth: 320 }}>
+                        <Typography
+                            variant="h3"
+                            component="p"
+                            sx={{ color: '#FFFFFF', fontWeight: 800, letterSpacing: '0.02em', mb: 1.75 }}
+                        >
+                            BEKK
+                        </Typography>
+                        <Typography variant="body2" sx={{ color: '#8B857C' }}>
+                            Soluciones en climatización central para hogares y empresas, con más de 25 años de trayectoria en Buenos Aires.
+                        </Typography>
+                    </Box>
 
-                {/*  */}
+                    <Box sx={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                        <Box>
+                            <Typography variant="body2" sx={{ fontSize: 13, fontWeight: 600, color: '#FFFFFF', mb: 1.75, letterSpacing: '0.02em' }}>
+                                Navegación
+                            </Typography>
+                            {navLinks.map((link) => (
+                                <Box
+                                    key={link.href}
+                                    component="a"
+                                    href={link.href}
+                                    sx={{
+                                        display: 'block',
+                                        fontSize: 14,
+                                        color: '#8B857C',
+                                        textDecoration: 'none',
+                                        mb: 1.25,
+                                        '&:hover': { color: '#FFFFFF' },
+                                    }}
+                                >
+                                    {link.label}
+                                </Box>
+                            ))}
+                        </Box>
 
-                <Grid size={{ xs: 12, sm: 6 }} alignContent='center'>
-                    <Grid size={12}>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2, justifySelf: { xs: 'center', sm: 'start' } }}>
-                            <LocationOnOutlinedIcon />
-                            <Typography variant="body">Buenos Aires, Argentina</Typography>
+                        <Box>
+                            <Typography variant="body2" sx={{ fontSize: 13, fontWeight: 600, color: '#FFFFFF', mb: 1.75, letterSpacing: '0.02em' }}>
+                                Contacto
+                            </Typography>
+                            <Typography variant="body2" sx={{ fontSize: 14, color: '#8B857C', mb: 1.25 }}>
+                                Buenos Aires, Argentina
+                            </Typography>
+                            <Box
+                                component="a"
+                                href="tel:+5491122296226"
+                                onClick={() => sendGTMEvent({ event: 'phone_click', cta_location: 'footer' })}
+                                sx={{
+                                    display: 'block',
+                                    fontSize: 14,
+                                    color: '#8B857C',
+                                    textDecoration: 'none',
+                                    mb: 1.25,
+                                    '&:hover': { color: '#FFFFFF' },
+                                }}
+                            >
+                                +54 9 11 2229-6226
+                            </Box>
+                            <Box
+                                onClick={handleCopyEmail}
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 0.75,
+                                    fontSize: 14,
+                                    color: '#8B857C',
+                                    cursor: 'pointer',
+                                    width: 'fit-content',
+                                    '&:hover': { color: '#FFFFFF' },
+                                }}
+                            >
+                                ventas@bekk.com.ar
+                                <ContentCopyIcon sx={{ fontSize: 14 }} />
+                            </Box>
                         </Box>
-                    </Grid>
-                    <Grid
-                        size={12}
-                        onClick={() => window.open('https://wa.me/5491122296226', '_blank')}
-                        onMouseEnter={() => setAnimateTel(true)}
-                        onMouseLeave={() => setAnimateTel(false)}
-                    >
-                        <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer', gap: 1, mb: 2, justifySelf: { xs: 'center', sm: 'start' } }}>
-                            <LocalPhoneOutlinedIcon />
-                            <Typography variant="body">+54 9 11 2229-6226</Typography>
-                            <ChatBubbleOutlineIcon sx={{ visibility: { lg: 'visible', xl: animateTel ? 'visible' : 'hidden' } }} />
-                        </Box>
-                    </Grid>
-                    <Grid
-                        size={12}
-                        onClick={() => handleCopy('ventas@bekk.com.ar')}
-                        onMouseEnter={() => setAnimateCopyEmail(true)}
-                        onMouseLeave={() => setAnimateCopyEmail(false)}
-                    >
-                        <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer', gap: 1, justifySelf: { xs: 'center', sm: 'start' } }}>
-                            <AlternateEmailOutlinedIcon />
-                            <Typography variant="body">ventas@bekk.com.ar</Typography>
-                            <ContentCopyIcon sx={{ visibility: { lg: 'visible', xl: animateCopyEmail ? 'visible' : 'hidden' } }} />
-                        </Box>
-                    </Grid>
-                </Grid>
-            </Grid >
-        </Box >
+                    </Box>
+                </Box>
+
+                <Box sx={{ mt: 6, pt: 3, borderTop: '1px solid #34312C' }}>
+                    <Typography variant="body2" sx={{ fontSize: 13, color: '#948C82' }}>
+                        © {new Date().getFullYear()} BEKK. Climatización central en Buenos Aires.
+                    </Typography>
+                </Box>
+            </Box>
+        </Box>
     );
 }

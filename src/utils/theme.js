@@ -1,157 +1,174 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
-const theme = createTheme({
+const baseTheme = createTheme({
     palette: {
+        mode: 'light',
         primary: {
-            main: '#FFFFFF',
-            contrastText: '#000000',
-            disclamerText: '#595959',
-            button: '#2A649A',
-            labelHint: '#A4A4A4',
-            error: '#D32F2F',
-            success: '#4CAF50',
-            // warning: '#FF9800',
+            main: '#1F3A5C',
+            dark: '#16293F',
+            contrastText: '#FFFFFF',
         },
         secondary: {
-            main: '#000000',
+            main: '#15753A',
+            dark: '#0F5A2C',
             contrastText: '#FFFFFF',
         },
         background: {
-            default: '#E4E4E4',
-            mint: '#A7FA67',
-            glass: '#5090B0',
-            footer: '#2D3841',
+            default: '#FAF8F5',
+            paper: '#FFFFFF',
+            alt: '#F1ECE4',
+            // Gris frío para el área de foto de producto: el crema de `alt` es
+            // cálido y desentona con el fondo veteado, que tira a gris.
+            productImage: '#F4F5F6',
+            field: '#FEFDFB',
+            footer: '#201E1B',
         },
+        text: {
+            primary: '#201E1B',
+            secondary: '#6B6560',
+        },
+        divider: '#E5DFD6',
     },
     typography: {
-        // light: 400, regular: 500, semibold: 600, bold: 700
+        fontFamily: 'var(--font-inter-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
         h1: {
-            fontWeight: 400,
-            fontSize: '1.5rem', // 24px
-            textTransform: 'uppercase',
+            fontWeight: 700,
+            fontSize: '3.25rem', // 52px desktop, scaled down by responsiveFontSizes
+            lineHeight: 1.1,
+            letterSpacing: '-0.02em',
         },
         h2: {
-            fontWeight: 500,
-            fontSize: '1.25rem', // 20px
-        },
-        bekk: {
             fontWeight: 700,
-            fontSize: '3rem', // 40px
+            fontSize: '2rem', // 32px
+            lineHeight: 1.2,
+            letterSpacing: '-0.02em',
         },
-        a: {
-            fontWeight: 500,
-            fontSize: '1.6875rem', // 27px
-            textTransform: 'uppercase',
-        },
-        labelHint: {
-            fontSize: '0.9375rem', // 15px
-            fontWeight: 500,
-        },
-        primaryButton: {
-            fontSize: '0.9375rem', // 15px
-            fontWeight: 700,
-            textTransform: 'uppercase',
-            color: '#FFFFFF',
-        },
-        body: {
-            fontSize: '0.9375rem', // 15px
-            fontWeight: 400,
-        },
-        title: {
-            fontSize: '1.875rem', // 30px
+        h3: {
             fontWeight: 600,
+            fontSize: '1.25rem', // 20px
+            lineHeight: 1.3,
+        },
+        body1: {
+            fontSize: '1.0625rem', // 17px
+            lineHeight: 1.65,
+        },
+        body2: {
+            fontSize: '0.9375rem', // 15px
+            lineHeight: 1.6,
+        },
+        eyebrow: {
+            fontSize: '0.78rem', // 12.5px
+            fontWeight: 600,
+            letterSpacing: '0.08em',
             textTransform: 'uppercase',
+        },
+        statNumber: {
+            fontWeight: 700,
+            fontSize: '2.375rem', // 38px
+            letterSpacing: '-0.01em',
+        },
+        button: {
+            textTransform: 'none',
+            fontWeight: 600,
+            fontSize: '0.9375rem', // 15px
         },
     },
+    shape: {
+        borderRadius: 8,
+    },
+    spacing: 8,
     components: {
+        MuiCssBaseline: {
+            styleOverrides: {
+                html: {
+                    scrollBehavior: 'smooth',
+                },
+            },
+        },
         MuiButton: {
             styleOverrides: {
                 root: {
                     borderRadius: 8,
-                    padding: '10px 24px',
-                    fontWeight: 600,
+                    padding: '13px 26px',
+                    transition: 'transform .15s ease, box-shadow .15s ease, filter .15s ease, border-color .15s ease, color .15s ease',
+                    '&:hover': {
+                        transform: 'translateY(-1px)',
+                    },
                 },
                 contained: {
-                    boxShadow: '0 2px 8px rgba(21, 101, 192, 0.2)',
+                    boxShadow: 'none',
                     '&:hover': {
-                        boxShadow: '0 4px 12px rgba(21, 101, 192, 0.3)',
+                        boxShadow: '0 12px 24px -10px rgba(31, 58, 92, 0.45)',
+                        filter: 'brightness(1.1)',
+                    },
+                },
+                outlined: ({ theme }) => ({
+                    borderColor: theme.palette.divider,
+                    color: theme.palette.text.primary,
+                    '&:hover': {
+                        borderColor: theme.palette.primary.main,
+                        color: theme.palette.primary.main,
+                        backgroundColor: 'transparent',
+                    },
+                }),
+            },
+        },
+        MuiFab: {
+            styleOverrides: {
+                root: {
+                    boxShadow: '0 10px 24px -4px rgba(0, 0, 0, 0.3)',
+                    transition: 'transform .15s ease',
+                    '&:hover': {
+                        transform: 'scale(1.06)',
                     },
                 },
             },
         },
         MuiOutlinedInput: {
             styleOverrides: {
-                root: {
-
+                root: ({ theme }) => ({
+                    borderRadius: 8,
+                    backgroundColor: theme.palette.background.field,
+                    '& .MuiOutlinedInput-notchedOutline': {
+                        borderColor: theme.palette.divider,
+                    },
                     '&:hover .MuiOutlinedInput-notchedOutline': {
-                        borderColor: '#000000',
+                        borderColor: theme.palette.text.secondary,
                     },
                     '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                        borderColor: '#000000',
+                        borderColor: theme.palette.primary.main,
                     },
-                    '&.Mui-focused': {
-                        // backgroundColor: '#edebeb',
-                    },
-                },
-                notchedOutline: {
-                    borderColor: '#ccc',
-                },
-                input: {
-                    color: '#000',
-                },
+                }),
+                input: ({ theme }) => ({
+                    color: theme.palette.text.primary,
+                }),
             },
         },
         MuiInputLabel: {
             styleOverrides: {
-                root: {
-                    color: '#000000', // color del label inactivo
-                    fontSize: '15px',
+                root: ({ theme }) => ({
+                    color: theme.palette.text.primary,
+                    fontSize: '13.5px',
                     fontWeight: 500,
-                    textTransform: 'none',
 
                     '&.Mui-focused': {
-                        color: '#000000', // color del label cuando el campo está enfocado
+                        color: theme.palette.primary.main,
                     },
-                },
+                }),
             },
         },
         MuiCard: {
             styleOverrides: {
-                root: {
-                    borderRadius: 12,
-                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-                    '&:hover': {
-                        boxShadow: '0 4px 16px rgba(0, 0, 0, 0.15)',
-                    },
-                },
-            },
-        },
-        MuiAppBar: {
-            styleOverrides: {
-                root: {
-                    backgroundColor: '#1565C0',
-                    boxShadow: '0 2px 8px rgba(21, 101, 192, 0.2)',
-                },
-            },
-        },
-        MuiTextField: {
-            styleOverrides: {
-                root: {
-                    '& .MuiOutlinedInput-root': {
-                        borderRadius: 8,
-                    },
-                },
-            },
-        },
-        MuiChip: {
-            styleOverrides: {
-                root: {
+                root: ({ theme }) => ({
                     borderRadius: 16,
-                },
+                    border: `1px solid ${theme.palette.divider}`,
+                    boxShadow: 'none',
+                }),
             },
         },
     },
-    spacing: 8, // Espaciado base de 8px
 });
+
+const theme = responsiveFontSizes(baseTheme);
 
 export default theme;

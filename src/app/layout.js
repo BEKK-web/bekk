@@ -16,6 +16,10 @@ const interSans = Inter({
 
 const SITE_URL = "https://www.bekk.com.ar";
 
+// Contenedor de Google Tag Manager. El <script> del <head> lo inyecta
+// <GoogleTagManager>; acá solo queda el <noscript>, que la librería no cubre.
+const GTM_ID = "GTM-MTVR7FLQ";
+
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: "BEKK | Aire acondicionado central en Buenos Aires",
@@ -153,7 +157,7 @@ export default function RootLayout({ children }) {
         <noscript
           dangerouslySetInnerHTML={{
             __html: `
-              <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQJ6TZZ8"
+              <iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}"
               height="0" width="0" style="display:none;visibility:hidden"></iframe>
             `,
           }}
@@ -171,7 +175,7 @@ export default function RootLayout({ children }) {
         </ThemeRegistry>
         <Analytics />
         <SpeedInsights />
-        <GoogleTagManager gtmId="GTM-PQJ6TZZ8" />
+        <GoogleTagManager gtmId={GTM_ID} />
         <GoogleAnalytics gaId="G-WM19X1LPMY" />
       </body>
     </html>

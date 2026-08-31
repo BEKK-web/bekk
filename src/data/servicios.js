@@ -50,6 +50,7 @@ export const servicios = [
                     ['Baja silueta', 'unidad interior de perfil bajo que se aloja sobre el cielorraso y climatiza amplios espacios sin quedar a la vista.'],
                     ['Separado para conductos (multiposición)', 'permite montaje vertical u horizontal, lo que da flexibilidad según el espacio disponible.'],
                     ['Calefactores', 'para la parte de calor. Se alimentan a gas natural, gas envasado o gasoil, y pueden combinarse con conjuntos de frío.'],
+                    ['Conjuntos de frío', 'por conductos, pensados para anexar a un calefactor existente.'],
                 ],
             },
             {

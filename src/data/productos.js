@@ -3,9 +3,15 @@
 // Se migró acá para que el sitio no dependa de ese backend — si se caía, la
 // grilla quedaba vacía y las fotos daban 404.
 //
+// El VRV toma su texto de src/data/servicios.js en vez de repetirlo: es el
+// mismo equipo descrito en la tarjeta de servicio, y tenerlo escrito dos veces
+// solo abre la puerta a que el cliente corrija uno y no el otro.
+//
 // Las imágenes viven en public/productos/. Se les quitó el fondo blanco con
 // floodfill desde los bordes (fuzz 2%), así se apoyan sobre cualquier fondo
 // sin recuadro. Para sumar un producto: agregar la foto ahí y una entrada acá.
+
+import { getServicio } from "@/data/servicios";
 
 export const productos = [
     {
@@ -71,7 +77,7 @@ export const productos = [
     {
         slug: 'sistema-vrv',
         name: 'Sistema VRV',
-        description: 'Una unidad exterior alimenta varias interiores.\nClimatización independiente por ambiente.\nCaudal de refrigerante variable.',
+        description: getServicio('sistemas-vrv').cardDescription,
         image: '/productos/sistema-vrv.webp',
     },
 ];

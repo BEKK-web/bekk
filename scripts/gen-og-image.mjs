@@ -19,13 +19,26 @@ const INTER_DIR = '/tmp/og-fonts';
 const logoB64 = readFileSync(`${REPO}public/bekk.png`).toString('base64');
 const logoSrc = `data:image/png;base64,${logoB64}`;
 
-// Mismo ícono que la tarjeta "Residencial" de Soluciones (SolutionsSection.js),
-// para que la imagen OG se sienta parte del mismo sistema visual del sitio.
+// Frío y calor, partidos en diagonal por el mismo eje que separa el fondo
+// navy del claro: copo de nieve arriba-izquierda, sol abajo-derecha, ambos
+// centrados en el mismo punto — un solo ícono híbrido, no dos íconos sueltos.
+// A esta escala (se ve tan chico como 300px en una vista previa de link) el
+// detalle fino no sobrevive: una primera versión con puntas de copo y rayos
+// finos se leía como un asterisco borroso. Formas gruesas y sin adorno.
 const iconSvg = `
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M4 11.5 12 5l8 6.5" />
-  <path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9" />
-  <path d="M10 20v-5h4v5" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="8.99" y1="91.01" x2="91.01" y2="8.99" stroke-width="2.2" opacity="0.35" />
+  <g stroke-width="7.5">
+    <line x1="41" y1="50" x2="8" y2="50" />
+    <line x1="45.5" y1="42.21" x2="29" y2="13.63" />
+    <line x1="54.5" y1="42.21" x2="71" y2="13.63" />
+  </g>
+  <g stroke-width="7.5">
+    <circle cx="50" cy="50" r="9" fill="#FFFFFF" stroke="none" />
+    <line x1="70" y1="50" x2="92" y2="50" />
+    <line x1="64.14" y1="64.14" x2="79.7" y2="79.7" />
+    <line x1="50" y1="70" x2="50" y2="92" />
+  </g>
 </svg>`.trim();
 const iconSrc = `data:image/svg+xml;base64,${Buffer.from(iconSvg).toString('base64')}`;
 

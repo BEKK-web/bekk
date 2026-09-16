@@ -27,7 +27,14 @@ export default function ContactForm() {
             if (res.ok) {
                 showSnackbar('Ya recibimos tu email!', "success");
                 setForm({ name: '', email: '', phone: '', message: '' });
-                sendGTMEvent({ event: 'contact_form_submit' });
+                // user_email/phone/name: para Enhanced Conversions de Google Ads.
+                // GTM los hashea (SHA256) client-side antes de enviarlos a Google.
+                sendGTMEvent({
+                    event: 'contact_form_submit',
+                    user_email: form.email,
+                    user_phone: form.phone,
+                    user_name: form.name,
+                });
             } else {
                 showSnackbar('Hubo un error al enviar el mail, si persiste, contactarnos por WhatsApp', "error");
             }

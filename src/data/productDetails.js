@@ -17,7 +17,9 @@
 //     afuera las que solo lo tienen como unidad interior de un sistema VRV o sin
 //     evidencia (Daikin/Samsung/Gree en baja silueta, ducto o rooftop; York en
 //     rooftop; BGH en VRV).
-//   · Sin evidencia en el catálogo (VRV): rangos de fabricante, no de stock real.
+//   · VRV no estaba en el catálogo: su contenido sale de gruporefri.com
+//     (ventajas-de-la-tecnologia-vrv-vrf), que no da rangos numéricos, por eso
+//     la ficha es descriptiva y no cita HP, cantidad de interiores ni refrigerante.
 //   · Las FAQ de envío/instalación/garantía/plazos replican exactamente las
 //     respuestas ya publicadas en src/components/home/FaqSection.js, para no
 //     contradecir el FAQPage de la home.
@@ -427,32 +429,38 @@ export const productDetails = [
         productosSlugs: ['sistema-vrv'],
         queEs: [
             'VRV (Volumen de Refrigerante Variable, también conocido como VRF) es un sistema de aire acondicionado central avanzado que conecta una única unidad exterior con múltiples unidades interiores, permitiendo climatizar distintos espacios de forma independiente.',
-            'La particularidad está en el caudal variable: el sistema regula cuánto refrigerante envía a cada unidad interior según lo que ese espacio esté pidiendo en ese momento, en lugar de trabajar siempre al máximo y encenderse y apagarse. Una misma unidad exterior puede alimentar numerosas unidades interiores, según el modelo y la marca.',
+            'Su particularidad es que ajusta el volumen y el flujo de refrigerante según la demanda de cada zona, en lugar de trabajar siempre al máximo. Eso optimiza la eficiencia energética y permite programar la temperatura de cada unidad interior por separado.',
+            'Es un sistema modular: pueden combinarse varias unidades exteriores en una instalación centralizada, y se adapta a distintas arquitecturas y requisitos de espacio.',
         ],
         ventajas: [
-            { icon: 'box', text: 'Una sola unidad exterior alimenta múltiples unidades interiores' },
-            { icon: 'zones', text: 'Control de temperatura independiente por espacio' },
-            { icon: 'bolt', text: 'Caudal de refrigerante variable: mayor eficiencia que un sistema que enciende y apaga al máximo' },
-            { icon: 'check', text: 'Reduce la cantidad de unidades exteriores necesarias' },
-            { icon: 'temp', text: 'Frío y calor, o recuperación de calor según el modelo' },
+            { icon: 'bolt', text: 'Eficiencia energética: el refrigerante se ajusta a la demanda de cada zona' },
+            { icon: 'zones', text: 'Temperatura programable de forma independiente en cada unidad interior' },
+            { icon: 'quiet', text: 'Nivel de ruido muy inferior al de los equipos tradicionales' },
+            { icon: 'flex', text: 'Se adapta a distintas arquitecturas y requisitos de espacio' },
+            { icon: 'box', text: 'Modular: varias unidades exteriores combinadas en un sistema centralizado' },
+            { icon: 'temp', text: 'Calefacción y enfriamiento simultáneos en distintas áreas' },
         ],
         specs: {
             rows: [
-                ['Capacidad', 'Unidades exteriores de 4 a 24 HP, con hasta 64 unidades interiores por unidad exterior según el modelo'],
-                ['Frío / frío y calor', 'Frío y calor (bomba de calor), o recuperación de calor en sistemas de 3 tubos'],
-                ['Alimentación eléctrica', 'Trifásica 380-460V'],
-                ['Refrigerante', 'R410A'],
+                ['Tipo de sistema', 'Caudal variable de refrigerante, con una unidad exterior para múltiples unidades interiores'],
+                ['Control', 'Temperatura independiente en cada unidad interior'],
+                ['Frío / frío y calor', 'Frío y calor, con funcionamiento simultáneo en distintas áreas según el sistema'],
+                ['Configuración', 'Modular: se combinan varias unidades exteriores en un sistema centralizado'],
             ],
         },
         marcas: ['samsung', 'daikin', 'gree', 'carrier', 'midea'],
         faqs: [
             {
-                question: '¿Cuántas unidades interiores puede manejar una sola unidad exterior?',
-                answer: 'Depende del modelo y la marca: puede llegar hasta varias decenas de unidades interiores conectadas a una sola unidad exterior.',
+                question: '¿Qué significa VRV o VRF?',
+                answer: 'Significa Volumen de Refrigerante Variable: el sistema ajusta el flujo de refrigerante según la demanda de cada zona.',
             },
             {
                 question: '¿Se puede controlar cada ambiente por separado?',
-                answer: 'Sí, esa es la principal ventaja del sistema: cada unidad interior se controla de forma independiente.',
+                answer: 'Sí, esa es la principal ventaja del sistema: la temperatura de cada unidad interior se programa de forma independiente.',
+            },
+            {
+                question: '¿Puede calefaccionar y enfriar al mismo tiempo?',
+                answer: 'Sí, según el sistema: puede funcionar con calefacción y enfriamiento simultáneos en distintas áreas.',
             },
             {
                 question: '¿Qué mantenimiento necesita?',

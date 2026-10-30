@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import Link from "next/link";
 import ProductsBrowser from "@/components/products/ProductsBrowser";
-import { productos } from "@/data/productos";
+import { productDetails, productPath } from "@/data/productDetails";
 import { veinedSurfaceTall } from "@/utils/surfaces";
 
 const SITE_URL = "https://www.bekk.com.ar";
@@ -9,14 +9,23 @@ const SITE_URL = "https://www.bekk.com.ar";
 export const metadata = {
     title: "Equipos de aire acondicionado central | BEKK",
     description:
-        "Catálogo de equipos de climatización central: cassette, piso techo, baja silueta, rooftop, chillers y calefactores. Consultanos y te asesoramos sin cargo.",
+        "Equipos de climatización central: cassette, piso techo, baja silueta, rooftop, chillers, calefactores y VRV. Venta a todo el país. Consultanos y te asesoramos sin cargo.",
     alternates: {
         canonical: "/productos",
     },
 };
 
+// Índice: una tarjeta por página de producto. El texto largo vive en cada
+// página; acá solo va la primera frase de la bajada.
+const products = productDetails.map((detail) => ({
+    slug: detail.slug,
+    name: detail.h1,
+    description: detail.heroSubtitle.split('. ')[0].replace(/\.$/, '') + '.',
+    image: detail.image,
+    href: productPath(detail.slug),
+}));
+
 export default function ProductosPage() {
-    const products = productos;
 
     // Lista de productos para buscadores y asistentes de IA: sin esto el catálogo
     // solo existe como texto suelto y no se puede extraer como conjunto de ítems.
@@ -35,7 +44,7 @@ export default function ProductosPage() {
                 image: `${SITE_URL}${product.image}`,
                 category: "Aire acondicionado central",
                 brand: { "@type": "Brand", name: "BEKK" },
-                url: `${SITE_URL}/productos`,
+                url: `${SITE_URL}${product.href}`,
             },
         })),
     } : null;
@@ -100,10 +109,10 @@ export default function ProductosPage() {
                         Productos
                     </Typography>
                     <Typography variant="h2" component="h1" sx={{ mt: 1.5 }}>
-                        Nuestros equipos
+                        Equipos de aire acondicionado central
                     </Typography>
                     <Typography variant="body1" color="text.secondary" sx={{ mt: 1.75 }}>
-                        El catálogo completo de equipos que comercializamos. Si tenés dudas sobre cuál se ajusta a tu espacio, escribinos y te asesoramos. ¿No encontrás el producto que buscás? Consultanos, seguro podemos ayudarte.
+                        Elegí el equipo que buscás para ver sus características y pedir tu cotización. Venta a todo el país con asesoramiento profesional.
                     </Typography>
                 </Box>
 

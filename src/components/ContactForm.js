@@ -3,9 +3,14 @@ import { FormControl, TextField, Button, Typography, CircularProgress, Box, Grid
 import { sendGTMEvent } from "@next/third-parties/google";
 import { useSnackbar } from "@/components/SnackbarContext";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-export default function ContactForm() {
+// `product`: nombre del equipo de la página donde está el formulario; viaja en
+// el mail para saber de qué producto es la consulta. `redirectTo`: si viene,
+// al enviar se navega ahí (página de gracias) en vez de mostrar el snackbar.
+export default function ContactForm({ product, redirectTo }) {
     const { showSnackbar } = useSnackbar();
+    const router = useRouter();
 
     const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
     const [status, setStatus] = useState('idle'); // 'idle', 'enviando'
@@ -21,11 +26,10 @@ export default function ContactForm() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(form)
+                body: JSON.stringify(product ? { ...form, product } : form)
             });
 
             if (res.ok) {
-                showSnackbar('Ya recibimos tu email!', "success");
                 setForm({ name: '', email: '', phone: '', message: '' });
                 // user_email/phone/name: para Enhanced Conversions de Google Ads.
                 // GTM los hashea (SHA256) client-side antes de enviarlos a Google.
@@ -34,7 +38,13 @@ export default function ContactForm() {
                     user_email: form.email,
                     user_phone: form.phone,
                     user_name: form.name,
+                    ...(product ? { producto: product } : {}),
                 });
+                if (redirectTo) {
+                    router.push(redirectTo);
+                } else {
+                    showSnackbar('Ya recibimos tu email!', "success");
+                }
             } else {
                 showSnackbar('Hubo un error al enviar el mail, si persiste, contactarnos por WhatsApp', "error");
             }
@@ -111,7 +121,7 @@ export default function ContactForm() {
                                 <TextField
                                     required
                                     name="message"
-                                    label="Mensaje"
+                                    label={product ? '¿Qué necesitás?' : 'Mensaje'}
                                     multiline
                                     minRows={4}
                                     variant="outlined"

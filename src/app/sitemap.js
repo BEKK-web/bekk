@@ -1,4 +1,5 @@
 import { servicios } from "@/data/servicios";
+import { productDetails, productPath } from "@/data/productDetails";
 
 const SITE_URL = 'https://www.bekk.com.ar';
 
@@ -24,5 +25,14 @@ export default function sitemap() {
             changeFrequency: 'monthly',
             priority: 0.8,
         })),
+        // sistemas-vrv ya sale arriba, con su URL en /soluciones.
+        ...productDetails
+            .filter((detail) => detail.slug !== 'sistemas-vrv')
+            .map((detail) => ({
+                url: `${SITE_URL}${productPath(detail.slug)}`,
+                lastModified: now,
+                changeFrequency: 'monthly',
+                priority: 0.8,
+            })),
     ];
 }

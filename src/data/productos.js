@@ -53,7 +53,7 @@ export const productos = [
     {
         slug: 'calefactor',
         name: 'Calefactor',
-        description: 'Alta capacidad de calefacción\nAmplitud de utilizaciones.\nPara ser alimentados por gas natural, gas oil, gas envasado.\nPosibilidad de combianr con conjuntos de frío.',
+        description: 'Alta capacidad de calefacción\nAmplitud de utilizaciones.\nPara ser alimentados por gas natural, gas oil, gas envasado.\nPosibilidad de combinar con conjuntos de frío.',
         image: '/productos/calefactor.webp',
     },
     {

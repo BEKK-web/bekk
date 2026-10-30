@@ -21,7 +21,7 @@ export async function POST(request) {
         return Response.json({ error: 'Cuerpo de la petición inválido' }, { status: 400 });
     }
 
-    const { name, email, phone, message } = body ?? {};
+    const { name, email, phone, message, product } = body ?? {};
 
     if (![name, email, phone, message].every((field) => typeof field === 'string' && field.trim())) {
         return Response.json({ error: 'Todos los campos son obligatorios' }, { status: 400 });
@@ -53,7 +53,7 @@ export async function POST(request) {
             // Permite responderle directamente a quien completó el formulario.
             replyTo: email,
             subject: `Nuevo contacto del sitio web - ${name}`,
-            text: `Nombre: ${name}\nEmail: ${email}\nTelefono: ${phone}\n\nMensaje:\n${message}`,
+            text: `Nombre: ${name}\nEmail: ${email}\nTelefono: ${phone}${typeof product === 'string' && product.trim() ? `\nProducto: ${product}` : ''}\n\nMensaje:\n${message}`,
         });
 
         return Response.json({ success: true }, { status: 200 });

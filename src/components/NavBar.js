@@ -9,10 +9,12 @@ import {
     MenuItem,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Image from 'next/image';
 import { sendGTMEvent } from '@next/third-parties/google';
 import WhatsAppIcon from '@/components/icons/WhatsAppIcon';
 import { waLink } from '@/utils/whatsapp';
+import { productDetails, productPath } from '@/data/productDetails';
 
 const links = [
     { label: 'Soluciones', href: '/#soluciones' },
@@ -23,6 +25,7 @@ const links = [
 
 export default function NavBar() {
     const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElEquipos, setAnchorElEquipos] = useState(null);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -30,6 +33,10 @@ export default function NavBar() {
 
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
+    };
+
+    const handleCloseEquipos = () => {
+        setAnchorElEquipos(null);
     };
 
     return (
@@ -76,6 +83,54 @@ export default function NavBar() {
 
                 <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 6 }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 4.5 }}>
+                        <Box
+                            component="button"
+                            type="button"
+                            aria-haspopup="true"
+                            aria-expanded={Boolean(anchorElEquipos)}
+                            onClick={(event) => setAnchorElEquipos(event.currentTarget)}
+                            sx={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: 0.5,
+                                p: 0,
+                                border: 0,
+                                bgcolor: 'transparent',
+                                cursor: 'pointer',
+                                fontFamily: 'inherit',
+                                color: 'text.primary',
+                                fontWeight: 500,
+                                fontSize: 15,
+                                '&:hover': { color: 'primary.main' },
+                            }}
+                        >
+                            Equipos
+                            <ExpandMoreIcon sx={{ fontSize: 18 }} />
+                        </Box>
+                        <Menu
+                            anchorEl={anchorElEquipos}
+                            open={Boolean(anchorElEquipos)}
+                            onClose={handleCloseEquipos}
+                        >
+                            {productDetails.map((detail) => (
+                                <MenuItem
+                                    key={detail.slug}
+                                    component="a"
+                                    href={productPath(detail.slug)}
+                                    onClick={handleCloseEquipos}
+                                >
+                                    {detail.h1}
+                                </MenuItem>
+                            ))}
+                            <MenuItem
+                                component="a"
+                                href="/productos"
+                                onClick={handleCloseEquipos}
+                                sx={{ color: 'primary.main', fontWeight: 600 }}
+                            >
+                                Ver todos los equipos
+                            </MenuItem>
+                        </Menu>
                         {links.map((link) => (
                             <Box
                                 key={link.href}
@@ -121,6 +176,24 @@ export default function NavBar() {
                         open={Boolean(anchorElNav)}
                         onClose={handleCloseNavMenu}
                     >
+                        <MenuItem
+                            component="a"
+                            href="/productos"
+                            onClick={handleCloseNavMenu}
+                        >
+                            Equipos
+                        </MenuItem>
+                        {productDetails.map((detail) => (
+                            <MenuItem
+                                key={detail.slug}
+                                component="a"
+                                href={productPath(detail.slug)}
+                                onClick={handleCloseNavMenu}
+                                sx={{ pl: 4, fontSize: 14, color: 'text.secondary' }}
+                            >
+                                {detail.h1}
+                            </MenuItem>
+                        ))}
                         {links.map((link) => (
                             <MenuItem
                                 key={link.href}

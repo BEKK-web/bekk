@@ -2,7 +2,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Box, Typography } from "@mui/material";
 import WhatsAppCta from "@/components/WhatsAppCta";
+import ProductDetailTemplate from "@/components/products/ProductDetailTemplate";
 import { servicios, getServicio } from "@/data/servicios";
+import { getProductDetail } from "@/data/productDetails";
 
 const SITE_URL = "https://www.bekk.com.ar";
 
@@ -15,16 +17,22 @@ export async function generateMetadata({ params }) {
     const servicio = getServicio(slug);
     if (!servicio) return {};
 
+    // Los servicios que también tienen página de producto (VRV) usan su
+    // metadata, para que coincida con lo que muestra la plantilla.
+    const detail = getProductDetail(slug);
+    const metaTitle = detail ? detail.title : servicio.metaTitle;
+    const metaDescription = detail ? detail.metaDescription : servicio.metaDescription;
+
     return {
-        title: servicio.metaTitle,
-        description: servicio.metaDescription,
+        title: metaTitle,
+        description: metaDescription,
         alternates: { canonical: `/soluciones/${servicio.slug}` },
         // openGraph no se hereda del layout: definirlo acá lo reemplaza entero,
         // así que hay que repetir imagen, tipo y locale o la página se comparte
         // sin miniatura.
         openGraph: {
-            title: servicio.metaTitle,
-            description: servicio.metaDescription,
+            title: metaTitle,
+            description: metaDescription,
             url: `${SITE_URL}/soluciones/${servicio.slug}`,
             type: "website",
             locale: "es_AR",
@@ -45,6 +53,9 @@ export default async function ServicioPage({ params }) {
     const { slug } = await params;
     const servicio = getServicio(slug);
     if (!servicio) notFound();
+
+    const detail = getProductDetail(slug);
+    if (detail) return <ProductDetailTemplate detail={detail} />;
 
     const url = `${SITE_URL}/soluciones/${servicio.slug}`;
 

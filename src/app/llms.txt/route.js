@@ -1,5 +1,6 @@
 import { servicios } from "@/data/servicios";
 import { productos } from "@/data/productos";
+import { productDetails, productPath } from "@/data/productDetails";
 
 // Convención llmstxt.org: resumen estructurado del sitio para asistentes de IA.
 // Se genera como route handler (igual que robots.js y sitemap.js) para que la
@@ -69,6 +70,10 @@ ${FAQS.map(([q, a]) => `**${q}**\n${a}`).join("\n\n")}
 - [Inicio](${SITE_URL}/): soluciones, marcas, preguntas frecuentes y contacto.
 - [Productos](${SITE_URL}/productos): catálogo de equipos.
 ${servicios.map((s) => `- [${s.title}](${SITE_URL}/soluciones/${s.slug}): ${s.metaDescription}`).join("\n")}
+${productDetails
+    .filter((d) => d.slug !== 'sistemas-vrv')
+    .map((d) => `- [${d.h1}](${SITE_URL}${productPath(d.slug)}): ${d.metaDescription}`)
+    .join("\n")}
 `;
 
     return new Response(body, {

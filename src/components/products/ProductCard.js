@@ -1,14 +1,12 @@
-'use client';
-
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import { sendGTMEvent } from "@next/third-parties/google";
-import { waLink } from "@/utils/whatsapp";
+import Link from "next/link";
 
 export default function ProductCard({ product, priority = false }) {
     return (
         <Box
             sx={{
+                position: 'relative',
                 bgcolor: 'background.paper',
                 border: '1px solid',
                 borderColor: 'divider',
@@ -58,20 +56,14 @@ export default function ProductCard({ product, priority = false }) {
                     {product.name}
                 </Typography>
                 {product.description && (
-                    <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        sx={{ whiteSpace: 'pre-line', flexGrow: 1 }}
-                    >
+                    <Typography variant="body2" color="text.secondary" sx={{ flexGrow: 1 }}>
                         {product.description}
                     </Typography>
                 )}
+                {/* Link estirado a toda la tarjeta (::after), igual que SolutionCard. */}
                 <Box
-                    component="a"
-                    href={waLink(`Hola! Quiero consultar por ${product.name}`)}
-                    target="_blank"
-                    rel="noopener"
-                    onClick={() => sendGTMEvent({ event: 'whatsapp_click', cta_location: 'producto', producto: product.name })}
+                    component={Link}
+                    href={product.href}
                     sx={{
                         mt: 1,
                         display: 'inline-flex',
@@ -82,15 +74,17 @@ export default function ProductCard({ product, priority = false }) {
                         color: 'primary.main',
                         textDecoration: 'none',
                         '&:hover': { color: 'primary.dark' },
+                        '&::after': { content: '""', position: 'absolute', inset: 0 },
                     }}
                 >
-                    Consultar por WhatsApp
+                    Ver equipo
                     <Box
                         component="svg"
                         className="product-link-arrow"
                         viewBox="0 0 24 24"
                         width={15}
                         height={15}
+                        aria-hidden="true"
                         sx={{ transition: 'transform .15s ease' }}
                     >
                         <path

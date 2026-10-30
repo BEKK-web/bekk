@@ -141,12 +141,7 @@ export default function ProductDetailTemplate({ detail }) {
         .filter(Boolean);
     const related = detail.relacionados.map(getProductDetail).filter(Boolean);
 
-    const specRows = [
-        ['Capacidad', detail.specs.capacidad],
-        ['Frío / frío y calor', detail.specs.frioCalor],
-        ['Alimentación eléctrica', detail.specs.alimentacion],
-        ['Refrigerante', detail.specs.refrigerante],
-    ];
+    const specRows = detail.specs.rows;
 
     const jsonLd = {
         "@context": "https://schema.org",
@@ -368,13 +363,8 @@ export default function ProductDetailTemplate({ detail }) {
                         </Table>
                     </TableContainer>
                     <Typography variant="body2" color="text.secondary" sx={{ mt: 1.5, fontSize: 13.5 }}>
-                        Valores orientativos de la categoría. Consultanos por los modelos y capacidades disponibles.
+                        Las variantes disponibles dependen de la marca y el modelo. Consultanos por la disponibilidad.
                     </Typography>
-                    {detail.specs.nota && (
-                        <Typography variant="body2" sx={{ mt: 1, fontSize: 13.5, color: 'text.secondary' }}>
-                            {detail.specs.nota}
-                        </Typography>
-                    )}
                 </Box>
 
                 {productBrands.length > 0 && (

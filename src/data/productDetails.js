@@ -7,19 +7,17 @@
 // ORIGEN DEL TEXTO Y DATOS TÉCNICOS:
 //   · Los textos descriptivos siguen el mismo criterio que src/data/servicios.js:
 //     redactados en base a conocimiento técnico general del rubro.
-//   · La tabla de capacidades/alimentación por categoría sale de fichas
-//     públicas de fabricantes/distribuidores (no de precios, no de modelos
-//     puntuales del catálogo real de BEKK, que el cliente todavía no pasó).
-//     Son rangos orientativos de categoría.
-//   · PENDIENTE DE VALIDAR CON EL CLIENTE antes de publicar:
-//       - Capacidad real de los calefactores centrales/de conducto que vende
-//         BEKK (no se encontró ficha pública de esa línea, solo de
-//         calefactores residenciales sueltos).
-//       - Capacidad real del conjunto de frío (sin fuente confiable).
-//       - Versión trifásica del separado para conductos / multiposición.
-//       - Qué marca de las 11 que vende BEKK fabrica calefactores y conjunto
-//         de frío: ninguna apareció asociada a esas categorías en la
-//         investigación. Sospecha: Surrey, Westric o Ciroc (no verificado).
+//   · La ficha técnica y las marcas de cada página salen del catálogo viejo de
+//     BEKK (export de agosto 2024), colapsado a una página por tipo de equipo:
+//     cada variante (marca, capacidad, inverter u on/off, 220V o 380V) se
+//     resume como rango o lista en la tabla. Solo se muestran marcas de la
+//     landing (BrandsStrip); Runway, que estaba en el catálogo, no se incluye.
+//   · Marcas que no estaban en el catálogo para ese tipo se agregaron solo si
+//     se verificó que la marca fabrica ese equipo (sitios oficiales). Se dejaron
+//     afuera las que solo lo tienen como unidad interior de un sistema VRV o sin
+//     evidencia (Daikin/Samsung/Gree en baja silueta, ducto o rooftop; York en
+//     rooftop; BGH en VRV).
+//   · Sin evidencia en el catálogo (VRV): rangos de fabricante, no de stock real.
 //   · Las FAQ de envío/instalación/garantía/plazos replican exactamente las
 //     respuestas ya publicadas en src/components/home/FaqSection.js, para no
 //     contradecir el FAQPage de la home.
@@ -62,13 +60,15 @@ export const productDetails = [
             { icon: 'quiet', text: 'Funcionamiento silencioso, al estar la unidad oculta' },
         ],
         specs: {
-            capacidad: '9.000 a 71.000 BTU/h (aprox. 2.300 a 18.000 frigorías/h)',
-            frioCalor: 'Mayoría frío y calor',
-            alimentacion: 'Monofásica 220-240V',
-            refrigerante: 'R32',
-            nota: null,
+            rows: [
+                ['Capacidad', '4.500 a 18.000 frigorías/h (1,5 a 6 TR)'],
+                ['Tecnología', 'Inverter u on/off según marca y modelo'],
+                ['Frío / frío y calor', 'Frío y calor según modelo'],
+                ['Alimentación eléctrica', 'Monofásica 220V o trifásica 380V según capacidad'],
+                ['Refrigerante', 'R410A'],
+            ],
         },
-        marcas: ['gree', 'bgh', 'daikin', 'samsung'],
+        marcas: ['surrey', 'bgh', 'gree'],
         faqs: [
             {
                 question: '¿Cuánto consume un equipo baja silueta?',
@@ -109,13 +109,16 @@ export const productDetails = [
             { icon: 'temp', text: 'Frío y calor en la mayoría de los modelos' },
         ],
         specs: {
-            capacidad: '9.000 a 60.000 BTU/h (aprox. 2.300 a 15.000 frigorías/h)',
-            frioCalor: 'Mayoría frío y calor',
-            alimentacion: 'Monofásica 220V; trifásica en las capacidades mayores',
-            refrigerante: 'R32',
-            nota: null,
+            rows: [
+                ['Variantes', 'Cassette de 4 vías y Cassette 360°'],
+                ['Capacidad', '6.000 a 18.000 frigorías/h (2 a 6 TR)'],
+                ['Tecnología', 'Inverter u on/off según marca y modelo'],
+                ['Frío / frío y calor', 'Frío y calor según modelo'],
+                ['Alimentación eléctrica', 'Monofásica 220V o trifásica 380V según capacidad'],
+                ['Refrigerante', 'R410A'],
+            ],
         },
-        marcas: ['daikin', 'samsung', 'bgh', 'gree'],
+        marcas: ['surrey', 'bgh', 'gree', 'samsung', 'midea'],
         faqs: [
             {
                 question: '¿Cuánto consume un equipo cassette?',
@@ -156,13 +159,15 @@ export const productDetails = [
             { icon: 'temp', text: 'Frío y calor en la mayoría de los modelos' },
         ],
         specs: {
-            capacidad: '9.000 a 60.000 BTU/h (aprox. 2.800 a 15.000 frigorías/h)',
-            frioCalor: 'Mayoría frío y calor',
-            alimentacion: 'Monofásica 220V',
-            refrigerante: 'R32',
-            nota: null,
+            rows: [
+                ['Capacidad', '9.000 a 18.000 frigorías/h (3 a 6 TR)'],
+                ['Tecnología', 'Inverter u on/off según marca y modelo'],
+                ['Frío / frío y calor', 'Frío y calor según modelo'],
+                ['Alimentación eléctrica', 'Monofásica 220V o trifásica 380V según capacidad'],
+                ['Refrigerante', 'R410A'],
+            ],
         },
-        marcas: ['bgh', 'daikin', 'samsung'],
+        marcas: ['surrey', 'bgh', 'gree', 'midea'],
         faqs: [
             {
                 question: '¿Se puede instalar sin cielorraso?',
@@ -203,13 +208,15 @@ export const productDetails = [
             { icon: 'temp', text: 'Disponible en solo frío o frío y calor' },
         ],
         specs: {
-            capacidad: '3 a 30 TR (aprox. 36.000 a 360.000 BTU/h)',
-            frioCalor: 'Según modelo: solo frío o frío y calor',
-            alimentacion: 'Trifásica 380-460V',
-            refrigerante: 'R410A / R454B en líneas nuevas',
-            nota: null,
+            rows: [
+                ['Variantes', 'Frío solo, frío y calor con bomba de calor, o frío y calor a gas'],
+                ['Capacidad', '15.000 a 90.000 frigorías/h (5 a 30 TR)'],
+                ['Alimentación eléctrica', 'Trifásica 380V según modelo'],
+                ['Combustible (versión a gas)', 'Gas natural'],
+                ['Refrigerante', 'R410A'],
+            ],
         },
-        marcas: ['carrier', 'midea', 'york'],
+        marcas: ['surrey', 'midea', 'carrier', 'goodman'],
         faqs: [
             {
                 question: '¿Por qué conviene un rooftop frente a varias unidades exteriores?',
@@ -249,13 +256,14 @@ export const productDetails = [
             { icon: 'chart', text: 'Escalable según la capacidad que requiera el proyecto' },
         ],
         specs: {
-            capacidad: 'Desde 5 TR hasta varios cientos de TR en líneas industriales',
-            frioCalor: 'Mayoría solo frío; algunas líneas con bomba de calor',
-            alimentacion: 'Trifásica 380-400V',
-            refrigerante: 'R410A / R134a / R454B según línea',
-            nota: null,
+            rows: [
+                ['Capacidad', 'Desde 18.000 frigorías/h (6 TR); capacidades mayores según marca y modelo'],
+                ['Frío / frío y calor', 'Frío solo en la línea de catálogo; bomba de calor según marca'],
+                ['Alimentación eléctrica', 'Trifásica 380V'],
+                ['Refrigerante', 'R407C en la línea Surrey; otros según marca'],
+            ],
         },
-        marcas: ['york', 'carrier'],
+        marcas: ['surrey', 'midea', 'samsung', 'york', 'carrier'],
         faqs: [
             {
                 question: '¿En qué se diferencia un chiller de un sistema VRV?',
@@ -291,13 +299,15 @@ export const productDetails = [
             { icon: 'temp', text: 'Frío y calor en la mayoría de los modelos' },
         ],
         specs: {
-            capacidad: 'Aprox. 18.000 a 31.000 BTU/h (5,5 a 9 kW) en los modelos monofásicos; capacidades mayores a confirmar',
-            frioCalor: 'Mayoría frío y calor',
-            alimentacion: 'Monofásica 220-240V confirmada; versión trifásica para mayor capacidad a confirmar con el fabricante',
-            refrigerante: 'R32',
-            nota: 'Capacidad y alimentación trifásica a validar con el catálogo real de BEKK.',
+            rows: [
+                ['Variantes', 'Separado para conductos y multiposición (montaje vertical u horizontal)'],
+                ['Capacidad', '15.000 a 37.500 frigorías/h (5 a 12,5 TR)'],
+                ['Frío / frío y calor', 'Frío solo o frío y calor según modelo'],
+                ['Alimentación eléctrica', 'Según modelo; hay versiones trifásicas 380V'],
+                ['Refrigerante', 'R410A'],
+            ],
         },
-        marcas: ['midea', 'bgh', 'gree'],
+        marcas: ['surrey', 'goodman', 'bgh'],
         faqs: [
             {
                 question: '¿Qué es el multiposición?',
@@ -337,13 +347,15 @@ export const productDetails = [
             { icon: 'flame', text: 'Funciona con gas natural, gas envasado o gasoil' },
         ],
         specs: {
-            capacidad: 'A confirmar con BEKK',
-            frioCalor: 'Solo calor',
-            alimentacion: 'Gas natural o gas envasado confirmado; gasoil disponible según modelo',
-            refrigerante: 'No aplica (combustión)',
-            nota: 'No se encontró ficha pública de la línea de calefactores centrales/de conducto que vende BEKK ni la marca exacta que los fabrica — pendiente de confirmar con el cliente antes de publicar una capacidad específica.',
+            rows: [
+                ['Variantes', 'Calefactor central por conductos, con o sin quemador, y generador de aire caliente'],
+                ['Capacidad', '17.500 a 50.000 kcal/h'],
+                ['Combustible', 'Gas natural, gas envasado (con kit) o gasoil según modelo'],
+                ['Alimentación eléctrica', 'Monofásica 220V'],
+                ['Frío / calor', 'Solo calor'],
+            ],
         },
-        marcas: [],
+        marcas: ['goodman', 'ciroc', 'westric'],
         faqs: [
             {
                 question: '¿Con qué se alimentan?',
@@ -382,13 +394,13 @@ export const productDetails = [
             { icon: 'check', text: 'No requiere rehacer la distribución de aire' },
         ],
         specs: {
-            capacidad: 'A confirmar con BEKK',
-            frioCalor: 'Solo frío (se anexa a un calefactor existente)',
-            alimentacion: 'A confirmar con BEKK',
-            refrigerante: 'A confirmar con BEKK',
-            nota: 'No se encontró ficha pública de distribuidor argentino para esta categoría ni la marca exacta que fabrica el conjunto de frío que vende BEKK — pendiente de confirmar con el cliente antes de publicar una capacidad específica.',
+            rows: [
+                ['Capacidad', '9.000 a 18.000 frigorías/h (3 a 6 TR)'],
+                ['Frío / calor', 'Solo frío (se anexa a un calefactor existente)'],
+                ['Refrigerante', 'R410A'],
+            ],
         },
-        marcas: [],
+        marcas: ['surrey', 'goodman'],
         faqs: [
             {
                 question: '¿Qué es un conjunto de frío?',
@@ -425,13 +437,14 @@ export const productDetails = [
             { icon: 'temp', text: 'Frío y calor, o recuperación de calor según el modelo' },
         ],
         specs: {
-            capacidad: 'Unidades exteriores de 4 a 24 HP, con hasta 64 unidades interiores por unidad exterior según el modelo',
-            frioCalor: 'Frío y calor (bomba de calor), o recuperación de calor en sistemas de 3 tubos',
-            alimentacion: 'Trifásica 380-460V',
-            refrigerante: 'R410A',
-            nota: null,
+            rows: [
+                ['Capacidad', 'Unidades exteriores de 4 a 24 HP, con hasta 64 unidades interiores por unidad exterior según el modelo'],
+                ['Frío / frío y calor', 'Frío y calor (bomba de calor), o recuperación de calor en sistemas de 3 tubos'],
+                ['Alimentación eléctrica', 'Trifásica 380-460V'],
+                ['Refrigerante', 'R410A'],
+            ],
         },
-        marcas: ['samsung', 'daikin'],
+        marcas: ['samsung', 'daikin', 'gree', 'carrier', 'midea'],
         faqs: [
             {
                 question: '¿Cuántas unidades interiores puede manejar una sola unidad exterior?',

@@ -70,24 +70,6 @@ export const productDetails = [
                 ['Refrigerante', 'R410A y R32'],
             ],
         },
-        variantes: [
-            {
-                title: 'Baja silueta de alta presión',
-                image: '/productos/baja-silueta-alta-presion.webp',
-                alt: 'Baja silueta de alta presión y su unidad condensadora',
-                capacidad: 'De 8, 10, 12,5 y 16 TR',
-                bullets: [
-                    'Frío y calor por bomba',
-                    'Compresor y ventilador Full DC Inverter',
-                    'Alta performance en modo calefacción, con temperatura exterior de -30 °C a 30 °C',
-                    'Alta performance en modo frío, con temperatura exterior de -15 °C a 55 °C',
-                    'Unidades condensadoras horizontales de diseño compacto, que facilitan la instalación en espacios reducidos',
-                    'Hasta 80 metros de longitud máxima de cañería',
-                    'Hasta 40 metros de diferencia de altura entre evaporadora y condensadora',
-                    'Bomba de drenaje con capacidad de 1200 mm de columna',
-                ],
-            },
-        ],
         marcas: ['surrey', 'bgh', 'gree', 'carrier', 'midea', 'york', 'samsung', 'daikin'],
         faqs: [
             {
@@ -100,14 +82,66 @@ export const productDetails = [
             },
             {
                 question: '¿En qué se diferencia de un separado para conductos?',
-                answer: 'El baja silueta tiene un perfil más compacto, pensado para espacios con poca altura disponible. El separado para conductos admite mayor caudal y se adapta mejor a superficies más grandes.',
+                answer: 'El baja silueta tiene un perfil compacto, pensado para espacios con poca altura disponible. El separado para conductos admite montaje vertical u horizontal (multiposición), según el espacio técnico.',
             },
             FAQS_COMUNES.envios,
             FAQS_COMUNES.entrega,
             FAQS_COMUNES.garantia,
         ],
-        relacionados: ['separado-conductos', 'piso-techo'],
+        relacionados: ['baja-silueta-alta-presion', 'separado-conductos', 'piso-techo'],
         whatsappMessage: 'Hola! Quiero consultar por un equipo baja silueta',
+    },
+    {
+        slug: 'baja-silueta-alta-presion',
+        h1: 'Aire acondicionado baja silueta de alta presión',
+        title: 'Baja Silueta de Alta Presión | BEKK',
+        metaDescription: 'Equipos baja silueta de alta presión de 8 a 16 TR, frío y calor por bomba con compresor Full DC Inverter. Venta a todo el país. Pedí tu cotización.',
+        heroSubtitle: 'Baja silueta de mayor capacidad, frío y calor por bomba, con compresor y ventilador Full DC Inverter, para distribuir el aire por conductos.',
+        image: '/productos/baja-silueta-alta-presion.webp',
+        productosSlugs: [],
+        queEs: [
+            'La baja silueta de alta presión es una unidad interior de perfil bajo que se aloja sobre el cielorraso y distribuye el aire por conductos, pensada para capacidades mayores que el baja silueta estándar: de 8 a 16 TR.',
+            'Funciona como bomba de calor, con compresor y ventilador Full DC Inverter, y mantiene un buen rendimiento tanto en calefacción como en frío con temperaturas exteriores extremas. Sus unidades condensadoras horizontales son compactas, lo que facilita la instalación en espacios reducidos.',
+        ],
+        ventajas: [
+            { icon: 'temp', text: 'Frío y calor por bomba' },
+            { icon: 'bolt', text: 'Compresor y ventilador Full DC Inverter' },
+            { icon: 'flame', text: 'Alta performance en calefacción, con temperatura exterior de -30 °C a 30 °C' },
+            { icon: 'check', text: 'Alta performance en frío, con temperatura exterior de -15 °C a 55 °C' },
+            { icon: 'compact', text: 'Unidades condensadoras horizontales compactas, para espacios reducidos' },
+            { icon: 'expand', text: 'Hasta 80 metros de cañería y 40 metros de diferencia de altura entre evaporadora y condensadora' },
+            { icon: 'water', text: 'Bomba de drenaje con capacidad de 1200 mm de columna' },
+        ],
+        specs: {
+            rows: [
+                ['Capacidad', '8, 10, 12,5 y 16 TR (24.000 a 48.000 frigorías/h)'],
+                ['Frío / frío y calor', 'Frío y calor por bomba'],
+                ['Tecnología', 'Compresor y ventilador Full DC Inverter'],
+                ['Temperatura exterior de trabajo', 'Calefacción: -30 °C a 30 °C. Frío: -15 °C a 55 °C'],
+                ['Cañería', 'Hasta 80 m de longitud máxima y 40 m de diferencia de altura entre evaporadora y condensadora'],
+                ['Drenaje', 'Bomba con capacidad de 1200 mm de columna'],
+            ],
+        },
+        marcas: ['carrier'],
+        faqs: [
+            {
+                question: '¿En qué se diferencia del baja silueta estándar?',
+                answer: 'Es una versión de mayor capacidad (de 8 a 16 TR, frente a 3 a 6 TR del estándar), con bomba de calor, compresor y ventilador Full DC Inverter y hasta 80 metros de cañería.',
+            },
+            {
+                question: '¿Funciona con temperaturas exteriores extremas?',
+                answer: 'Sí. En calefacción trabaja con temperatura exterior de -30 °C a 30 °C y en frío de -15 °C a 55 °C.',
+            },
+            {
+                question: '¿Qué mantenimiento necesita?',
+                answer: 'Limpieza periódica de filtros y una revisión técnica anual.',
+            },
+            FAQS_COMUNES.envios,
+            FAQS_COMUNES.entrega,
+            FAQS_COMUNES.garantia,
+        ],
+        relacionados: ['baja-silueta', 'separado-conductos'],
+        whatsappMessage: 'Hola! Quiero consultar por un equipo baja silueta de alta presión',
     },
     {
         slug: 'cassette',
@@ -280,13 +314,13 @@ export const productDetails = [
         specs: {
             rows: [
                 ['Variantes', 'Condensados por aire o por agua, con compresores scroll, a tornillo o centrífugos'],
-                ['Capacidad', 'Desde 5 TR (17,6 kW) hasta 3.000 TR según marca y línea (Westric: 5 a 150 TR)'],
+                ['Capacidad', 'Desde 5 TR (17,6 kW) hasta 3.000 TR según marca y línea'],
                 ['Frío / frío y calor', 'Frío solo o frío y calor con bomba de calor, según marca y línea'],
                 ['Alimentación eléctrica', 'Trifásica 380V'],
                 ['Refrigerante', 'R410A, R32, R134a o R407C según marca y línea'],
             ],
         },
-        marcas: ['surrey', 'midea', 'samsung', 'york', 'carrier', 'daikin', 'westric'],
+        marcas: ['surrey', 'westric', 'daikin'],
         faqs: [
             {
                 question: '¿En qué se diferencia un chiller de un sistema VRV?',
@@ -313,11 +347,10 @@ export const productDetails = [
         productosSlugs: ['separado-para-conductos-multiposicion'],
         queEs: [
             'El separado para conductos es una unidad interior que distribuye el aire por una red de conductos y rejillas, sin quedar a la vista. La variante multiposición admite instalarse en distintas posiciones (horizontal u vertical) según el espacio técnico disponible, lo que facilita adaptarlo a construcciones ya terminadas o en obra.',
-            'Se conecta a una unidad exterior y suele ofrecer mayor caudal que un baja silueta, por lo que se adapta mejor a superficies más grandes.',
+            'Se conecta a una unidad exterior y se adapta a distintos espacios técnicos gracias a su montaje vertical u horizontal.',
         ],
         ventajas: [
             { icon: 'flex', text: 'Se adapta a distintas posiciones de montaje según el espacio técnico' },
-            { icon: 'airflow', text: 'Mayor caudal que un baja silueta, para superficies más grandes' },
             { icon: 'hidden', text: 'Distribución por conductos: no queda a la vista' },
             { icon: 'temp', text: 'Frío y calor' },
         ],
@@ -357,7 +390,7 @@ export const productDetails = [
             },
             {
                 question: '¿En qué se diferencia del baja silueta?',
-                answer: 'El separado para conductos admite mayor caudal, por lo que se adapta mejor a superficies más grandes. El baja silueta tiene un perfil más compacto para espacios con poca altura.',
+                answer: 'El separado para conductos admite montaje vertical u horizontal (multiposición), según el espacio técnico disponible. El baja silueta tiene un perfil más compacto para espacios con poca altura.',
             },
             {
                 question: '¿Qué mantenimiento necesita?',

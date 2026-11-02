@@ -306,7 +306,7 @@ export const productDetails = [
         ventajas: [
             { icon: 'water', text: 'Sistema por agua, pensado para instalaciones de mayor porte' },
             { icon: 'box', text: 'Centraliza la generación de frío en una o pocas unidades' },
-            { icon: 'chart', text: 'Escalable: desde 5 TR hasta cientos de TR según la línea' },
+            { icon: 'chart', text: 'Escalable: desde 5 TR hasta 150 TR según la línea' },
             { icon: 'check', text: 'Aptos para sistemas de confort y de precisión' },
             { icon: 'temp', text: 'Versiones frío solo o frío y calor con bomba de calor' },
             { icon: 'flex', text: 'Opción de operar con temperaturas negativas y descarga de aire vertical u horizontal según modelo' },
@@ -314,7 +314,7 @@ export const productDetails = [
         specs: {
             rows: [
                 ['Variantes', 'Condensados por aire o por agua, con compresores scroll, a tornillo o centrífugos'],
-                ['Capacidad', 'Desde 5 TR (17,6 kW) hasta 3.000 TR según marca y línea'],
+                ['Capacidad', 'Desde 5 TR (17,6 kW) hasta 150 TR (527,5 kW) según marca y línea'],
                 ['Frío / frío y calor', 'Frío solo o frío y calor con bomba de calor, según marca y línea'],
                 ['Alimentación eléctrica', 'Trifásica 380V'],
                 ['Refrigerante', 'R410A, R32, R134a o R407C según marca y línea'],

@@ -29,7 +29,7 @@
 const FAQS_COMUNES = {
     envios: {
         question: '¿Envían equipos a todo el país?',
-        answer: 'Sí, realizamos envíos a todo el país. La instalación solo la cubrimos en CABA y Gran Buenos Aires.',
+        answer: 'Sí, realizamos envíos a todo el país. Instalación en CABA y Gran Buenos Aires.',
     },
     entrega: {
         question: '¿En cuánto tiempo entregan el equipo?',
@@ -51,26 +51,44 @@ export const productDetails = [
         image: '/productos/baja-silueta.webp',
         productosSlugs: ['baja-silueta'],
         queEs: [
-            'El equipo baja silueta es una unidad interior que se instala oculta sobre el cielorraso y reparte el aire por una red de conductos, dejando a la vista únicamente las rejillas de difusión. Por su perfil compacto, se adapta a espacios con poca altura libre entre el techo y el cielorraso.',
-            'Se conecta a una unidad exterior que puede ubicarse en balcón, patio o azotea, y admite distintas longitudes y trazados de conducto según el plano del espacio a climatizar. La mayoría de los modelos ofrece frío y calor en una sola unidad.',
+            'El equipo baja silueta es una unidad interior que se instala oculta sobre el cielorraso y distribuye el aire por una red de conductos, dejando a la vista únicamente las rejillas de difusión. Por su perfil compacto, se adapta a espacios con poca altura libre entre el techo y el cielorraso.',
+            'Se conecta a una unidad exterior que puede ubicarse en balcón, patio o azotea, y admite distintas longitudes y trazados de conducto según el plano del espacio a climatizar. Ofrece frío y calor en una sola unidad.',
         ],
         ventajas: [
             { icon: 'hidden', text: 'No queda ningún equipo a la vista: solo se ven las rejillas' },
             { icon: 'airflow', text: 'Distribución de aire pareja en todos los ambientes conectados' },
             { icon: 'compact', text: 'Perfil bajo, pensado para espacios con poca altura de cielorraso' },
-            { icon: 'temp', text: 'Frío y calor en la mayoría de los modelos' },
+            { icon: 'temp', text: 'Frío y calor' },
             { icon: 'quiet', text: 'Funcionamiento silencioso, al estar la unidad oculta' },
         ],
         specs: {
             rows: [
-                ['Capacidad', '4.500 a 18.000 frigorías/h (1,5 a 6 TR)'],
-                ['Tecnología', 'Inverter u on/off según marca y modelo'],
-                ['Frío / frío y calor', 'Frío y calor según modelo'],
+                ['Capacidad', '9.000, 15.000 y 18.000 frigorías/h (3, 5 y 6 TR)'],
+                ['Tecnología', 'Inverter y on/off'],
+                ['Frío / frío y calor', 'Frío y calor'],
                 ['Alimentación eléctrica', 'Monofásica 220V o trifásica 380V según capacidad'],
-                ['Refrigerante', 'R410A'],
+                ['Refrigerante', 'R410A y R32'],
             ],
         },
-        marcas: ['surrey', 'bgh', 'gree'],
+        variantes: [
+            {
+                title: 'Baja silueta de alta presión',
+                image: '/productos/baja-silueta-alta-presion.webp',
+                alt: 'Baja silueta de alta presión y su unidad condensadora',
+                capacidad: 'De 8, 10, 12,5 y 16 TR',
+                bullets: [
+                    'Frío y calor por bomba',
+                    'Compresor y ventilador Full DC Inverter',
+                    'Alta performance en modo calefacción, con temperatura exterior de -30 °C a 30 °C',
+                    'Alta performance en modo frío, con temperatura exterior de -15 °C a 55 °C',
+                    'Unidades condensadoras horizontales de diseño compacto, que facilitan la instalación en espacios reducidos',
+                    'Hasta 80 metros de longitud máxima de cañería',
+                    'Hasta 40 metros de diferencia de altura entre evaporadora y condensadora',
+                    'Bomba de drenaje con capacidad de 1200 mm de columna',
+                ],
+            },
+        ],
+        marcas: ['surrey', 'bgh', 'gree', 'carrier', 'midea', 'york', 'samsung', 'daikin'],
         faqs: [
             {
                 question: '¿Cuánto consume un equipo baja silueta?',
@@ -96,11 +114,11 @@ export const productDetails = [
         h1: 'Aire acondicionado cassette',
         title: 'Aire Acondicionado Cassette y 360° | BEKK',
         metaDescription: 'Equipos cassette y cassette 360° de marcas líderes. Venta a todo el país con asesoramiento. Pedí tu cotización.',
-        heroSubtitle: 'Equipo que se embute en el cielorraso y reparte el aire en cuatro direcciones (o en todo el perímetro, en la variante 360°). Venta a todo el país con asesoramiento profesional.',
+        heroSubtitle: 'Equipo que se embute en el cielorraso y distribuye el aire en cuatro direcciones (o en todo el perímetro, en la variante 360°).',
         image: '/productos/cassette.webp',
         productosSlugs: ['cassette', 'cassette-360'],
         queEs: [
-            'El cassette es una unidad interior que se monta embutida en el cielorraso, quedando a la vista solo su panel frontal. Difunde el aire en cuatro direcciones, lo que ayuda a repartir la temperatura de forma pareja en el espacio donde se instala.',
+            'El cassette es una unidad interior que se monta embutida en el cielorraso, quedando a la vista solo su panel frontal. Difunde el aire en cuatro direcciones, lo que ayuda a distribuir la temperatura de forma pareja en el espacio donde se instala.',
             'La variante cassette 360° distribuye el aire en todo el perímetro del equipo en lugar de en cuatro salidas puntuales, logrando una circulación aún más uniforme. Ambas variantes se destacan por su bajo nivel sonoro y están disponibles en versión inverter u on/off.',
         ],
         ventajas: [
@@ -108,19 +126,19 @@ export const productDetails = [
             { icon: 'quiet', text: 'Bajo nivel sonoro de funcionamiento' },
             { icon: 'hidden', text: 'Diseño discreto: solo el panel queda a la vista' },
             { icon: 'bolt', text: 'Disponible en inverter u on/off' },
-            { icon: 'temp', text: 'Frío y calor en la mayoría de los modelos' },
+            { icon: 'temp', text: 'Frío y calor' },
         ],
         specs: {
             rows: [
                 ['Variantes', 'Cassette de 4 vías y Cassette 360°'],
                 ['Capacidad', '6.000 a 18.000 frigorías/h (2 a 6 TR)'],
-                ['Tecnología', 'Inverter u on/off según marca y modelo'],
-                ['Frío / frío y calor', 'Frío y calor según modelo'],
+                ['Tecnología', 'Inverter u on/off'],
+                ['Frío / frío y calor', 'Frío y calor'],
                 ['Alimentación eléctrica', 'Monofásica 220V o trifásica 380V según capacidad'],
-                ['Refrigerante', 'R410A'],
+                ['Refrigerante', 'R410A y R32'],
             ],
         },
-        marcas: ['surrey', 'bgh', 'gree', 'samsung', 'midea'],
+        marcas: ['surrey', 'bgh', 'gree', 'samsung', 'midea', 'carrier', 'daikin'],
         faqs: [
             {
                 question: '¿Cuánto consume un equipo cassette?',
@@ -128,7 +146,7 @@ export const productDetails = [
             },
             {
                 question: '¿Qué diferencia hay entre el cassette estándar y el 360°?',
-                answer: 'El estándar reparte el aire en 4 direcciones puntuales. El 360° lo distribuye en todo el perímetro del equipo, logrando una circulación más uniforme.',
+                answer: 'El estándar distribuye el aire en 4 direcciones puntuales. El 360° lo distribuye en todo el perímetro del equipo, logrando una circulación más uniforme.',
             },
             {
                 question: '¿Qué mantenimiento necesita?',
@@ -150,26 +168,26 @@ export const productDetails = [
         image: '/productos/piso-techo.webp',
         productosSlugs: ['piso-techo'],
         queEs: [
-            'El equipo piso techo es una unidad interior versátil: puede instalarse de forma vertical, apoyada sobre el piso, o de forma horizontal, colgada del techo. Esa flexibilidad lo convierte en una alternativa cuando no hay cielorraso donde alojar otro tipo de equipo.',
-            'Entrega un caudal de aire mayor al de un split tradicional, lo que le permite climatizar espacios amplios con una sola unidad interior. Se conecta a una unidad exterior y la mayoría de los modelos ofrece frío y calor.',
+            'El equipo piso techo es una unidad interior versátil: puede instalarse de forma vertical, apoyada sobre el piso, o de forma horizontal, colgada del techo.',
+            'Entrega un caudal de aire mayor al de un split tradicional, lo que le permite climatizar espacios amplios con una sola unidad interior. Se conecta a una unidad exterior y ofrece frío y calor.',
         ],
         ventajas: [
             { icon: 'flex', text: 'Montaje flexible: vertical en piso u horizontal en techo' },
-            { icon: 'check', text: 'No necesita cielorraso ni obra para instalarse' },
+            { icon: 'check', text: 'No requiere conducto' },
             { icon: 'airflow', text: 'Mayor caudal de aire que un equipo split tradicional' },
             { icon: 'expand', text: 'Climatiza espacios amplios con una sola unidad interior' },
-            { icon: 'temp', text: 'Frío y calor en la mayoría de los modelos' },
+            { icon: 'temp', text: 'Frío y calor' },
         ],
         specs: {
             rows: [
                 ['Capacidad', '9.000 a 18.000 frigorías/h (3 a 6 TR)'],
-                ['Tecnología', 'Inverter u on/off según marca y modelo'],
-                ['Frío / frío y calor', 'Frío y calor según modelo'],
+                ['Tecnología', 'Inverter u on/off'],
+                ['Frío / frío y calor', 'Frío y calor'],
                 ['Alimentación eléctrica', 'Monofásica 220V o trifásica 380V según capacidad'],
-                ['Refrigerante', 'R410A'],
+                ['Refrigerante', 'R410A y R32'],
             ],
         },
-        marcas: ['surrey', 'bgh', 'gree', 'midea'],
+        marcas: ['surrey', 'bgh', 'gree', 'midea', 'carrier', 'york', 'samsung', 'daikin'],
         faqs: [
             {
                 question: '¿Se puede instalar sin cielorraso?',
@@ -195,11 +213,11 @@ export const productDetails = [
         h1: 'Equipos rooftop',
         title: 'Equipos Rooftop | BEKK Climatización',
         metaDescription: 'Equipos rooftop compactos de alta capacidad y marcas líderes. Venta a todo el país. Pedí tu cotización.',
-        heroSubtitle: 'Unidad central para conductos que se instala en el exterior, habitualmente sobre la cubierta. Venta a todo el país con asesoramiento profesional.',
+        heroSubtitle: 'Unidad central para conductos de instalación exterior.',
         image: '/productos/rooftop.webp',
         productosSlugs: ['rooftop'],
         queEs: [
-            'El rooftop es una unidad central que concentra en un solo equipo exterior todo lo necesario para climatizar un espacio por conductos: compresor, serpentinas e intercambio de aire. Se instala habitualmente sobre la cubierta del edificio o nave.',
+            'El rooftop es una unidad central que concentra en un solo equipo exterior todo lo necesario para climatizar un espacio por conductos: compresor, serpentinas e intercambio de aire.',
             'Al ser una sola unidad de instalación exterior, simplifica el montaje frente a tener varias unidades distribuidas, y libera espacio interior ya que no requiere una unidad exterior adicional por sector. Está disponible en versión solo frío o frío y calor.',
         ],
         ventajas: [
@@ -218,7 +236,7 @@ export const productDetails = [
                 ['Refrigerante', 'R410A'],
             ],
         },
-        marcas: ['surrey', 'midea', 'carrier', 'goodman'],
+        marcas: ['surrey', 'midea', 'carrier', 'westric', 'gree', 'york'],
         faqs: [
             {
                 question: '¿Por qué conviene un rooftop frente a varias unidades exteriores?',
@@ -249,23 +267,26 @@ export const productDetails = [
         productosSlugs: ['unidades-enfriadoras-chillers'],
         queEs: [
             'Un chiller (o unidad enfriadora) enfría agua en lugar de aire, y esa agua se distribuye por una red de cañerías hasta las unidades que climatizan cada espacio. Es un sistema por agua, a diferencia de los sistemas por refrigerante directo como el VRV.',
-            'Por su capacidad, se usa en instalaciones de mayor porte, donde conviene centralizar la generación de frío en una o pocas unidades y distribuir agua en lugar de aire o refrigerante por distancias largas.',
+            'Por su capacidad, se usa en instalaciones de mayor porte, donde conviene centralizar la generación de frío en una o pocas unidades y distribuir agua en lugar de aire o refrigerante por distancias largas. Hay equipos condensados por aire o por agua, aptos para sistemas de confort y de precisión.',
         ],
         ventajas: [
             { icon: 'water', text: 'Sistema por agua, pensado para instalaciones de mayor porte' },
             { icon: 'box', text: 'Centraliza la generación de frío en una o pocas unidades' },
-            { icon: 'expand', text: 'Permite distribuir climatización a distancias mayores que el aire' },
-            { icon: 'chart', text: 'Escalable según la capacidad que requiera el proyecto' },
+            { icon: 'chart', text: 'Escalable: desde 5 TR hasta cientos de TR según la línea' },
+            { icon: 'check', text: 'Aptos para sistemas de confort y de precisión' },
+            { icon: 'temp', text: 'Versiones frío solo o frío y calor con bomba de calor' },
+            { icon: 'flex', text: 'Opción de operar con temperaturas negativas y descarga de aire vertical u horizontal según modelo' },
         ],
         specs: {
             rows: [
-                ['Capacidad', 'Desde 18.000 frigorías/h (6 TR); capacidades mayores según marca y modelo'],
-                ['Frío / frío y calor', 'Frío solo en la línea de catálogo; bomba de calor según marca'],
+                ['Variantes', 'Condensados por aire o por agua, con compresores scroll, a tornillo o centrífugos'],
+                ['Capacidad', 'Desde 5 TR (17,6 kW) hasta 3.000 TR según marca y línea (Westric: 5 a 150 TR)'],
+                ['Frío / frío y calor', 'Frío solo o frío y calor con bomba de calor, según marca y línea'],
                 ['Alimentación eléctrica', 'Trifásica 380V'],
-                ['Refrigerante', 'R407C en la línea Surrey; otros según marca'],
+                ['Refrigerante', 'R410A, R32, R134a o R407C según marca y línea'],
             ],
         },
-        marcas: ['surrey', 'midea', 'samsung', 'york', 'carrier'],
+        marcas: ['surrey', 'midea', 'samsung', 'york', 'carrier', 'daikin', 'westric'],
         faqs: [
             {
                 question: '¿En qué se diferencia un chiller de un sistema VRV?',
@@ -298,18 +319,37 @@ export const productDetails = [
             { icon: 'flex', text: 'Se adapta a distintas posiciones de montaje según el espacio técnico' },
             { icon: 'airflow', text: 'Mayor caudal que un baja silueta, para superficies más grandes' },
             { icon: 'hidden', text: 'Distribución por conductos: no queda a la vista' },
-            { icon: 'temp', text: 'Frío y calor en la mayoría de los modelos' },
+            { icon: 'temp', text: 'Frío y calor' },
         ],
         specs: {
             rows: [
                 ['Variantes', 'Separado para conductos y multiposición (montaje vertical u horizontal)'],
-                ['Capacidad', '15.000 a 37.500 frigorías/h (5 a 12,5 TR)'],
-                ['Frío / frío y calor', 'Frío solo o frío y calor según modelo'],
+                ['Capacidad', '9.000, 15.000 y 18.000 frigorías/h (3, 5 y 6 TR)'],
+                ['Frío / frío y calor', 'Frío y calor'],
                 ['Alimentación eléctrica', 'Según modelo; hay versiones trifásicas 380V'],
                 ['Refrigerante', 'R410A'],
             ],
         },
-        marcas: ['surrey', 'goodman', 'bgh'],
+        variantes: [
+            {
+                title: 'Sistemas separados comerciales de alta eficiencia',
+                image: '/productos/separados-comerciales.webp',
+                alt: 'Sistema separado comercial de alta eficiencia: unidad evaporadora y condensadora',
+                capacidad: 'De 20, 25 y 30 TR',
+                marca: 'Carrier',
+                bullets: [
+                    'Refrigerante ecológico Puron (R410A)',
+                    'Serpentinas con recubrimiento Gold Cover',
+                    'Unidades evaporadoras con paneles de acero galvanizado revestidos con poliuretano expandido',
+                    'Excelente aislamiento acústico, alta resistencia a la humedad y alta resistencia estructural',
+                    'Compresores scroll de alta eficiencia',
+                    'Nivel de filtrado MERV 8',
+                    'Unidad evaporadora equipada con ventiladores de alta contrapresión estática',
+                    'Unidades evaporadoras de montaje vertical u horizontal',
+                ],
+            },
+        ],
+        marcas: ['surrey', 'bgh', 'carrier'],
         faqs: [
             {
                 question: '¿Qué es el multiposición?',
@@ -332,40 +372,34 @@ export const productDetails = [
     },
     {
         slug: 'calefactores',
-        h1: 'Calefactores y calefactores de conducto',
-        title: 'Calefactores Centrales y de Conducto | BEKK',
-        metaDescription: 'Calefactores y calefactores de conducto de marcas líderes. Venta a todo el país. Pedí tu cotización.',
-        heroSubtitle: 'Equipos para la parte de calor de un sistema central, alimentados a gas natural, gas envasado o gasoil. Venta a todo el país con asesoramiento profesional.',
+        h1: 'Calefactores',
+        title: 'Calefactores Centrales | BEKK',
+        metaDescription: 'Calefactores centrales de marcas líderes. Venta a todo el país. Pedí tu cotización.',
+        heroSubtitle: 'Equipos para la parte de calor de un sistema central, alimentados a gas. Venta a todo el país con asesoramiento profesional.',
         image: '/productos/calefactor.webp',
         productosSlugs: ['calefactor', 'calefactor-de-conducto'],
         queEs: [
-            'El calefactor central genera la calefacción de un sistema de climatización y puede combinarse con un conjunto de frío para cubrir también el verano. El calefactor de conducto es la variante pensada para instalarse dentro de la propia red de conductos de aire acondicionado o ventilación, en forma horizontal o vertical.',
-            'Ambas versiones se alimentan a gas natural, gas envasado o gasoil, según la instalación disponible, y están pensadas para sistemas por conductos de mayor capacidad que un calefactor individual.',
+            'El calefactor central genera la calefacción de un sistema de climatización y puede combinarse con un conjunto de frío para cubrir también el verano.',
         ],
         ventajas: [
             { icon: 'flame', text: 'Alta capacidad de calefacción para sistemas por conductos' },
-            { icon: 'check', text: 'El de conducto se instala dentro de la propia red de aire acondicionado' },
             { icon: 'temp', text: 'Puede combinarse con un conjunto de frío para climatizar todo el año' },
-            { icon: 'flame', text: 'Funciona con gas natural, gas envasado o gasoil' },
+            { icon: 'flame', text: 'Funciona con gas natural o gas envasado' },
         ],
         specs: {
             rows: [
-                ['Variantes', 'Calefactor central por conductos, con o sin quemador, y generador de aire caliente'],
+                ['Variantes', 'Calefactor central por conductos'],
                 ['Capacidad', '17.500 a 50.000 kcal/h'],
-                ['Combustible', 'Gas natural, gas envasado (con kit) o gasoil según modelo'],
+                ['Combustible', 'Gas natural o gas envasado (con kit)'],
                 ['Alimentación eléctrica', 'Monofásica 220V'],
                 ['Frío / calor', 'Solo calor'],
             ],
         },
-        marcas: ['goodman', 'ciroc', 'westric'],
+        marcas: ['westric', 'midea'],
         faqs: [
             {
                 question: '¿Con qué se alimentan?',
-                answer: 'Pueden alimentarse a gas natural, gas envasado o gasoil, según la instalación disponible.',
-            },
-            {
-                question: '¿Cuál es la diferencia entre el calefactor y el calefactor de conducto?',
-                answer: 'El calefactor de conducto se instala dentro de la propia red de conductos de aire acondicionado o ventilación. El calefactor central es la unidad que genera el calor para todo el sistema.',
+                answer: 'Se alimentan a gas natural o gas envasado, según la instalación disponible.',
             },
             {
                 question: '¿Se puede combinar con equipos de frío?',
@@ -402,7 +436,7 @@ export const productDetails = [
                 ['Refrigerante', 'R410A'],
             ],
         },
-        marcas: ['surrey', 'goodman'],
+        marcas: ['midea', 'westric'],
         faqs: [
             {
                 question: '¿Qué es un conjunto de frío?',
@@ -448,7 +482,7 @@ export const productDetails = [
                 ['Configuración', 'Modular: se combinan varias unidades exteriores en un sistema centralizado'],
             ],
         },
-        marcas: ['samsung', 'daikin', 'gree', 'carrier', 'midea'],
+        marcas: ['samsung', 'daikin', 'carrier'],
         faqs: [
             {
                 question: '¿Qué significa VRV o VRF?',

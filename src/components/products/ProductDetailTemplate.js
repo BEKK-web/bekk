@@ -367,6 +367,77 @@ export default function ProductDetailTemplate({ detail }) {
                     </Typography>
                 </Box>
 
+                {(detail.variantes ?? []).map((variante) => (
+                    <Box key={variante.title} sx={{ ...sectionSx, maxWidth: 820 }}>
+                        <SectionTitle>{variante.title}</SectionTitle>
+                        <Box
+                            sx={{
+                                mt: 3,
+                                display: 'grid',
+                                gridTemplateColumns: { xs: '1fr', md: '0.9fr 1.1fr' },
+                                gap: { xs: 3, md: 4 },
+                                alignItems: 'center',
+                                p: { xs: 2.5, md: 3 },
+                                bgcolor: 'background.paper',
+                                border: '1px solid',
+                                borderColor: 'divider',
+                                borderRadius: 3,
+                            }}
+                        >
+                            <Box
+                                sx={{
+                                    position: 'relative',
+                                    height: { xs: 200, md: 260 },
+                                    bgcolor: 'background.productImage',
+                                    borderRadius: 2,
+                                }}
+                            >
+                                <Image
+                                    src={variante.image}
+                                    alt={variante.alt}
+                                    fill
+                                    sizes="(max-width: 900px) 90vw, 360px"
+                                    loading="lazy"
+                                    style={{ objectFit: 'contain', padding: 12 }}
+                                />
+                            </Box>
+                            <Box>
+                                <Typography variant="h3" component="p" sx={{ fontSize: 17 }}>
+                                    {variante.capacidad}
+                                    {variante.marca ? ` · ${variante.marca}` : ''}
+                                </Typography>
+                                <Box component="ul" sx={{ mt: 1.5, pl: 0, listStyle: 'none' }}>
+                                    {variante.bullets.map((text) => (
+                                        <Box
+                                            component="li"
+                                            key={text}
+                                            sx={{
+                                                pl: 2.5,
+                                                mb: 1,
+                                                position: 'relative',
+                                                '&::before': {
+                                                    content: '""',
+                                                    position: 'absolute',
+                                                    left: 0,
+                                                    top: '0.62em',
+                                                    width: 5,
+                                                    height: 5,
+                                                    borderRadius: '50%',
+                                                    bgcolor: 'primary.main',
+                                                },
+                                            }}
+                                        >
+                                            <Typography variant="body2" color="text.secondary">
+                                                {text}
+                                            </Typography>
+                                        </Box>
+                                    ))}
+                                </Box>
+                            </Box>
+                        </Box>
+                    </Box>
+                ))}
+
                 {productBrands.length > 0 && (
                     <Box sx={sectionSx}>
                         <SectionTitle>Marcas</SectionTitle>

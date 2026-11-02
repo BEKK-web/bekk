@@ -499,6 +499,27 @@ export default function ProductDetailTemplate({ detail }) {
                     <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, mb: 3 }}>
                         Contanos qué necesitás y te asesoramos sin cargo. Venta a todo el país.
                     </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+                        Teléfono{' '}
+                        <TrackedLink
+                            href="tel:+5491122296226"
+                            event="phone_click"
+                            ctaLocation={`producto_${detail.slug}`}
+                            sx={{ color: 'text.primary', textDecoration: 'none', fontWeight: 500 }}
+                        >
+                            +54 9 11 2229-6226
+                        </TrackedLink>
+                        {' · '}
+                        Email{' '}
+                        <TrackedLink
+                            href="mailto:ventas@bekk.com.ar"
+                            event="email_click"
+                            ctaLocation={`producto_${detail.slug}`}
+                            sx={{ color: 'text.primary', textDecoration: 'none', fontWeight: 500 }}
+                        >
+                            ventas@bekk.com.ar
+                        </TrackedLink>
+                    </Typography>
                     <ContactForm product={detail.h1} redirectTo="/gracias" />
                 </Box>
 
@@ -565,31 +586,9 @@ export default function ProductDetailTemplate({ detail }) {
                 )}
 
                 <Box sx={{ mt: 7, pt: 3, borderTop: '1px solid', borderColor: 'divider' }}>
-                    <Typography variant="body2" color="text.secondary">
-                        Teléfono{' '}
-                        <TrackedLink
-                            href="tel:+5491122296226"
-                            event="phone_click"
-                            ctaLocation={`producto_${detail.slug}`}
-                            sx={{ color: 'text.primary', textDecoration: 'none', fontWeight: 500 }}
-                        >
-                            +54 9 11 2229-6226
-                        </TrackedLink>
-                        {' · '}
-                        Email{' '}
-                        <TrackedLink
-                            href="mailto:ventas@bekk.com.ar"
-                            event="email_click"
-                            ctaLocation={`producto_${detail.slug}`}
-                            sx={{ color: 'text.primary', textDecoration: 'none', fontWeight: 500 }}
-                        >
-                            ventas@bekk.com.ar
-                        </TrackedLink>
-                        {' · '}
-                        <Box component={Link} href="/productos" sx={{ color: 'primary.main', fontWeight: 600, textDecoration: 'none' }}>
-                            Ver todos los equipos
-                        </Box>
-                    </Typography>
+                    <Box component={Link} href="/productos" sx={{ color: 'primary.main', fontWeight: 600, textDecoration: 'none' }}>
+                        Ver todos los equipos
+                    </Box>
                 </Box>
             </Box>
         </Box>

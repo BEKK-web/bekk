@@ -78,6 +78,7 @@ const localBusinessJsonLd = {
   "@id": `${SITE_URL}/#business`,
   "name": "Bekk Climatización",
   "alternateName": "BEKK",
+  "legalName": "BEKK SRL",
   "description":
     "Empresa de climatización central para hogares, oficinas, espacios comerciales y desarrollos inmobiliarios en Buenos Aires, con más de 25 años de trayectoria.",
   "url": SITE_URL,

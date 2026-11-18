@@ -140,7 +140,7 @@ export default function Footer() {
 
                 <Box sx={{ mt: 6, pt: 3, borderTop: '1px solid #34312C' }}>
                     <Typography variant="body2" sx={{ fontSize: 13, color: '#948C82' }}>
-                        © {new Date().getFullYear()} BEKK. Climatización central en Buenos Aires.
+                        © {new Date().getFullYear()} BEKK SRL. Climatización central en Buenos Aires.
                     </Typography>
                 </Box>
             </Box>

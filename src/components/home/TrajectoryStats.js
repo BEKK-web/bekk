@@ -3,7 +3,7 @@ import { veinedSurface } from "@/utils/surfaces";
 
 const stats = [
     { num: '+25', label: 'años de trayectoria en climatización' },
-    { num: '#1', label: 'marcas líderes internacionales' },
+    { num: '+300', label: 'equipos vendidos' },
     { num: 'Buenos Aires', label: 'Residencial & Corporativo' },
 ];
 

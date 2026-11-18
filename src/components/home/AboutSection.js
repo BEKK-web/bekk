@@ -31,7 +31,7 @@ export default function AboutSection() {
                             Somos una empresa que brinda soluciones en climatización central, tanto para hogares como para el sector corporativo. Comercializamos productos de calidad para el bienestar de nuestros clientes.
                         </Typography>
                         <Typography variant="body1" color="text.secondary" sx={{ mt: 1.75, maxWidth: 480 }}>
-                            Trabajamos con más de diez marcas líderes y ya vendimos más de 300 equipos: cassette, piso techo, baja silueta, rooftop, chillers, calefactores y sistemas VRV, para casas, oficinas, locales comerciales y desarrollos inmobiliarios.
+                            Trabajamos con marcas líderes y con una variada cantidad de equipos: cassette, piso techo, baja silueta, rooftop, chillers, calefactores y sistemas VRV, para casas, oficinas, locales comerciales y desarrollos inmobiliarios.
                         </Typography>
                         <Typography variant="body1" color="text.secondary" sx={{ mt: 1.75, maxWidth: 480 }}>
                             Te asesoramos sin cargo para elegir el equipo que corresponde a tu espacio. Vendemos y enviamos a todo el país, y coordinamos la instalación en CABA y Gran Buenos Aires.

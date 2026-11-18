@@ -1,15 +1,32 @@
 'use client';
+import Link from "next/link";
 import { Box, Typography } from "@mui/material";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { sendGTMEvent } from "@next/third-parties/google";
 import { useSnackbar } from "@/components/SnackbarContext";
 
+import { servicios } from "@/data/servicios";
+import { productDetails, productPath } from "@/data/productDetails";
+
+const solucionLinks = servicios.map((s) => ({ label: s.shortTitle, href: `/soluciones/${s.slug}` }));
+const equipoLinks = productDetails.map((p) => ({ label: p.h1, href: productPath(p.slug) }));
+
 const navLinks = [
-    { label: 'Soluciones', href: '/#soluciones' },
+    { label: 'Todos los equipos', href: '/productos' },
     { label: 'Marcas', href: '/#marcas' },
     { label: 'Nosotros', href: '/#nosotros' },
     { label: 'Contacto', href: '/#contacto' },
 ];
+
+// Área de toque de ~44 px: el padding vertical agranda el link sin cambiar el texto.
+const footerLinkSx = {
+    display: 'block',
+    fontSize: 14,
+    color: '#8B857C',
+    textDecoration: 'none',
+    py: 1.1,
+    '&:hover': { color: '#FFFFFF' },
+};
 
 export default function Footer() {
     const { showSnackbar } = useSnackbar();
@@ -46,7 +63,7 @@ export default function Footer() {
                         </Typography>
                     </Box>
 
-                    <Box sx={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                    <Box sx={{ display: 'flex', gap: { xs: 5, md: 8 }, flexWrap: 'wrap' }}>
                         <Box>
                             <Typography variant="body2" sx={{ fontSize: 13, fontWeight: 600, color: '#FFFFFF', mb: 1.75, letterSpacing: '0.02em' }}>
                                 Navegación
@@ -54,17 +71,32 @@ export default function Footer() {
                             {navLinks.map((link) => (
                                 <Box
                                     key={link.href}
-                                    component="a"
+                                    component={Link}
                                     href={link.href}
-                                    sx={{
-                                        display: 'block',
-                                        fontSize: 14,
-                                        color: '#8B857C',
-                                        textDecoration: 'none',
-                                        mb: 1.25,
-                                        '&:hover': { color: '#FFFFFF' },
-                                    }}
+                                    sx={footerLinkSx}
                                 >
+                                    {link.label}
+                                </Box>
+                            ))}
+                        </Box>
+
+                        <Box>
+                            <Typography variant="body2" sx={{ fontSize: 13, fontWeight: 600, color: '#FFFFFF', mb: 1.75, letterSpacing: '0.02em' }}>
+                                Soluciones
+                            </Typography>
+                            {solucionLinks.map((link) => (
+                                <Box key={link.href} component={Link} href={link.href} sx={footerLinkSx}>
+                                    {link.label}
+                                </Box>
+                            ))}
+                        </Box>
+
+                        <Box>
+                            <Typography variant="body2" sx={{ fontSize: 13, fontWeight: 600, color: '#FFFFFF', mb: 1.75, letterSpacing: '0.02em' }}>
+                                Equipos
+                            </Typography>
+                            {equipoLinks.map((link) => (
+                                <Box key={link.href} component={Link} href={link.href} sx={footerLinkSx}>
                                     {link.label}
                                 </Box>
                             ))}
@@ -81,14 +113,7 @@ export default function Footer() {
                                 component="a"
                                 href="tel:+5491122296226"
                                 onClick={() => sendGTMEvent({ event: 'phone_click', cta_location: 'footer' })}
-                                sx={{
-                                    display: 'block',
-                                    fontSize: 14,
-                                    color: '#8B857C',
-                                    textDecoration: 'none',
-                                    mb: 1.25,
-                                    '&:hover': { color: '#FFFFFF' },
-                                }}
+                                sx={footerLinkSx}
                             >
                                 +54 9 11 2229-6226
                             </Box>
@@ -102,6 +127,7 @@ export default function Footer() {
                                     color: '#8B857C',
                                     cursor: 'pointer',
                                     width: 'fit-content',
+                                    py: 1.1,
                                     '&:hover': { color: '#FFFFFF' },
                                 }}
                             >

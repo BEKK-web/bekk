@@ -1,5 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import Link from "next/link";
+import WhatsAppCta from "@/components/WhatsAppCta";
+import ContactForm from "@/components/ContactForm";
 import ProductsBrowser from "@/components/products/ProductsBrowser";
 import { productDetails, productPath } from "@/data/productDetails";
 import { veinedSurfaceTall } from "@/utils/surfaces";
@@ -12,6 +14,24 @@ export const metadata = {
         "Equipos de climatización central: cassette, piso techo, baja silueta, rooftop, chillers, calefactores y VRV. Venta a todo el país. Consultanos y te asesoramos sin cargo.",
     alternates: {
         canonical: "/productos",
+    },
+    // openGraph no se hereda del layout: definirlo acá lo reemplaza entero.
+    openGraph: {
+        title: "Equipos de aire acondicionado central | BEKK",
+        description:
+            "Cassette, piso techo, baja silueta, rooftop, chillers, calefactores y VRV. Consultanos y te asesoramos sin cargo.",
+        url: `${SITE_URL}/productos`,
+        type: "website",
+        locale: "es_AR",
+        siteName: "BEKK",
+        images: [
+            {
+                url: "/og-image.png",
+                width: 1200,
+                height: 630,
+                alt: "BEKK — Climatización de confianza",
+            },
+        ],
     },
 };
 
@@ -37,15 +57,9 @@ export default function ProductosPage() {
         itemListElement: products.map((product, index) => ({
             "@type": "ListItem",
             position: index + 1,
-            item: {
-                "@type": "Product",
-                name: product.name,
-                description: product.description || undefined,
-                image: `${SITE_URL}${product.image}`,
-                category: "Aire acondicionado central",
-                brand: { "@type": "Brand", name: "BEKK" },
-                url: `${SITE_URL}${product.href}`,
-            },
+            // Solo nombre y URL: un Product exigiría precio o reseñas.
+            name: product.name,
+            url: `${SITE_URL}${product.href}`,
         })),
     } : null;
 
@@ -114,10 +128,25 @@ export default function ProductosPage() {
                     <Typography variant="body1" color="text.secondary" sx={{ mt: 1.75 }}>
                         Elegí el equipo que buscás para ver sus características y pedir tu cotización. Venta a todo el país con asesoramiento profesional.
                     </Typography>
+                    <Box sx={{ mt: 3 }}>
+                        <WhatsAppCta message="Hola! Quiero consultar por equipos de aire acondicionado central" ctaLocation="productos_hero">
+                            Consultar por WhatsApp
+                        </WhatsAppCta>
+                    </Box>
                 </Box>
 
                 <Box sx={{ mt: 6 }}>
                     <ProductsBrowser products={products} />
+                </Box>
+
+                <Box id="cotizacion" sx={{ mt: 10, maxWidth: 820, scrollMarginTop: { xs: 72, md: 88 } }}>
+                    <Typography variant="h2" component="h2" sx={{ fontSize: { xs: 24, md: 28 } }}>
+                        Pedí tu cotización
+                    </Typography>
+                    <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, mb: 3 }}>
+                        Contanos qué necesitás y te asesoramos sin cargo. Venta a todo el país.
+                    </Typography>
+                    <ContactForm product="Consulta desde el catálogo" redirectTo="/gracias" />
                 </Box>
             </Box>
         </Box>

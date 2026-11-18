@@ -15,8 +15,10 @@ export default function WhatsAppFab() {
             onClick={() => sendGTMEvent({ event: 'whatsapp_click', cta_location: 'fab' })}
             sx={{
                 position: "fixed",
-                bottom: 24,
-                right: 24,
+                bottom: { xs: 16, md: 24 },
+                right: { xs: 16, md: 24 },
+                width: { xs: 48, md: 56 },
+                height: { xs: 48, md: 56 },
                 zIndex: 1300,
                 bgcolor: "#25D366",
                 color: "#fff",

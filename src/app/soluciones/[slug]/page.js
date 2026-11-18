@@ -4,7 +4,8 @@ import { Box, Typography } from "@mui/material";
 import WhatsAppCta from "@/components/WhatsAppCta";
 import ProductDetailTemplate from "@/components/products/ProductDetailTemplate";
 import { servicios, getServicio } from "@/data/servicios";
-import { getProductDetail } from "@/data/productDetails";
+import ContactForm from "@/components/ContactForm";
+import { getProductDetail, productPath } from "@/data/productDetails";
 
 const SITE_URL = "https://www.bekk.com.ar";
 
@@ -58,6 +59,7 @@ export default async function ServicioPage({ params }) {
     if (detail) return <ProductDetailTemplate detail={detail} />;
 
     const url = `${SITE_URL}/soluciones/${servicio.slug}`;
+    const equipos = (servicio.equipos || []).map(getProductDetail).filter(Boolean);
 
     const jsonLd = {
         "@context": "https://schema.org",
@@ -136,6 +138,15 @@ export default async function ServicioPage({ params }) {
                 <Typography variant="body1" color="text.secondary" sx={{ mt: 2.5, fontSize: 17.5 }}>
                     {servicio.intro}
                 </Typography>
+                <Box sx={{ mt: 3 }}>
+                    <WhatsAppCta
+                        message={servicio.whatsappMessage}
+                        ctaLocation="pagina_servicio_hero"
+                        detail={servicio.title}
+                    >
+                        Consultar por WhatsApp
+                    </WhatsAppCta>
+                </Box>
 
                 {servicio.sections.map((section) => (
                     <Box key={section.heading} sx={{ mt: 6 }}>
@@ -189,29 +200,56 @@ export default async function ServicioPage({ params }) {
                     </Box>
                 ))}
 
-                <Box
-                    sx={{
-                        mt: 7,
-                        p: { xs: 3, md: 4 },
-                        borderRadius: 3,
-                        bgcolor: 'background.alt',
-                        border: '1px solid',
-                        borderColor: 'divider',
-                    }}
-                >
-                    <Typography variant="h3" component="p" sx={{ fontSize: 19 }}>
+                {equipos.length > 0 && (
+                    <Box sx={{ mt: 7 }}>
+                        <Typography variant="h3" component="h2" sx={{ fontSize: 20 }}>
+                            Equipos para esta solución
+                        </Typography>
+                        <Box
+                            component="ul"
+                            sx={{
+                                mt: 2.25,
+                                p: 0,
+                                listStyle: 'none',
+                                display: 'grid',
+                                gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))' },
+                                gap: 1.5,
+                            }}
+                        >
+                            {equipos.map((equipo) => (
+                                <Box component="li" key={equipo.slug}>
+                                    <Box
+                                        component={Link}
+                                        href={productPath(equipo.slug)}
+                                        sx={{
+                                            display: 'block',
+                                            p: 2,
+                                            borderRadius: 2,
+                                            border: '1px solid',
+                                            borderColor: 'divider',
+                                            bgcolor: 'background.paper',
+                                            color: 'primary.main',
+                                            fontWeight: 600,
+                                            textDecoration: 'none',
+                                            '&:hover': { borderColor: 'primary.main' },
+                                        }}
+                                    >
+                                        {equipo.h1}
+                                    </Box>
+                                </Box>
+                            ))}
+                        </Box>
+                    </Box>
+                )}
+
+                <Box id="cotizacion" sx={{ mt: 7, scrollMarginTop: { xs: 72, md: 88 } }}>
+                    <Typography variant="h3" component="h2" sx={{ fontSize: 20 }}>
                         ¿Querés que lo veamos juntos?
                     </Typography>
-                    <Typography variant="body1" color="text.secondary" sx={{ mt: 1, mb: 2.5 }}>
+                    <Typography variant="body1" color="text.secondary" sx={{ mt: 1, mb: 3 }}>
                         Contanos qué espacio necesitás climatizar y te asesoramos sin cargo.
                     </Typography>
-                    <WhatsAppCta
-                        message={servicio.whatsappMessage}
-                        ctaLocation="pagina_servicio"
-                        detail={servicio.title}
-                    >
-                        Consultar por WhatsApp
-                    </WhatsAppCta>
+                    <ContactForm product={servicio.title} redirectTo="/gracias" />
                 </Box>
             </Box>
         </Box>

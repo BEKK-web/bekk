@@ -36,7 +36,7 @@ export default function HeroSection() {
             >
                 <Image
                     src="/ambiente.jpg"
-                    alt=""
+                    alt="Living con vigas de madera climatizado con aire acondicionado central"
                     fill
                     priority
                     // Es el elemento LCP: la prioridad alta explícita adelanta su descarga.
@@ -62,7 +62,7 @@ export default function HeroSection() {
             >
                 <Image
                     src="/oficina.jpg"
-                    alt=""
+                    alt="Sala de reuniones con equipo de aire acondicionado central en el cielorraso"
                     fill
                     sizes="(max-width: 900px) 100vw, 58vw"
                     style={{ objectFit: 'cover', objectPosition: 'center center' }}
@@ -110,10 +110,10 @@ export default function HeroSection() {
                     />
                 </Box>
                 <Typography variant="eyebrow" component="p" color="primary.main">
-                    Aire acondicionado central
+                    Climatización de confianza
                 </Typography>
                 <Typography variant="h1" component="h1" sx={{ mt: 1.5 }}>
-                    Climatización de confianza
+                    Aire acondicionado central en Buenos Aires
                 </Typography>
                 <Typography
                     variant="body1"

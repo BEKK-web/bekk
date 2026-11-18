@@ -15,6 +15,7 @@ import ContactForm from "@/components/ContactForm";
 import TrackedLink from "@/components/products/TrackedLink";
 import { brands } from "@/data/brands";
 import { getProductDetail, productPath } from "@/data/productDetails";
+import { getSolucionesDeEquipo } from "@/data/servicios";
 import { veinedSurfaceTall } from "@/utils/surfaces";
 
 const SITE_URL = "https://www.bekk.com.ar";
@@ -139,6 +140,7 @@ export default function ProductDetailTemplate({ detail }) {
     const productBrands = detail.marcas
         .map((file) => brands.find((b) => b.file === file))
         .filter(Boolean);
+    const soluciones = getSolucionesDeEquipo(detail.slug);
     const related = detail.relacionados.map(getProductDetail).filter(Boolean);
 
     const specRows = detail.specs.rows;
@@ -147,12 +149,15 @@ export default function ProductDetailTemplate({ detail }) {
         "@context": "https://schema.org",
         "@graph": [
             {
-                "@type": "Product",
+                // WebPage y no Product: Google exige precio, reseñas o calificación
+                // en un Product, y acá no se publican precios.
+                "@type": "WebPage",
                 name: detail.h1,
                 description: detail.metaDescription,
-                image: `${SITE_URL}${detail.image}`,
-                category: "Aire acondicionado central",
+                primaryImageOfPage: `${SITE_URL}${detail.image}`,
                 url,
+                about: { "@type": "Thing", name: detail.h1 },
+                publisher: { "@id": `${SITE_URL}/#business` },
             },
             {
                 "@type": "BreadcrumbList",
@@ -585,8 +590,28 @@ export default function ProductDetailTemplate({ detail }) {
                     </Box>
                 )}
 
-                <Box sx={{ mt: 7, pt: 3, borderTop: '1px solid', borderColor: 'divider' }}>
-                    <Box component={Link} href="/productos" sx={{ color: 'primary.main', fontWeight: 600, textDecoration: 'none' }}>
+                <Box
+                    sx={{
+                        mt: 7,
+                        pt: 3,
+                        borderTop: '1px solid',
+                        borderColor: 'divider',
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: { xs: 1.5, md: 4 },
+                    }}
+                >
+                    {soluciones.map((solucion) => (
+                        <Box
+                            key={solucion.slug}
+                            component={Link}
+                            href={`/soluciones/${solucion.slug}`}
+                            sx={{ py: 0.75, color: 'primary.main', fontWeight: 600, textDecoration: 'none' }}
+                        >
+                            {solucion.title}
+                        </Box>
+                    ))}
+                    <Box component={Link} href="/productos" sx={{ py: 0.75, color: 'primary.main', fontWeight: 600, textDecoration: 'none' }}>
                         Ver todos los equipos
                     </Box>
                 </Box>

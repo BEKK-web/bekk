@@ -21,6 +21,9 @@ export const servicios = [
     {
         slug: 'climatizacion-residencial',
         cardDescription: 'Equipos que pueden quedar a la vista, como cassettes y piso techo, u ocultos, como baja silueta y separados para conductos, para una climatización homogénea en toda la casa.',
+        // Páginas de producto (slugs de productDetails) que se linkean desde esta
+        // solución y que, a la inversa, linkean de vuelta a ella.
+        equipos: ['cassette', 'piso-techo', 'baja-silueta', 'separado-conductos', 'calefactores', 'conjunto-de-frio'],
         title: 'Climatización residencial',
         shortTitle: 'Residencial',
         metaTitle: 'Aire acondicionado central para casas y departamentos | BEKK',
@@ -65,6 +68,7 @@ export const servicios = [
     {
         slug: 'climatizacion-corporativa',
         cardDescription: 'Equipos de mayor capacidad para locales, oficinas, salas de reuniones y servers: rooftop, chillers, separados para conductos y conjuntos de frío.',
+        equipos: ['rooftop', 'chillers', 'baja-silueta-alta-presion', 'separado-conductos', 'conjunto-de-frio', 'sistemas-vrv'],
         title: 'Climatización corporativa',
         shortTitle: 'Corporativa',
         metaTitle: 'Climatización central para oficinas y locales | BEKK',
@@ -135,4 +139,9 @@ export const servicios = [
 
 export function getServicio(slug) {
     return servicios.find((s) => s.slug === slug);
+}
+
+// Soluciones (residencial / corporativa) que incluyen un equipo dado.
+export function getSolucionesDeEquipo(equipoSlug) {
+    return servicios.filter((s) => s.equipos?.includes(equipoSlug));
 }

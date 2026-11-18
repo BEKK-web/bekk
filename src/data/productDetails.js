@@ -122,7 +122,7 @@ export const productDetails = [
                 ['Drenaje', 'Bomba con capacidad de 1200 mm de columna'],
             ],
         },
-        marcas: ['carrier'],
+        marcas: ['carrier', 'samsung'],
         faqs: [
             {
                 question: '¿En qué se diferencia del baja silueta estándar?',
@@ -428,7 +428,7 @@ export const productDetails = [
                 ['Frío / calor', 'Solo calor'],
             ],
         },
-        marcas: ['westric', 'midea'],
+        marcas: ['westric', 'midea', 'ciroc'],
         faqs: [
             {
                 question: '¿Con qué se alimentan?',

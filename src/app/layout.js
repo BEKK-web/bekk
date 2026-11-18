@@ -79,7 +79,7 @@ const localBusinessJsonLd = {
   "name": "Bekk Climatización",
   "alternateName": "BEKK",
   "description":
-    "Empresa de climatización central para hogares y empresas en Buenos Aires, con más de 25 años de trayectoria.",
+    "Empresa de climatización central para hogares, oficinas, espacios comerciales y desarrollos inmobiliarios en Buenos Aires, con más de 25 años de trayectoria.",
   "url": SITE_URL,
   "image": `${SITE_URL}/bekk.png`,
   "logo": `${SITE_URL}/bekk.png`,
@@ -91,10 +91,14 @@ const localBusinessJsonLd = {
   "sameAs": ["https://www.instagram.com/bekk_climatizacion/"],
   // Venden y envían a todo el país, pero la instalación solo cubre CABA y GBA.
   "areaServed": { "@type": "Country", "name": "Argentina" },
-  "serviceArea": {
-    "@type": "AdministrativeArea",
-    "name": "Ciudad Autónoma de Buenos Aires y Gran Buenos Aires",
-  },
+  // Áreas de servicio tal como figuran en el perfil de Google: Provincia de
+  // Buenos Aires y CABA.
+  "serviceArea": [
+    { "@type": "AdministrativeArea", "name": "Provincia de Buenos Aires, Argentina" },
+    { "@type": "AdministrativeArea", "name": "Ciudad Autónoma de Buenos Aires, Argentina" },
+  ],
+  // Medios de pago que declara el perfil (tarjetas de crédito y débito).
+  "paymentAccepted": "Tarjeta de crédito, tarjeta de débito",
   // Lunes a sábado de 9 a 21; domingos cerrado.
   "openingHoursSpecification": [
     {

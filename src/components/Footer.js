@@ -59,7 +59,7 @@ export default function Footer() {
                             BEKK
                         </Typography>
                         <Typography variant="body2" sx={{ color: '#8B857C' }}>
-                            Soluciones en climatización central para hogares y empresas, con más de 25 años de trayectoria en Buenos Aires.
+                            Soluciones en climatización central para hogares y empresas, con más de 15 años de trayectoria en Buenos Aires.
                         </Typography>
                     </Box>
 

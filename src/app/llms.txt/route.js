@@ -34,7 +34,7 @@ ${productos.map((p) => p.name).join(", ")}.
     const body = `# Bekk Climatización
 
 > Empresa que comercializa sistemas de climatización y aire acondicionado
-> central para hogares y empresas en Buenos Aires, Argentina. Más de 25 años
+> central para hogares y empresas en Buenos Aires, Argentina. Más de 15 años
 > de trayectoria.
 
 BEKK comercializa equipos de aire acondicionado central de las marcas líderes

@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { veinedSurface } from "@/utils/surfaces";
 
 const stats = [
-    { num: '+25', label: 'años de trayectoria en climatización' },
+    { num: '+15', label: 'años de trayectoria en climatización' },
     { num: '+300', label: 'equipos vendidos' },
     { num: 'Argentina', label: 'Residencial & Corporativo' },
 ];

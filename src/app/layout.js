@@ -79,6 +79,9 @@ const localBusinessJsonLd = {
   "name": "Bekk Climatización",
   "alternateName": "BEKK",
   "legalName": "BEKK SRL",
+  // La empresa (BEKK SRL) inició en 2021 según el cliente; su experiencia en el
+  // rubro viene de antes.
+  "foundingDate": "2021",
   "description":
     "Empresa de climatización central para hogares, oficinas, espacios comerciales y desarrollos inmobiliarios en Buenos Aires, con más de 25 años de trayectoria.",
   "url": SITE_URL,

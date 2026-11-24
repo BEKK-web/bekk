@@ -24,7 +24,8 @@ const SITE_URL = "https://www.bekk.com.ar";
 // doble. Hasta que el contenedor tenga publicada su etiqueta de configuración
 // de GA4, el sitio no mide nada: es deliberado.
 //
-// ID de medición de GA4, para cargar en esa etiqueta: G-WM19X1LPMY
+// ID de medición de GA4 de la propiedad vigente: G-ZZFJTSP0VL (la G-WM19X1LPMY es
+// una propiedad vieja, sin acceso, y no se usa).
 const GTM_ID = "GTM-MTVR7FLQ";
 
 export const metadata = {
